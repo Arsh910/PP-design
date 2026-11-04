@@ -11,6 +11,10 @@
   · assets/stock: Unsplash photos, used where footage does not exist. Swappable 1:1.
   · Prices and reviews are samples until the client confirms them.
 -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -267,7 +271,7 @@ html{scroll-padding-top:64px}
 
 /* ============ BRAND FILM (sections/video-feature.liquid) ============ */
 .film{position:relative;margin-top:clamp(56px,7vw,96px);height:min(70vh,540px);overflow:hidden}
-.film-tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.film-tiles{position:absolute;inset:0;display:grid;grid-template-columns:1fr}
 .film-tiles img{width:100%;height:100%;object-fit:cover;min-height:0}
 .film::after{content:"";position:absolute;inset:0;background:rgba(16,22,26,.45)}
 .film .fin{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px}
@@ -388,8 +392,6 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   .spot-vid{max-width:300px;margin:0 auto}
   .rs-cards{grid-template-columns:1fr 1fr}
   .vinfo{grid-template-columns:1fr}
-  .film-tiles{grid-template-columns:1fr 1fr}
-  .film-tiles img:nth-child(n+3){display:none}
   .lb-x{top:8px;right:8px;background:rgba(0,0,0,.45)}
 }
 
@@ -801,7 +803,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
         <p>From a coffee table shaped like a wristwatch to salt shakers shaped like dice, every shelf has something that makes you stop and smile.</p>
       </div>
       <div class="lcard">
-        <div class="lim"><img loading="lazy" src="assets/store/rack.jpg" alt="Hand-painted plates on a wooden rack in the Pretty Petals store"></div>
+        <div class="lim"><img loading="lazy" src="assets/store/displays.jpg" alt="Lit glass displays of plates, mugs and baskets in the Pretty Petals store"></div>
         <h3>Everyday Things, Made Cute</h3>
         <p>Plates, mugs and table essentials in happy colours, made for daily use and not just for special occasions.</p>
       </div>
@@ -1004,7 +1006,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
       <div style="margin-top:26px"><button class="btn btn-outline play-link" data-video="assets/video/story.mp4">Watch our story</button></div>
     </div>
     <div class="por">
-      <img loading="lazy" src="assets/store/facade.jpg" alt="The Pretty Petals storefront sign, Resin and Home Decor">
+      <img loading="lazy" src="assets/store/sign.jpg" alt="The glowing Pretty Petals sign on the wall inside the store">
     </div>
   </div>
 </section>
@@ -1012,10 +1014,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
 <!-- 15 · BRAND FILM (real store footage) -->
 <section class="film">
   <div class="film-tiles" aria-hidden="true">
-    <img loading="lazy" src="assets/store/shelf-baskets.jpg" alt="">
-    <img loading="lazy" src="assets/store/shelf-wide.jpg" alt="">
-    <img loading="lazy" src="assets/store/shelf-linen.jpg" alt="">
-    <img loading="lazy" src="assets/store/rack.jpg" alt="">
+    <img loading="lazy" src="assets/store/store-floor.jpg" alt="">
   </div>
   <div class="fin">
     <p class="kick">Step inside</p>
@@ -1089,9 +1088,9 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
       <a class="btn btn-outline" href="https://maps.app.goo.gl/jRsqGbub9CQCa4qNA" target="_blank" rel="noopener">Get directions</a>
     </div>
     <div class="gift-grid">
-      <figure class="gtile tall"><img loading="lazy" src="assets/store/shelf-wide.jpg" alt="Lit shelves full of decor inside the store"><figcaption><b>Shelves to Get Lost In</b><span>Decor &amp; gifting</span></figcaption></figure>
-      <figure class="gtile"><img loading="lazy" src="assets/store/resin-shelf.jpg" alt="Handmade resin keepsake stands on a store shelf"><figcaption><b>The Resin Shelf</b><span>Handmade keepsakes</span></figcaption></figure>
-      <figure class="gtile"><img loading="lazy" src="assets/store/mugs.jpg" alt="Glass shelves of mugs and cups inside the store"><figcaption><b>The Mug Wall</b><span>Crockery &amp; drinkware</span></figcaption></figure>
+      <figure class="gtile tall"><img loading="lazy" src="assets/store/aisle.jpg" alt="The main aisle of the Pretty Petals store, with shelves of decor on both sides"><figcaption><b>Shelves to Get Lost In</b><span>Decor &amp; gifting</span></figcaption></figure>
+      <figure class="gtile"><img loading="lazy" src="assets/store/clock-wall.jpg" alt="A wall of decorative clocks under woven pendant lights"><figcaption><b>The Clock Wall</b><span>Clocks &amp; wall decor</span></figcaption></figure>
+      <figure class="gtile"><img loading="lazy" src="assets/store/soft-furnishings.jpg" alt="Shelves of cushions and throws beside a display of colourful travel cases"><figcaption><b>Soft Corners</b><span>Cushions &amp; travel</span></figcaption></figure>
     </div>
     <div class="vinfo" data-reveal>
       <div><h5>Find us</h5><p>Pretty Petals, Chandigarh City Centre (CCC), VIP Road, Zirakpur, Punjab 140603</p></div>
