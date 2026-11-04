@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pretty Petals — Resin Art, Crockery, Home Decor &amp; Gifting</title>
-<meta name="description" content="Resin art, hand-painted crockery, statement home decor and thoughtful gifts from Pretty Petals.">
+<title>Pretty Petals | Home Decor, Crockery, Gifting &amp; Resin Art in Zirakpur</title>
+<meta name="description" content="Pretty things for your pretty home. Decor, crockery, gifting and handmade resin art from Pretty Petals at CCC, Zirakpur.">
 <!--
   PRETTY PETALS homepage prototype
   · assets/products, assets/store, assets/video: taken from the brand's own Instagram reels.
   · assets/stock: Unsplash photos, used where footage does not exist. Swappable 1:1.
-  · Prices, reviews, address, hours and contact details are placeholders until the client confirms them.
+  · Prices and reviews are samples until the client confirms them.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +68,8 @@ header{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1p
 .nav-link{display:inline-flex;align-items:center;gap:7px;padding:24px 13px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 .nav-link .ch{width:8px;height:8px;border-right:1.3px solid currentColor;border-bottom:1.3px solid currentColor;transform:rotate(45deg) translateY(-2px)}
 .nav>li:hover>.nav-link,.nav>li:focus-within>.nav-link{color:var(--tan)}
+.nav-link[aria-current="location"]{color:var(--tan);background:linear-gradient(var(--tan),var(--tan)) center calc(100% - 15px)/calc(100% - 26px) 2px no-repeat}
+html{scroll-padding-top:64px}
 .logo{text-align:left}
 .logo .mark-img{height:46px;width:auto;display:block}
 .logo .lsub{font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:2px;white-space:nowrap}
@@ -358,6 +360,9 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
 .vinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);border-top:1px solid var(--hair);margin-top:28px;padding-top:24px}
 .vinfo h5{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .vinfo p{font-family:var(--serif);font-size:21px;line-height:1.3}
+.vinfo a:hover{color:var(--tan)}
+.vlink{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.fbot a:hover{color:#fff}
 
 /* ============ NEW · VIDEO LIGHTBOX ============ */
 .lb{border:none;padding:0;background:transparent;margin:auto;max-width:none;overflow:visible}
@@ -421,6 +426,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   .nav-link{padding:16px 2px;width:100%;justify-content:space-between;border-bottom:1px solid var(--hair);letter-spacing:.1em;text-transform:uppercase}
   .mega,.nav>li:hover .mega,.nav>li:focus-within .mega{position:fixed;inset:var(--navtop,64px) 0 0;background:#fff;opacity:1;pointer-events:auto;box-shadow:none;border:0;overflow:auto;transform:translateX(100%);visibility:hidden;transition:transform .28s ease,visibility .28s}
   .nav>li.open .mega{transform:none;visibility:visible}
+  .nav-link[aria-current="location"]{background:none;border-bottom-color:var(--tan)}
   .mback{display:flex;align-items:center;gap:6px;width:100%;padding:16px 2px;border-bottom:1px solid var(--hair);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tan)}
   .mback svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}
   .mega-in{grid-template-columns:1fr;padding:64px 22px 30px;gap:18px}
@@ -454,7 +460,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
 <body>
 
 <!-- 1 · ANNOUNCEMENT -->
-<div class="announce">New in: hand-painted plates and table essentials. DM us to order.</div>
+<div class="announce">Pretty things for your pretty home. DM or WhatsApp us to order.</div>
 
 <!-- 2 · HEADER + MEGA MENU -->
 <header>
@@ -529,7 +535,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
                     <div><h5>Wall Clocks</h5><p>Resin clocks with personality, including our toy-car racer.</p><a href="#resin">See products</a></div>
                   </div>
                   <div class="mentry">
-                    <img loading="lazy" src="assets/store/wall.jpg" alt="">
+                    <img loading="lazy" src="assets/store/resin-shelf.jpg" alt="">
                     <div><h5>Custom Pieces</h5><p>Tell us the idea and the colours. We will pour the rest.</p><a href="#resin">See products</a></div>
                   </div>
                 </div>
@@ -544,7 +550,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
                   </div>
                   <div class="mentry">
                     <img loading="lazy" src="assets/stock/gift-corporate.jpg" alt="">
-                    <div><h5>Corporate Gifting</h5><p>Bulk orders for teams and clients. DM us with your numbers.</p><a href="#gifting">See products</a></div>
+                    <div><h5>Corporate Gifting</h5><p>Bulk orders for teams and clients. DM or WhatsApp us with your numbers.</p><a href="#gifting">See products</a></div>
                   </div>
                   <div class="mentry">
                     <img loading="lazy" src="assets/products/plate-blossom.jpg" alt="">
@@ -575,7 +581,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   <div class="slide on">
     <img src="assets/stock/hero-living.jpg" alt="Warm living room with a grey sofa, wooden coffee table and leather poufs">
     <div class="slide-in">
-      <p class="k">Resin art, crockery and home decor for people who like a little personality at home.</p>
+      <p class="k">Pretty things for your pretty home: decor, crockery, gifting and resin art.</p>
       <h1>Make Home<br>Pretty.</h1>
       <a class="btn btn-white" href="#collections">Explore the collection</a>
     </div>
@@ -616,14 +622,14 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     <span><i></i><b>Hand-painted</b> everyday crockery</span>
     <span><i></i><b>Statement</b> furniture</span>
     <span><i></i>Gifts for <b>every occasion</b></span>
-    <span><i></i><b>DM us</b> to order</span>
-    <span><i></i>Come <b>visit the store</b></span>
+    <span><i></i><b>DM or WhatsApp</b> to order</span>
+    <span><i></i>Visit us at <b>CCC, Zirakpur</b></span>
     <span><i></i>Resin art &amp; <b>home decor</b> under one roof</span>
     <span><i></i><b>Hand-painted</b> everyday crockery</span>
     <span><i></i><b>Statement</b> furniture</span>
     <span><i></i>Gifts for <b>every occasion</b></span>
-    <span><i></i><b>DM us</b> to order</span>
-    <span><i></i>Come <b>visit the store</b></span>
+    <span><i></i><b>DM or WhatsApp</b> to order</span>
+    <span><i></i>Visit us at <b>CCC, Zirakpur</b></span>
   </div>
 </div>
 
@@ -753,7 +759,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
 
     <div class="car-nav">
       <button class="car-arr" id="carPrev" aria-label="Previous products"><svg viewBox="0 0 24 24"><path d="M19 12H5m6-7-7 7 7 7"/></svg></button>
-      <a class="btn btn-tan" href="#" id="shopAllBtn">Shop All Best Sellers</a>
+      <a class="btn btn-tan" href="#collections" id="shopAllBtn">Shop All Best Sellers</a>
       <button class="car-arr" id="carNext" aria-label="Next products"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></button>
     </div>
   </div>
@@ -852,13 +858,13 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     <div data-reveal>
       <p class="kick">Made to order</p>
       <h2 class="h-section">The Resin Studio</h2>
-      <p class="rs-lead">Resin is right there on the sign above our door. Choose a piece from the shelf or tell us what you have in mind.</p>
+      <p class="rs-lead">Handmade resin art and custom creations, preserving your most precious memories. Choose a piece from the shelf or tell us what you have in mind.</p>
       <ol class="steps">
-        <li><span class="n">1</span><div><b>Share your idea</b><p>DM us a name, a photo, a colour or a date that matters.</p></div></li>
+        <li><span class="n">1</span><div><b>Share your idea</b><p>DM or WhatsApp us a name, a photo, a colour or a date that matters.</p></div></li>
         <li><span class="n">2</span><div><b>Approve the design</b><p>We confirm the size, colours and details with you before we pour.</p></div></li>
         <li><span class="n">3</span><div><b>We make it yours</b><p>Your piece is poured, finished and packed, ready to keep or to gift.</p></div></li>
       </ol>
-      <a class="btn btn-white" href="#visit">Start a custom piece</a>
+      <a class="btn btn-white" href="https://www.instagram.com/pretty.petalss._" target="_blank" rel="noopener">Start a custom piece</a>
     </div>
     <div class="rs-cards">
       <a class="rs-card" href="#bestsellers"><div class="ri"><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands with gold detail"></div><b>Faith Keepsakes</b><span>For the home mandir</span></a>
@@ -970,7 +976,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
       <p>Today that question has an answer you can walk into: a store full of resin art, crockery, home decor and gifts, with a purple sign above the door and something surprising on every shelf.</p>
       <p class="sign">"But what if it does?"</p>
       <p class="role">Founder · Pretty Petals</p>
-      <div style="margin-top:26px"><a class="btn btn-outline" href="#">Read our entire story</a></div>
+      <div style="margin-top:26px"><button class="btn btn-outline play-link" data-video="assets/video/story.mp4">Watch our story</button></div>
     </div>
     <div class="por">
       <img loading="lazy" src="assets/store/facade.jpg" alt="The Pretty Petals storefront sign, Resin and Home Decor">
@@ -1007,17 +1013,17 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
       <article class="rcard">
         <p class="q">"I came in for one plate and left with a full set. Every guest now asks where they are from."</p>
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="who"><b>Customer name</b> · City</p>
+        <p class="who">Sample review</p>
       </article>
       <article class="rcard">
         <p class="q">"The resin keepsake I ordered for my parents was beautiful. They have given it pride of place at home."</p>
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="who"><b>Customer name</b> · City</p>
+        <p class="who">Sample review</p>
       </article>
       <article class="rcard">
         <p class="q">"That sunflower cushion and throw made my sofa look brand new. This is my go-to shop for gifts now."</p>
         <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="who"><b>Customer name</b> · City</p>
+        <p class="who">Sample review</p>
       </article>
     </div>
   </div>
@@ -1034,7 +1040,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
         <p class="kick">Seen on Instagram</p>
         <h2 class="h-section">Straight From Our Reels</h2>
       </div>
-      <a class="btn btn-outline" href="#">Follow us</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/prettypetals.home" target="_blank" rel="noopener">Follow us</a>
     </div>
     <div class="shorts">
       <figure class="short" data-video="assets/video/plates.mp4"><video muted loop playsinline preload="none" poster="assets/video/plates.jpg" src="assets/video/plates.mp4" aria-label="Your everyday plates, but cute"></video><button class="sp" aria-label="Play with sound: Your everyday plates, but cute"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>Your everyday plates, but cute</figcaption></figure>
@@ -1046,7 +1052,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   </div>
 </section>
 
-<!-- 19 · NEW · VISIT THE STORE (real store footage). Address, hours and contact are placeholders. -->
+<!-- 19 · NEW · VISIT THE STORE (real store footage). -->
 <section class="gift" id="visit">
   <div class="wrap">
     <div class="sec-row">
@@ -1055,17 +1061,17 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
         <h2 class="h-section">Visit the Store</h2>
         <p class="sub">Some things are better in person. Come in, pick things up, and stay a while.</p>
       </div>
-      <a class="btn btn-outline" href="#">Get directions</a>
+      <a class="btn btn-outline" href="https://maps.app.goo.gl/jRsqGbub9CQCa4qNA" target="_blank" rel="noopener">Get directions</a>
     </div>
     <div class="gift-grid">
       <figure class="gtile tall"><img loading="lazy" src="assets/store/shelf-wide.jpg" alt="Lit shelves full of decor inside the store"><figcaption><b>Shelves to Get Lost In</b><span>Decor &amp; gifting</span></figcaption></figure>
-      <figure class="gtile"><img loading="lazy" src="assets/store/wall.jpg" alt="Wall of decorative plates and resin pieces inside the store"><figcaption><b>The Resin Wall</b><span>Plates &amp; keepsakes</span></figcaption></figure>
+      <figure class="gtile"><img loading="lazy" src="assets/store/resin-shelf.jpg" alt="Handmade resin keepsake stands on a store shelf"><figcaption><b>The Resin Shelf</b><span>Handmade keepsakes</span></figcaption></figure>
       <figure class="gtile"><img loading="lazy" src="assets/store/mugs.jpg" alt="Glass shelves of mugs and cups inside the store"><figcaption><b>The Mug Wall</b><span>Crockery &amp; drinkware</span></figcaption></figure>
     </div>
     <div class="vinfo" data-reveal>
-      <div><h5>Address</h5><p>[Store address, city]</p></div>
-      <div><h5>Open</h5><p>[Days &amp; hours]</p></div>
-      <div><h5>Say hello</h5><p>[Instagram handle · phone]</p></div>
+      <div><h5>Find us</h5><p>Pretty Petals, Chandigarh City Centre (CCC), VIP Road, Zirakpur, Punjab 140603</p></div>
+      <div><h5>Order</h5><p>DM or WhatsApp us to order</p><a class="vlink" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">Message us on Instagram</a></div>
+      <div><h5>Follow along</h5><p><a href="https://www.instagram.com/prettypetals.home" target="_blank" rel="noopener">@prettypetals.home</a><br><a href="https://www.instagram.com/pretty.petalss._" target="_blank" rel="noopener">@pretty.petalss._</a></p></div>
     </div>
   </div>
 </section>
@@ -1076,7 +1082,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     <div class="fgrid">
       <div>
         <img class="mark-img" src="assets/pp-logo-white.png" alt="Pretty Petals">
-        <p>Resin art, crockery, home decor and gifting, chosen to make everyday life a little prettier.</p>
+        <p>Pretty things for your pretty home. Decor, crockery, gifting and resin art from Zirakpur.</p>
       </div>
       <div>
         <h5>Shop</h5>
@@ -1108,7 +1114,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     </div>
     <div class="fbot">
       <span>© 2026 Pretty Petals. All rights reserved.</span>
-      <span>[email] · [phone] · [city]</span>
+      <span><a href="https://www.instagram.com/prettypetals.home" target="_blank" rel="noopener">@prettypetals.home</a> · CCC, VIP Road, Zirakpur, Punjab 140603</span>
     </div>
   </div>
 </footer>
@@ -1245,6 +1251,23 @@ const pg=document.getElementById('pgrid');
 document.getElementById('carPrev').addEventListener('click',()=>pg.scrollBy({left:-pg.clientWidth,behavior:'smooth'}));
 document.getElementById('carNext').addEventListener('click',()=>pg.scrollBy({left:pg.clientWidth,behavior:'smooth'}));
 
+/* navbar: highlight the part of the page being viewed */
+const spyLinks=[...document.querySelectorAll('#nav>li>.nav-link')];
+const spy=[['.hero','#bestsellers'],['#collections','#bestsellers'],['#bestsellers','#bestsellers'],['.love','#bestsellers'],['#spotlight','#bestsellers'],['#spaces','#bestsellers'],['#resin','#resin'],['#notes','#notes'],['#gifting','#gifting'],['#bundle','#bestsellers'],['#story','#story'],['.film','#story'],['.reviews',null],['#videos',null],['#visit','#visit']]
+  .map(([sel,href])=>({el:document.querySelector(sel),href}));
+function updateNav(){
+  const line=innerHeight*.4;let cur=null;
+  spy.forEach(x=>{if(x.el.getBoundingClientRect().top<=line)cur=x.href});
+  spyLinks.forEach(a=>{
+    if(a.getAttribute('href')===cur)a.setAttribute('aria-current','location');
+    else a.removeAttribute('aria-current');
+  });
+}
+let spyTick=false;
+addEventListener('scroll',()=>{if(spyTick)return;spyTick=true;requestAnimationFrame(()=>{updateNav();spyTick=false})},{passive:true});
+addEventListener('resize',updateNav);
+updateNav();
+
 /* scroll reveal — fade-up with per-row stagger */
 document.documentElement.classList.add('anim');
 const groups=['.clist','.pgrid','.lgrid','.cgrid','.jgrid','.gift-grid','.btiles','.rgrid','.shorts','.rs-cards'];
@@ -1263,7 +1286,13 @@ function closeVideo(){lb.close()}
 lb.addEventListener('close',()=>{lbVid.pause();lbVid.removeAttribute('src');lbVid.load()});
 document.getElementById('lbX').addEventListener('click',closeVideo);
 lb.addEventListener('click',e=>{if(e.target===lb)closeVideo()});
-document.querySelectorAll('.play[data-video]').forEach(b=>b.addEventListener('click',()=>openVideo(b.dataset.video)));
+document.querySelectorAll('.play[data-video],.play-link[data-video]').forEach(b=>b.addEventListener('click',()=>openVideo(b.dataset.video)));
+
+/* pages and tools that arrive with the Shopify build */
+function soon(msg){toastMsg.textContent=msg;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>toast.classList.remove('show'),2500)}
+document.querySelectorAll('a[href="#"]:not(.logo)').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();soon('This page goes live with the full Shopify store.')}));
+document.querySelector('.icon-btn[aria-label="Account"]').addEventListener('click',()=>soon('Customer accounts go live with the full Shopify store.'));
+document.getElementById('cartBtn').addEventListener('click',()=>soon('Cart and checkout go live with the full Shopify store.'));
 
 /* reels: quiet preview on hover, full video with sound on click */
 const canMove=!matchMedia('(prefers-reduced-motion: reduce)').matches;
