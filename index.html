@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pretty Petals — Resin Art, Crockery, Home Decor &amp; Gifting</title>
+<meta name="description" content="Resin art, hand-painted crockery, statement home decor and thoughtful gifts from Pretty Petals.">
+<!--
+  PRETTY PETALS homepage prototype
+  · assets/products, assets/store, assets/video: taken from the brand's own Instagram reels.
+  · assets/stock: Unsplash photos, used where footage does not exist. Swappable 1:1.
+  · Prices, reviews, address, hours and contact details are placeholders until the client confirms them.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --stone:#F8F3EF;
+  --ink:#33202D;
+  --navy:#4A2C40;
+  --moss:#4A2C40;
+  --tan:#BF852B;
+  --gold-grad:linear-gradient(135deg,#BF852B,#E9C645 60%,#FDE560);
+  --sage:#F2E3E5;
+  --red:#C8102E;
+  --muted:#75656F;
+  --hair:#EBE1DD;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Inter","Helvetica Neue",Arial,sans-serif;
+  --w:100vw;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 clamp(18px,3vw,40px)}
+
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1}
+.h-section{font-size:clamp(50px,3.4vw,42px);letter-spacing:.01em}
+.kick{font-size:30px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--tan)}
+.sec-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.sub{color:var(--muted);margin-top:8px;max-width:56ch}
+
+.btn{display:inline-block;padding:15px 34px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-align:center;transition:background .2s,color .2s,border-color .2s}
+.btn-outline{border:1px solid currentColor}
+.btn-outline:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-tan{background:var(--tan);color:#fff}
+.btn-tan:hover{background:#9c6f22}
+.btn-black{background:#111;color:#fff}
+.btn-black:hover{background:#333}
+.btn-white{background:#fff;color:#111}
+.btn-white:hover{background:var(--stone)}
+
+.section{padding-top:clamp(56px,7vw,96px)}
+
+/* ============ ANNOUNCEMENT (sections/announcement-bar.liquid) ============ */
+.announce{background:#000;color:#fff;text-align:center;font-size:12.5px;padding:8px 16px}
+
+/* ============ HEADER + MEGA (sections/header.liquid) ============ */
+header{position:sticky;top:0;z-index:70;background:var(--paper);border-bottom:1px solid var(--hair)}
+.head{max-width:var(--w);margin:0 auto;padding:0dvh clamp(18px,3vw,40px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:64px;gap:clamp(14px,2vw,32px)}
+.nav{display:flex;gap:2px;justify-content:center}
+.nav-link{display:inline-flex;align-items:center;gap:7px;padding:24px 13px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.nav-link .ch{width:8px;height:8px;border-right:1.3px solid currentColor;border-bottom:1.3px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.nav>li:hover>.nav-link,.nav>li:focus-within>.nav-link{color:var(--tan)}
+.logo{text-align:left}
+.logo .mark-img{height:46px;width:auto;display:block}
+.logo .lsub{font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:2px;white-space:nowrap}
+.head-right{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.search{display:flex;align-items:center;gap:8px;border-bottom:1px solid #C9C5BA;padding:7px 2px;width:min(210px,20vw);color:var(--tan)}
+.search input{border:none;outline:none;font:inherit;font-size:13px;width:100%;background:transparent;color:var(--ink)}
+.search input::placeholder{color:var(--tan);opacity:.85}
+.icon-btn{position:relative;display:grid;place-items:center;width:36px;height:36px}
+.icon-btn svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:1.5}
+.cart-n{position:absolute;top:1px;right:-3px;min-width:16px;height:16px;border:1px solid var(--ink);border-radius:99px;background:#fff;font-size:10px;font-weight:600;display:grid;place-items:center;padding:0 3px;transition:transform .25s}
+.cart-n.bump{transform:scale(1.4)}
+.burger{display:none}
+.burger .x{display:none}
+.mback{display:none}
+
+.mega{position:absolute;left:0;right:0;top:64px;background:var(--stone);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);box-shadow:0 24px 40px -24px rgba(40,52,62,.28);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.22s;pointer-events:none}
+.nav>li:hover .mega,.nav>li:focus-within .mega{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.mega-in{max-width:var(--w);margin:0 auto;padding:40px clamp(18px,3vw,40px) 46px;display:grid;grid-template-columns:230px 1fr;gap:clamp(28px,4vw,64px)}
+/* left category rail */
+.rail li{margin-bottom:2px}
+.rail button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:8px 0;font-size:15px;color:var(--ink)}
+.rail button:hover{color:var(--tan)}
+.rail button[aria-current="true"]{font-weight:700}
+.rail button .rch{width:7px;height:7px;border-right:1.4px solid currentColor;border-top:1.4px solid currentColor;transform:rotate(45deg);opacity:0;transition:opacity .15s}
+.rail button[aria-current="true"] .rch{opacity:1}
+.rail a{display:block;padding:8px 0;font-size:15px;color:var(--ink)}
+.rail a:hover{color:var(--tan)}
+/* right entry panels */
+.mpanel{display:none}
+.mpanel.on{display:grid;grid-template-columns:1fr 1fr;gap:30px clamp(28px,4vw,64px)}
+.mentry{display:flex;gap:18px;align-items:flex-start}
+.mentry img{width:96px;height:96px;object-fit:cover;flex:none;background:#fff}
+.mentry h5{font-family:var(--sans);font-size:14.5px;font-weight:700;margin-bottom:5px}
+.mentry p{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mentry a{font-size:12.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.mentry a:hover{color:var(--tan)}
+
+/* ============ HERO CAROUSEL (sections/hero-slideshow.liquid, slides = blocks) ============ */
+.hero{position:relative;height:min(80vh,640px);overflow:hidden;background:#181c20}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,16,20,.62) 0%,rgba(12,16,20,.28) 55%,rgba(12,16,20,.05) 100%)}
+.slide-in{position:relative;z-index:2;max-width:var(--w);margin:0 auto;padding:0 clamp(18px,3vw,40px);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;color:#fff}
+.slide-in .k{font-size:14.5px;margin-bottom:14px;max-width:46ch;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.slide-in h1,.slide-in .h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.2vw,68px);letter-spacing:.05em;text-transform:uppercase;margin-bottom:26px;text-shadow:0 2px 16px rgba(0,0,0,.45);line-height:1.05}
+.hero .dashes{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+.hero .dashes button{width:44px;height:14px;display:grid;align-items:center}
+.hero .dashes i{display:block;width:100%;height:2px;background:rgba(255,255,255,.45)}
+.hero .dashes button[aria-current="true"] i{background:#fff}
+.hero .harr{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:46px;height:46px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;color:#fff;transition:background .2s}
+.hero .harr:hover{background:rgba(255,255,255,.16)}
+.hero .harr svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none}
+.hero .harr.l{left:22px}.hero .harr.r{right:22px}
+
+/* ============ USP MARQUEE (sections/usp-bar.liquid) ============ */
+.usp{background:var(--sage);overflow:hidden;padding:11px 0}
+.usp-track{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite;font-size:13px;font-weight:500}
+.usp-track span{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.usp-track b{font-weight:700}
+.usp-track i{width:5px;height:5px;border-radius:50%;background:var(--ink);opacity:.55}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ COLLECTION LIST (sections/collection-list.liquid, blocks) ============ */
+.clist{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:14px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.clist::-webkit-scrollbar{display:none}
+.ccard{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:var(--stone)}
+.ccard img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ccard:hover img{transform:scale(1.05)}
+.ccard::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,26,32,.62),transparent 55%)}
+.ccard figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;padding:18px;text-align:center}
+.ccard figcaption b{font-family:var(--serif);font-size:21px;font-weight:600;display:block;letter-spacing:.02em}
+.ccard figcaption span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+
+/* ============ BESTSELLERS (collection tabs + product cards) ============ */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{padding:9px 20px;font-size:13.5px;border:1px solid transparent;border-radius:99px}
+.tab:hover{color:var(--tan)}
+.tab[aria-pressed="true"]{border-color:var(--tan)}
+/* Rishi-style carousel: 4 cards per view, scroll-snap, arrow controls */
+.pgrid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 30px)/4);gap:26px 10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
+.pgrid::-webkit-scrollbar{display:none}
+.pgrid .card{scroll-snap-align:start}
+.car-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:38px}
+.car-arr{width:52px;height:52px;border:1px solid var(--tan);border-radius:50%;display:grid;place-items:center;color:var(--tan);transition:background .2s,color .2s;flex:none}
+.car-arr:hover{background:var(--tan);color:#fff}
+.car-arr svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none}
+.card{display:flex;flex-direction:column}
+.card.hide{display:none}
+.card .im{position:relative;aspect-ratio:4/5;background:var(--stone);overflow:hidden}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .im img{transform:scale(1.04)}
+.badge{position:absolute;top:12px;left:12px;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;line-height:1.5;color:var(--ink);z-index:2}
+.qadd{position:absolute;left:10px;right:10px;bottom:10px;background:#fff;color:var(--ink);padding:13px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-align:center;opacity:0;transform:translateY(8px);transition:.25s;z-index:2}
+.card:hover .qadd,.qadd:focus-visible{opacity:1;transform:none}
+.qadd:hover{background:var(--ink);color:#fff}
+.card .info{padding:20px 2px 0}
+.card .name{font-family:var(--serif);font-size:27px;font-weight:600}
+.card .meta{display:flex;justify-content:space-between;gap:12px;font-size:16px;font-weight:600;margin-top:6px}
+.card .meta .from{font-weight:500;white-space:nowrap}
+.card .meta .from s{color:var(--muted);margin-right:6px;font-weight:400}
+.card .meta .from.sale{color:var(--red)}
+.card .notes{font-size:14px;color:var(--muted);margin-top:4px}
+.center-cta{text-align:center;margin-top:44px}
+
+/* ============ WHAT PEOPLE LOVE (sections/value-props.liquid, blocks) ============ */
+.love{background:var(--stone);margin-top:clamp(56px,7vw,96px);padding:clamp(48px,6vw,80px) 0}
+.love-head{text-align:center;max-width:560px;margin:0 auto 44px}
+.lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,36px)}
+.lcard{background:#fff;padding:0 0 34px;text-align:center}
+.lcard:nth-child(2){margin-top:48px}
+.lcard .lim{aspect-ratio:4/3;overflow:hidden;margin-bottom:22px}
+.lcard .lim img{width:100%;height:100%;object-fit:cover;display:block}
+.lcard h3{font-size:22px;font-weight:600;margin-bottom:10px;padding:0 28px}
+.lcard p{font-size:13.5px;color:var(--muted);padding:0 28px}
+
+/* ============ SHOP BY SPACE (sections/space-grid.liquid, blocks)
+   Structure: P&T magazine band — image column + bold title + copy + link ============ */
+.concernband{background:var(--sage);margin-top:clamp(56px,7vw,96px);padding:clamp(38px,6vw,74px) 0}
+.concernband .sec-row{margin-bottom:44px}
+.cgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.6vw,22px)}
+.ccrd{display:flex;flex-direction:column;cursor:pointer}
+.ccrd .cim{overflow:hidden;margin-bottom:18px;background:var(--stone)}
+.ccrd img{width:100%;aspect-ratio:3/3.2;object-fit:cover;object-position:top center;transition:transform .55s ease}
+.ccrd:hover img{transform:scale(1.06)}
+.ccrd .ctxt{display:flex;flex-direction:column;flex:1}
+.ccrd b{font-family:var(--serif);font-size:14px;font-weight:600;margin-bottom:10px;line-height:1.2;color:var(--ink);letter-spacing:.22em;text-transform:uppercase;display:block}
+.ccrd p{font-size:13px;color:var(--ink);margin-bottom:14px;flex:1;line-height:1.6;opacity:.8}
+.ccrd a{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px;display:inline-block;transition:color .2s,border-color .2s}
+.ccrd a:hover{color:var(--moss);border-color:var(--moss)}
+
+/* ============ PETAL NOTES (sections/journal.liquid → blog.articles) ============ */
+.jgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.jcard{display:flex;flex-direction:column}
+.jcard a.rm{margin-top:auto;align-self:flex-start}
+.jcard img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--stone);margin-bottom:16px}
+.jcard .tag{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tan)}
+.jcard b{font-family:var(--serif);font-size:19px;font-weight:600;display:block;margin:6px 0 8px;line-height:1.25}
+.jcard p{font-size:13.5px;color:var(--muted);margin-bottom:10px}
+.jcard a.rm{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--tan);padding-bottom:2px}
+
+/* ============ GIFTING EDIT (sections/gift-collage.liquid, blocks) ============ */
+.gift{background:var(--stone);margin-top:clamp(56px,7vw,96px);padding:clamp(48px,6vw,84px) 0}
+.gift-grid{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:repeat(2,260px);gap:14px}
+.gtile{position:relative;overflow:hidden;display:block;background:#fff}
+.gtile.tall{grid-row:span 2}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gtile:hover img{transform:scale(1.04)}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,26,32,.55),transparent 50%)}
+.gtile figcaption{position:absolute;left:0;bottom:0;z-index:2;color:#fff;padding:22px}
+.gtile figcaption b{font-family:var(--serif);font-size:24px;font-weight:600;display:block}
+.gtile figcaption span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+
+/* ============ BUNDLE BUILDER (sections/bundle-builder.liquid) ============ */
+.bundle-grid{display:grid;grid-template-columns:380px 1fr;gap:clamp(24px,3vw,48px);align-items:start}
+.bsum{background:var(--stone);padding:30px 28px;position:sticky;top:98px}
+.bsum .lab{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.bsum h3{font-size:30px;font-weight:600;margin:8px 0 18px}
+.slots{display:flex;gap:10px;margin-bottom:20px}
+.slot{width:64px;height:64px;background:#fff;border:1px dashed #BDB8AC;display:grid;place-items:center;font-size:12px;color:var(--muted);overflow:hidden}
+.slot img{width:100%;height:100%;object-fit:cover}
+.slot.filled{border:1px solid var(--ink)}
+.bprice{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.bprice b{font-size:26px;font-weight:700}
+.bprice .was{color:var(--muted);text-decoration:line-through}
+.bsave{font-size:13px;font-weight:700;color:var(--red);min-height:20px;margin-bottom:18px}
+#bundleAdd{width:100%}
+#bundleAdd[disabled]{opacity:.35;cursor:not-allowed}
+.btiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.btile{position:relative;background:var(--stone);padding:0 0 14px;text-align:center;border:1px solid transparent;transition:border-color .15s}
+.btile:hover{border-color:#C9C4B7}
+.btile[aria-pressed="true"]{border-color:var(--ink)}
+.btile[aria-pressed="true"]::after{content:"✓";position:absolute;top:10px;right:10px;width:22px;height:22px;background:var(--ink);color:#fff;font-size:12px;display:grid;place-items:center;border-radius:50%}
+.btile img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:10px}
+.btile b{font-size:13.5px;font-weight:600;display:block;padding:0 10px}
+.btile span{font-size:12.5px;color:var(--muted)}
+.btile .bb{position:absolute;top:10px;left:10px;background:#111;color:#fff;font-size:10.5px;font-weight:600;padding:4px 9px;z-index:2}
+
+/* ============ OUR STORY (sections/founder-story.liquid) ============ */
+.story{background:var(--stone);margin-top:clamp(56px,7vw,96px);padding:clamp(48px,6vw,88px) 0}
+.story-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:center}
+.story h2{margin:12px 0 20px}
+.story p{color:#4f3f49;margin-bottom:14px;max-width:56ch}
+.story .sign{font-family:var(--serif);font-style:italic;font-size:28px;margin:22px 0 4px}
+.story .role{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.story .por{position:relative}
+.story .por img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.story .por::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--tan);z-index:-1}
+
+/* ============ BRAND FILM (sections/video-feature.liquid) ============ */
+.film{position:relative;margin-top:clamp(56px,7vw,96px);height:min(70vh,540px);overflow:hidden}
+.film-tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.film-tiles img{width:100%;height:100%;object-fit:cover;min-height:0}
+.film::after{content:"";position:absolute;inset:0;background:rgba(16,22,26,.45)}
+.film .fin{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px}
+.film .kick{color:#F1DFA8}
+.film h2{font-size:clamp(30px,4vw,50px);margin:14px 0 26px;max-width:18ch}
+.play{width:84px;height:84px;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;transition:background .2s,transform .2s}
+.play:hover{background:rgba(255,255,255,.18);transform:scale(1.05)}
+.play svg{width:26px;height:26px;fill:#fff;margin-left:5px}
+
+/* ============ TESTIMONIALS (sections/testimonials.liquid) ============ */
+.reviews{background:var(--moss);color:#F2EFE5;margin-top:clamp(56px,7vw,96px);padding:clamp(56px,7vw,92px) 0}
+.reviews h2{color:#F2EFE5;margin-top:10px}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.rcard{background:#FBF6F2;color:var(--ink);padding:36px 30px 28px;display:flex;flex-direction:column;gap:16px}
+.rcard .q{font-family:var(--serif);font-size:19.5px;line-height:1.35;font-weight:500}
+.rcard .stars{color:var(--tan);letter-spacing:4px;font-size:15px}
+.rcard .who{font-size:13px;color:var(--muted);margin-top:auto}
+.rcard .who b{color:var(--ink)}
+
+/* ============ CATEGORY STRIP ============ */
+.certs{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(18px,3.4vw,52px);padding:38px 20px;border-bottom:1px solid var(--hair);font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* ============ VIDEO SHORTS (sections/video-shorts.liquid, blocks) ============ */
+.shorts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.short{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--stone)}
+.short video{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.short:hover video{transform:scale(1.05)}
+.short::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,22,26,.5),transparent 40%)}
+.short .sp{position:absolute;inset:0;z-index:2;display:grid;place-items:center;width:100%;transition:opacity .25s}
+.short.playing .sp i{opacity:0}
+.short .sp i{transition:transform .2s,opacity .25s}
+.short .sp i{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;transition:transform .2s}
+.short:hover .sp i{transform:scale(1.1)}
+.short .sp svg{width:16px;height:16px;fill:var(--ink);margin-left:3px}
+.short figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;font-size:12.5px;font-weight:600;padding:14px;text-align:center}
+
+/* ============ FOOTER ============ */
+footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clamp(56px,7vw,96px)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding:clamp(46px,6vw,72px) 0 44px}
+.fgrid .mark{font-family:var(--serif);color:#fff;font-size:22px;letter-spacing:.4em;text-indent:.4em;margin-bottom:14px}
+.fgrid h5{color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.fgrid li{margin-bottom:9px}
+.fgrid a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.14);padding:20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:#111;color:#fff;padding:14px 26px;font-size:13.5px;z-index:90;transition:transform .35s;display:flex;gap:10px;align-items:center}
+.toast.show{transform:translate(-50%,0)}
+.toast i{width:7px;height:7px;border-radius:50%;background:var(--sage)}
+
+/* scroll reveal — one quiet effect: fade-up with a small stagger.
+   Hidden state only applies when JS runs (html.anim) and motion is allowed,
+   so content is never lost without JS or with reduced motion. */
+@media (prefers-reduced-motion:no-preference){
+  .anim [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;transition-delay:var(--d,0s)}
+  .anim [data-reveal].in{opacity:1;transform:none}
+}
+
+
+/* ============ NEW · STATEMENT SPOTLIGHT (sections/product-spotlight.liquid) ============ */
+.spot-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:clamp(36px,6vw,96px);align-items:center;justify-content:center;max-width:1180px;margin:0 auto}
+.spot-vid{position:relative}
+.spot-vid video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--stone)}
+.spot-vid::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--tan);z-index:-1}
+.spot h2{margin:12px 0 18px}
+.spot .lead{color:#4f3f49;max-width:52ch;margin-bottom:24px}
+.spec{border-top:1px solid var(--hair);margin-bottom:26px;max-width:520px}
+.spec li{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--hair);font-size:14px}
+.spec li span{color:var(--muted)}
+.spot .price{font-family:var(--serif);font-size:32px;font-weight:600;margin-bottom:20px}
+.spot-cta{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ============ NEW · RESIN STUDIO (sections/resin-studio.liquid, blocks) ============ */
+.resin{background:var(--moss);color:#F4ECEF;margin-top:clamp(56px,7vw,96px);padding:clamp(56px,7vw,92px) 0}
+.resin .kick{color:#E3C98F}
+.resin h2{margin:10px 0 16px}
+.story .kick{color:var(--tan)}
+.lb video:focus-visible{outline:none}
+.film::after{background:rgba(30,16,26,.58)!important}
+.rs-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:clamp(30px,5vw,72px);align-items:center}
+.rs-lead{color:#DDCFD7;max-width:48ch;margin-bottom:26px}
+.steps{margin-bottom:30px}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:6px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18)}
+.steps .n{font-family:var(--serif);font-size:26px;color:#E3C98F;line-height:1.1}
+.steps b{display:block;font-size:14.5px;margin-bottom:3px}
+.steps p{font-size:13.5px;color:#DDCFD7}
+.rs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rs-card{display:block}
+.rs-card .ri{overflow:hidden;aspect-ratio:4/5;background:#3a2232;margin-bottom:14px}
+.rs-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.rs-card:hover img{transform:scale(1.05)}
+.rs-card b{font-family:var(--serif);font-size:22px;font-weight:600;display:block;line-height:1.2}
+.rs-card span{font-size:13px;color:#DDCFD7}
+
+/* ============ NEW · VISIT THE STORE (sections/store-visit.liquid) ============ */
+.vinfo{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px);border-top:1px solid var(--hair);margin-top:28px;padding-top:24px}
+.vinfo h5{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.vinfo p{font-family:var(--serif);font-size:21px;line-height:1.3}
+
+/* ============ NEW · VIDEO LIGHTBOX ============ */
+.lb{border:none;padding:0;background:transparent;margin:auto;max-width:none;overflow:visible}
+.lb::backdrop{background:rgba(30,16,26,.86)}
+.lb video{display:block;height:min(86vh,860px);max-width:92vw;aspect-ratio:9/16;background:#000}
+.lb-x{position:absolute;top:-6px;right:-56px;width:44px;height:44px;border:1px solid rgba(255,255,255,.6);border-radius:50%;display:grid;place-items:center;color:#fff;transition:background .2s}
+.lb-x:hover{background:rgba(255,255,255,.16)}
+.lb-x svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.6;fill:none}
+
+.fgrid .mark-img{height:64px;width:auto;margin-bottom:14px}
+@media (max-width:1080px){
+  .rs-grid{grid-template-columns:1fr}
+  .spot-grid{grid-template-columns:minmax(0,340px) 1fr}
+}
+@media (max-width:760px){
+  .spot-grid{grid-template-columns:1fr;max-width:none}
+  .spot-vid{max-width:300px;margin:0 auto}
+  .rs-cards{grid-template-columns:1fr 1fr}
+  .vinfo{grid-template-columns:1fr}
+  .film-tiles{grid-template-columns:1fr 1fr}
+  .film-tiles img:nth-child(n+3){display:none}
+  .lb-x{top:8px;right:8px;background:rgba(0,0,0,.45)}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (max-width:1080px){
+  .pgrid{grid-auto-columns:calc((100% - 20px)/3)}
+  .jgrid{grid-template-columns:repeat(2,1fr)}
+  .lgrid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .lcard:nth-child(2){margin-top:0}
+  .bundle-grid{grid-template-columns:1fr}
+  .bsum{position:static}
+  .rgrid{grid-template-columns:1fr;max-width:560px}
+  .story-grid{grid-template-columns:1fr}
+  .shorts{grid-template-columns:repeat(3,1fr)}
+  .short:nth-child(n+4){display:none}
+  .mega-in{grid-template-columns:180px 1fr;gap:24px}
+  .mpanel.on{grid-template-columns:1fr}
+  .search{display:none}
+  .lsub{display:none}
+  .clist{grid-auto-columns:minmax(170px,1fr)}
+  .cgrid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .head{grid-template-columns:1fr auto 1fr;height:64px;align-content:center}
+  .burger{grid-column:1;grid-row:1;justify-self:start}
+  .head .logo{grid-column:2;grid-row:1;text-align:center}
+  .head-right{grid-column:3;grid-row:1}
+  .head nav{grid-row:2}
+  .lsub{display:block}
+  .search{display:flex;width:auto;border-bottom:0;padding:7px 0}
+  .search input{width:0;padding:0}
+  .search:focus-within input{width:110px}
+  .icon-btn[aria-label="Account"]{display:none}
+  .nav{position:fixed;inset:var(--navtop,64px) 0 0;flex-direction:column;justify-content:flex-start;gap:0;background:#fff;padding:64px 22px 30px;overflow:auto;transform:translateX(-100%);visibility:hidden;transition:transform .28s ease,visibility .28s}
+  .burger[aria-expanded="true"] svg{display:none}
+  .burger[aria-expanded="true"] .x{display:block}
+  .nav.open{transform:none;visibility:visible}
+  body:has(.nav.open){overflow:hidden}
+  .nav-link{padding:16px 2px;width:100%;justify-content:space-between;border-bottom:1px solid var(--hair);letter-spacing:.1em;text-transform:uppercase}
+  .mega,.nav>li:hover .mega,.nav>li:focus-within .mega{position:fixed;inset:var(--navtop,64px) 0 0;background:#fff;opacity:1;pointer-events:auto;box-shadow:none;border:0;overflow:auto;transform:translateX(100%);visibility:hidden;transition:transform .28s ease,visibility .28s}
+  .nav>li.open .mega{transform:none;visibility:visible}
+  .mback{display:flex;align-items:center;gap:6px;width:100%;padding:16px 2px;border-bottom:1px solid var(--hair);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tan)}
+  .mback svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}
+  .mega-in{grid-template-columns:1fr;padding:64px 22px 30px;gap:18px}
+  .burger{display:grid;place-items:center;width:38px;height:38px}
+  .burger svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.7;fill:none}
+  .logo .mark-img{height:32px}
+  .kick{font-size:13px}
+  .h-section{font-size:30px}
+  .pgrid{grid-auto-columns:calc((100% - 10px)/2);gap:10px}
+  .card{position:relative}
+  .card .im{aspect-ratio:3/4}
+  .card .im::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,26,32,.62),transparent 55%)}
+  .card .info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:12px 10px;text-align:center;color:#fff}
+  .card .name{font-size:18px}
+  .card .meta{justify-content:center;font-size:12.5px;color:#fff;margin-top:2px}
+  .card .meta .from s{color:rgba(255,255,255,.65)}
+  .card .notes{display:none}
+  .qadd{opacity:1;transform:none;left:auto;top:10px;right:10px;bottom:auto;padding:8px 10px;font-size:9px}
+  .gift-grid{grid-template-columns:1fr;grid-template-rows:none}
+  .gtile{aspect-ratio:16/10}
+  .gtile.tall{grid-row:auto}
+  .jgrid,.shorts,.cgrid{grid-template-columns:1fr 1fr}
+  .short:nth-child(n+4){display:block}
+  .short:nth-child(n+5){display:none}
+  .btiles{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .hero .harr{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 · ANNOUNCEMENT -->
+<div class="announce">New in: hand-painted plates and table essentials. DM us to order.</div>
+
+<!-- 2 · HEADER + MEGA MENU -->
+<header>
+  <div class="head">
+    <a class="logo" href="#" aria-label="Pretty Petals home">
+      <img class="mark-img" src="assets/pp-logo-plum.png" alt="Pretty Petals">
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+    <nav aria-label="Main">
+      <ul class="nav" id="nav">
+        <li>
+          <a class="nav-link" href="#bestsellers" aria-haspopup="true">Shop <span class="ch" aria-hidden="true"></span></a>
+          <div class="mega" role="group" aria-label="Shop">
+            <div class="mega-in">
+              <button class="mback" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>Back</button>
+              <ul class="rail" id="shopRail">
+                <li><button data-panel="crockery" aria-current="true">Crockery &amp; Table <span class="rch" aria-hidden="true"></span></button></li>
+                <li><button data-panel="decor" aria-current="false">Home Decor <span class="rch" aria-hidden="true"></span></button></li>
+                <li><button data-panel="resin" aria-current="false">Resin Art <span class="rch" aria-hidden="true"></span></button></li>
+                <li><button data-panel="gifts" aria-current="false">Gifting <span class="rch" aria-hidden="true"></span></button></li>
+                <li><a href="#spaces">Shop by Space</a></li>
+                <li><a href="#bundle">Build a Table Set</a></li>
+              </ul>
+              <div class="mpanels">
+                <div class="mpanel on" data-panel="crockery">
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/plate-cherie.jpg" alt="">
+                    <div><h5>Everyday Plates</h5><p>Stripes, cherries and blooms. Plates that make a Tuesday dinner look planned.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/sp-set.jpg" alt="">
+                    <div><h5>Salt &amp; Pepper Sets</h5><p>Pineapples, dice, eggs and watermelon wedges for the cutest table in the house.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/store/mugs.jpg" alt="">
+                    <div><h5>Mugs &amp; Cups</h5><p>Shelves of quirky mugs for your morning chai and everything after.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/tumbler-set.jpg" alt="">
+                    <div><h5>Tumblers &amp; Bottles</h5><p>Straw-lid tumblers and bottles for desks, school bags and long drives.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                </div>
+                <div class="mpanel" data-panel="decor">
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/watch-table.jpg" alt="">
+                    <div><h5>Statement Furniture</h5><p>Conversation-starting pieces, including our wristwatch coffee tables.</p><a href="#spotlight">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/cushion-sofa.jpg" alt="">
+                    <div><h5>Cushions &amp; Throws</h5><p>Tufted sunflowers and cosy textures to lift a plain sofa in minutes.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/basket-heart.jpg" alt="">
+                    <div><h5>Baskets &amp; Storage</h5><p>Woven rattan baskets that look as good on show as they do tucked away.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/shell-set.jpg" alt="">
+                    <div><h5>Travel &amp; Fun Finds</h5><p>Seashell luggage and the things you did not know you needed.</p><a href="#bestsellers">See products</a></div>
+                  </div>
+                </div>
+                <div class="mpanel" data-panel="resin">
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/resin-faith.jpg" alt="">
+                    <div><h5>Faith Keepsakes</h5><p>Devotional resin stands with gold detail, made for your home mandir or a loved one.</p><a href="#resin">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/resin-trays.jpg" alt="">
+                    <div><h5>Trays &amp; Platters</h5><p>Gold-edged resin trays for serving, styling and festive gifting.</p><a href="#resin">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/clock-race.jpg" alt="">
+                    <div><h5>Wall Clocks</h5><p>Resin clocks with personality, including our toy-car racer.</p><a href="#resin">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/store/wall.jpg" alt="">
+                    <div><h5>Custom Pieces</h5><p>Tell us the idea and the colours. We will pour the rest.</p><a href="#resin">See products</a></div>
+                  </div>
+                </div>
+                <div class="mpanel" data-panel="gifts">
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/stock/gift-hands.jpg" alt="">
+                    <div><h5>Gifts Under ₹1,000</h5><p>Small, cute and very easy to say yes to.</p><a href="#gifting">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/stock/gift-occasion.jpg" alt="">
+                    <div><h5>Weddings &amp; Festivals</h5><p>Thoughtful hampers for the moments that matter.</p><a href="#gifting">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/stock/gift-corporate.jpg" alt="">
+                    <div><h5>Corporate Gifting</h5><p>Bulk orders for teams and clients. DM us with your numbers.</p><a href="#gifting">See products</a></div>
+                  </div>
+                  <div class="mentry">
+                    <img loading="lazy" src="assets/products/plate-blossom.jpg" alt="">
+                    <div><h5>Build a Table Set</h5><p>Pick any three table pieces and save on the set.</p><a href="#bundle">See products</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a class="nav-link" href="#resin">Resin Studio</a></li>
+        <li><a class="nav-link" href="#gifting">Gifting</a></li>
+        <li><a class="nav-link" href="#notes">Petal Notes</a></li>
+        <li><a class="nav-link" href="#story">Our Story</a></li>
+        <li><a class="nav-link" href="#visit">Visit Us</a></li>
+      </ul>
+    </nav>
+    <div class="head-right">
+      <label class="search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search plates, resin, gifts…" aria-label="Search"></label>
+      <button class="icon-btn" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.6 4.6-5 8-5s6.4 1.4 8 5"/></svg></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Cart, 0 items"><svg viewBox="0 0 24 24"><path d="M6 7h12l-1.2 13H7.2L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="cart-n" id="cartN">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- 3 · HERO CAROUSEL (stock photos) -->
+<section class="hero" aria-label="Featured">
+  <div class="slide on">
+    <img src="assets/stock/hero-living.jpg" alt="Warm living room with a grey sofa, wooden coffee table and leather poufs">
+    <div class="slide-in">
+      <p class="k">Resin art, crockery and home decor for people who like a little personality at home.</p>
+      <h1>Make Home<br>Pretty.</h1>
+      <a class="btn btn-white" href="#collections">Explore the collection</a>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="assets/stock/hero-plates.jpg" alt="Stacks of ceramic plates and bowls on a wooden table">
+    <div class="slide-in">
+      <p class="k">Your everyday plates, but make them cute.</p>
+      <p class="h1">Set A Prettier<br>Table.</p>
+      <a class="btn btn-white" href="#bestsellers">Shop crockery</a>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="assets/stock/hero-resin.jpg" alt="Swirls of pink and aqua poured resin">
+    <div class="slide-in">
+      <p class="k">Keepsakes, trays and clocks, with custom pieces made to order.</p>
+      <p class="h1">Poured<br>By Hand.</p>
+      <a class="btn btn-white" href="#resin">Visit the resin studio</a>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="assets/stock/hero-gift.jpg" alt="Pink gift box tied with a gold ribbon and confetti">
+    <div class="slide-in">
+      <p class="k">Thoughtful gifts for birthdays, weddings, festivals and teams.</p>
+      <p class="h1">A Gift They<br>Will Keep.</p>
+      <a class="btn btn-white" href="#gifting">Shop gifting</a>
+    </div>
+  </div>
+  <button class="harr l" id="heroPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="harr r" id="heroNext" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="dashes" id="heroDashes"></div>
+</section>
+
+<!-- 4 · USP MARQUEE -->
+<div class="usp" aria-hidden="true">
+  <div class="usp-track">
+    <span><i></i>Resin art &amp; <b>home decor</b> under one roof</span>
+    <span><i></i><b>Hand-painted</b> everyday crockery</span>
+    <span><i></i><b>Statement</b> furniture</span>
+    <span><i></i>Gifts for <b>every occasion</b></span>
+    <span><i></i><b>DM us</b> to order</span>
+    <span><i></i>Come <b>visit the store</b></span>
+    <span><i></i>Resin art &amp; <b>home decor</b> under one roof</span>
+    <span><i></i><b>Hand-painted</b> everyday crockery</span>
+    <span><i></i><b>Statement</b> furniture</span>
+    <span><i></i>Gifts for <b>every occasion</b></span>
+    <span><i></i><b>DM us</b> to order</span>
+    <span><i></i>Come <b>visit the store</b></span>
+  </div>
+</div>
+
+<!-- 5 · COLLECTION LIST -->
+<section class="section" id="collections">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Something for every corner</p>
+        <h2 class="h-section">Shop by Collection</h2>
+      </div>
+      <a class="btn btn-outline" href="#bestsellers">View all</a>
+    </div>
+    <div class="clist">
+      <figure class="ccard"><a href="#bestsellers"><img loading="lazy" src="assets/products/plate-blossom.jpg" alt=""><figcaption><b>Crockery</b><span>Plates &amp; bowls</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#bestsellers"><img loading="lazy" src="assets/products/sp-set.jpg" alt=""><figcaption><b>Table Essentials</b><span>Salt &amp; pepper</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#resin"><img loading="lazy" src="assets/products/resin-faith.jpg" alt=""><figcaption><b>Resin Art</b><span>Made by hand</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#bestsellers"><img loading="lazy" src="assets/products/cushion-home.jpg" alt=""><figcaption><b>Soft Furnishings</b><span>Cushions &amp; throws</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#spotlight"><img loading="lazy" src="assets/products/watch-flat.jpg" alt=""><figcaption><b>Statement Pieces</b><span>Furniture &amp; decor</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#bestsellers"><img loading="lazy" src="assets/products/tumbler-blue.jpg" alt=""><figcaption><b>Drinkware</b><span>Mugs &amp; tumblers</span></figcaption></a></figure>
+      <figure class="ccard"><a href="#bestsellers"><img loading="lazy" src="assets/products/shell-set.jpg" alt=""><figcaption><b>Fun Finds</b><span>Travel &amp; more</span></figcaption></a></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · BESTSELLERS -->
+<section class="section" id="bestsellers">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Too cute to skip</p>
+        <h2 class="h-section">Bestsellers</h2>
+      </div>
+      <div class="tabs" role="group" aria-label="Filter products">
+        <button class="tab" aria-pressed="true" data-cat="best">Best Sellers</button>
+        <button class="tab" aria-pressed="false" data-cat="new">New</button>
+        <button class="tab" aria-pressed="false" data-cat="crockery">Crockery</button>
+        <button class="tab" aria-pressed="false" data-cat="table">Table Essentials</button>
+        <button class="tab" aria-pressed="false" data-cat="decor">Home Decor</button>
+        <button class="tab" aria-pressed="false" data-cat="resin">Resin Art</button>
+        <button class="tab" aria-pressed="false" data-cat="gifts">Gifts</button>
+      </div>
+    </div>
+
+    <div class="pgrid" id="pgrid">
+      <article class="card" data-cat="best decor">
+        <div class="im"><span class="badge">Best<br>Seller</span><img loading="lazy" src="assets/products/watch-table.jpg" alt="Pair of gold wristwatch-shaped nesting coffee tables"><button class="qadd" data-name="Wristwatch Coffee Table Set">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Wristwatch Coffee Table Set</h3><div class="meta"><span>Statement Furniture</span><span class="from">₹24,999</span></div><p class="notes">Nesting pair | Gold finish | Glass top</p></div>
+      </article>
+      <article class="card" data-cat="best crockery gifts">
+        <div class="im"><span class="badge">Best<br>Seller</span><img loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries and the words Ma Chérie"><button class="qadd" data-name="Ma Chérie Plate">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Ma Chérie Plate</h3><div class="meta"><span>Everyday Plate</span><span class="from">₹695</span></div><p class="notes">Pink stripes | Cherries | Hand-painted</p></div>
+      </article>
+      <article class="card" data-cat="best decor">
+        <div class="im"><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt="Cream cushion with tufted mustard sunflowers"><button class="qadd" data-name="Sunflower Tufted Cushion">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Sunflower Tufted Cushion</h3><div class="meta"><span>Soft Furnishing</span><span class="from">₹1,295</span></div><p class="notes">Tufted | Mustard | Sofa-ready</p></div>
+      </article>
+      <article class="card" data-cat="best table gifts">
+        <div class="im"><img loading="lazy" src="assets/products/sp-pineapple.jpg" alt="Pair of ceramic pineapple salt and pepper shakers"><button class="qadd" data-name="Pineapple Salt &amp; Pepper">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Pineapple Salt &amp; Pepper</h3><div class="meta"><span>Table Essentials</span><span class="from">₹595</span></div><p class="notes">Ceramic | Set of two | Sunny</p></div>
+      </article>
+      <article class="card" data-cat="best resin gifts">
+        <div class="im"><span class="badge">Made to<br>Order</span><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands on a store shelf"><button class="qadd" data-name="Faith Keepsake Stand">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Faith Keepsake Stand</h3><div class="meta"><span>Resin Art</span><span class="from">₹2,495</span></div><p class="notes">Gold detail | Tabletop | Made to order</p></div>
+      </article>
+      <article class="card" data-cat="best crockery">
+        <div class="im"><img loading="lazy" src="assets/products/plate-watermelon.jpg" alt="Red ribbed plate painted like a watermelon"><button class="qadd" data-name="Watermelon Plate">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Watermelon Plate</h3><div class="meta"><span>Everyday Plate</span><span class="from sale"><s>₹895</s>₹795</span></div><p class="notes">Ribbed | Juicy red | Hand-painted</p></div>
+      </article>
+      <article class="card" data-cat="best gifts new">
+        <div class="im"><span class="badge">New</span><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of four colourful character tumblers with straw lids"><button class="qadd" data-name="Character Tumblers">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Character Tumblers</h3><div class="meta"><span>Drinkware</span><span class="from">₹899</span></div><p class="notes">Straw lid | Silicone grip | Rope strap</p></div>
+      </article>
+      <article class="card" data-cat="best gifts new">
+        <div class="im"><span class="badge">Great<br>Gift</span><img loading="lazy" src="assets/products/shell-set.jpg" alt="Aqua seashell-shaped hard-shell trolley and vanity case"><button class="qadd" data-name="Seashell Luggage Set">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Seashell Luggage Set</h3><div class="meta"><span>Travel</span><span class="from">₹7,499</span></div><p class="notes">Trolley + vanity case | Aqua shell</p></div>
+      </article>
+      <article class="card hide" data-cat="crockery new">
+        <div class="im"><span class="badge">New</span><img loading="lazy" src="assets/products/plate-lemon.jpg" alt="Blue striped plate with a lemon sprig"><button class="qadd" data-name="Lemon Stripe Plate">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Lemon Stripe Plate</h3><div class="meta"><span>Everyday Plate</span><span class="from">₹695</span></div><p class="notes">Sky stripes | Lemon sprig</p></div>
+      </article>
+      <article class="card hide" data-cat="crockery">
+        <div class="im"><img loading="lazy" src="assets/products/plate-vine.jpg" alt="Cream plate with a ring of small blue flowers"><button class="qadd" data-name="Blue Vine Plate">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Blue Vine Plate</h3><div class="meta"><span>Everyday Plate</span><span class="from">₹695</span></div><p class="notes">Cream glaze | Blue floral rim</p></div>
+      </article>
+      <article class="card hide" data-cat="crockery new">
+        <div class="im"><span class="badge">New</span><img loading="lazy" src="assets/products/plate-blossom.jpg" alt="Cream plate scattered with pink flowers"><button class="qadd" data-name="Blossom Plate">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Blossom Plate</h3><div class="meta"><span>Everyday Plate</span><span class="from">₹695</span></div><p class="notes">Pink blooms | Organic edge</p></div>
+      </article>
+      <article class="card hide" data-cat="table new">
+        <div class="im"><span class="badge">New</span><img loading="lazy" src="assets/products/sp-dice.jpg" alt="Red and white ceramic dice salt and pepper shakers"><button class="qadd" data-name="Dice Salt &amp; Pepper">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Dice Salt &amp; Pepper</h3><div class="meta"><span>Table Essentials</span><span class="from">₹645</span></div><p class="notes">Red + white | Ceramic tray</p></div>
+      </article>
+      <article class="card hide" data-cat="table">
+        <div class="im"><img loading="lazy" src="assets/products/sp-watermelon.jpg" alt="Ceramic watermelon wedge salt and pepper shakers"><button class="qadd" data-name="Watermelon Salt &amp; Pepper">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Watermelon Salt &amp; Pepper</h3><div class="meta"><span>Table Essentials</span><span class="from">₹595</span></div><p class="notes">Wedge shape | Summer table</p></div>
+      </article>
+      <article class="card hide" data-cat="table">
+        <div class="im"><img loading="lazy" src="assets/products/sp-egg.jpg" alt="White and brown ceramic egg salt and pepper shakers"><button class="qadd" data-name="Egg Salt &amp; Pepper">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Egg Salt &amp; Pepper</h3><div class="meta"><span>Table Essentials</span><span class="from">₹595</span></div><p class="notes">White + brown | Glazed</p></div>
+      </article>
+      <article class="card hide" data-cat="table">
+        <div class="im"><img loading="lazy" src="assets/products/sp-pear.jpg" alt="Green ceramic pear shakers on a yellow tray"><button class="qadd" data-name="Green Pear Salt &amp; Pepper">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Green Pear Salt &amp; Pepper</h3><div class="meta"><span>Table Essentials</span><span class="from">₹695</span></div><p class="notes">With matching tray</p></div>
+      </article>
+      <article class="card hide" data-cat="decor">
+        <div class="im"><img loading="lazy" src="assets/products/throw-sunflower.jpg" alt="Cream fringed throw with green and mustard tufted sunflowers"><button class="qadd" data-name="Sunflower Tufted Throw">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Sunflower Tufted Throw</h3><div class="meta"><span>Soft Furnishing</span><span class="from">₹3,495</span></div><p class="notes">Fringed | Hand-tufted look</p></div>
+      </article>
+      <article class="card hide" data-cat="decor gifts">
+        <div class="im"><img loading="lazy" src="assets/products/cushion-home.jpg" alt="Cushion reading It’s so good to be home beside a sunflower cushion"><button class="qadd" data-name="Good To Be Home Cushion">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Good To Be Home Cushion</h3><div class="meta"><span>Soft Furnishing</span><span class="from">₹1,295</span></div><p class="notes">Mustard script | Textured weave</p></div>
+      </article>
+      <article class="card hide" data-cat="decor gifts">
+        <div class="im"><img loading="lazy" src="assets/products/basket-heart.jpg" alt="Woven heart-shaped rattan baskets on a shelf"><button class="qadd" data-name="Rattan Heart Baskets">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Rattan Heart Baskets</h3><div class="meta"><span>Storage &amp; Styling</span><span class="from">₹1,895</span></div><p class="notes">Woven | Nesting pair</p></div>
+      </article>
+      <article class="card hide" data-cat="resin gifts">
+        <div class="im"><img loading="lazy" src="assets/products/clock-race.jpg" alt="Black round wall clock with toy cars as hour markers"><button class="qadd" data-name="Racer Wall Clock">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Racer Wall Clock</h3><div class="meta"><span>Resin Art</span><span class="from">₹3,995</span></div><p class="notes">Black resin | Toy-car markers</p></div>
+      </article>
+      <article class="card hide" data-cat="resin gifts">
+        <div class="im"><img loading="lazy" src="assets/products/resin-trays.jpg" alt="Gold-edged decorative resin trays and small dishes on a shelf"><button class="qadd" data-name="Floral Resin Trays">+ Quick Add</button></div>
+        <div class="info"><h3 class="name">Floral Resin Trays</h3><div class="meta"><span>Resin Art</span><span class="from">₹1,995</span></div><p class="notes">Gold scallop | Preserved colour</p></div>
+      </article>
+    </div>
+
+    <div class="car-nav">
+      <button class="car-arr" id="carPrev" aria-label="Previous products"><svg viewBox="0 0 24 24"><path d="M19 12H5m6-7-7 7 7 7"/></svg></button>
+      <a class="btn btn-tan" href="#" id="shopAllBtn">Shop All Best Sellers</a>
+      <button class="car-arr" id="carNext" aria-label="Next products"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-7 7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · WHAT PEOPLE LOVE -->
+<section class="love">
+  <div class="wrap">
+    <div class="love-head">
+      <p class="kick">Chosen with care</p>
+      <h2 class="h-section">What People Love About Pretty Petals</h2>
+    </div>
+    <div class="lgrid">
+      <div class="lcard">
+        <div class="lim"><img loading="lazy" src="assets/products/watch-dial.jpg" alt="Close-up of the gear-detailed dial on the wristwatch coffee table"></div>
+        <h3>Pieces You Won't See Everywhere</h3>
+        <p>From a coffee table shaped like a wristwatch to salt shakers shaped like dice, every shelf has something that makes you stop and smile.</p>
+      </div>
+      <div class="lcard">
+        <div class="lim"><img loading="lazy" src="assets/store/rack.jpg" alt="Hand-painted plates on a wooden rack in the Pretty Petals store"></div>
+        <h3>Everyday Things, Made Cute</h3>
+        <p>Plates, mugs and table essentials in happy colours, made for daily use and not just for special occasions.</p>
+      </div>
+      <div class="lcard">
+        <div class="lim"><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Resin keepsake stands with gold detail"></div>
+        <h3>Resin That Means Something</h3>
+        <p>Keepsakes and custom resin pieces that turn a memory, a prayer or a name into something you can hold on to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · NEW · STATEMENT SPOTLIGHT (real reel) -->
+<section class="section spot" id="spotlight">
+  <div class="wrap">
+    <div class="spot-grid">
+      <div class="spot-vid"><video id="spotVid" muted loop playsinline preload="metadata" poster="assets/video/statement.jpg" src="assets/video/statement.mp4" aria-label="Video of the wristwatch coffee tables in the store"></video></div>
+      <div class="spot-copy">
+        <p class="kick">A statement piece</p>
+        <h2 class="h-section">Not Your Casual Coffee Table</h2>
+        <p class="lead">Two oversized wristwatches, one very good conversation starter. The dials sit under glass with gear detailing, the gold straps curve down to form the legs, and the smaller table tucks neatly under the larger one.</p>
+        <ul class="spec">
+          <li><span>Set</span>Nesting pair, large + small</li>
+          <li><span>Finish</span>Antique gold, glass top</li>
+          <li><span>Best for</span>Living rooms &amp; lounges</li>
+        </ul>
+        <p class="price">₹24,999</p>
+        <div class="spot-cta">
+          <button class="btn btn-black js-add" data-name="Wristwatch Coffee Table Set">Add to cart</button>
+          <a class="btn btn-outline" href="#visit">See it in store</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · SHOP BY SPACE (stock photos) -->
+<section class="concernband" id="spaces">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Find what fits</p>
+        <h2 class="h-section">Shop by Space</h2>
+        <p class="sub" style="color:#5d4a56">Whether it is one empty shelf or a whole room, start with the corner you want to change.</p>
+      </div>
+      <a class="btn btn-outline" href="#bestsellers" style="border-color:var(--ink);color:var(--ink);flex:none">Shop all decor</a>
+    </div>
+    <div class="cgrid">
+      <div class="ccrd">
+        <div class="cim"><img loading="lazy" src="assets/stock/room-living.jpg" alt="Living room with a yellow armchair and framed art"></div>
+        <div class="ctxt"><b>Living Room</b><p>Cushions, throws and statement tables that make the sofa look so much better.</p><a href="#bestsellers">Shop now</a></div>
+      </div>
+      <div class="ccrd">
+        <div class="cim"><img loading="lazy" src="assets/stock/room-dining.jpg" alt="Bright dining room with a round table and chandelier"></div>
+        <div class="ctxt"><b>Dining Table</b><p>Plates, shakers and little table essentials for meals worth lingering over.</p><a href="#bestsellers">Shop now</a></div>
+      </div>
+      <div class="ccrd">
+        <div class="cim"><img loading="lazy" src="assets/stock/room-bedroom.jpg" alt="Calm bedroom with patterned cushions and a bedside lamp"></div>
+        <div class="ctxt"><b>Bedroom</b><p>Soft textures and small touches for the room you wake up in.</p><a href="#bestsellers">Shop now</a></div>
+      </div>
+      <div class="ccrd">
+        <div class="cim"><img loading="lazy" src="assets/stock/room-entry.jpg" alt="Entryway with a round mirror, console and plants"></div>
+        <div class="ctxt"><b>Entryway</b><p>Clocks, trays and baskets that make a good first impression.</p><a href="#bestsellers">Shop now</a></div>
+      </div>
+      <div class="ccrd">
+        <div class="cim"><img loading="lazy" src="assets/stock/room-desk.jpg" alt="Small wooden side table with books"></div>
+        <div class="ctxt"><b>Desk &amp; Shelves</b><p>Mugs, tumblers and small resin pieces to brighten the working day.</p><a href="#bestsellers">Shop now</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · NEW · RESIN STUDIO (real store footage) -->
+<section class="resin" id="resin">
+  <div class="wrap rs-grid">
+    <div data-reveal>
+      <p class="kick">Made to order</p>
+      <h2 class="h-section">The Resin Studio</h2>
+      <p class="rs-lead">Resin is right there on the sign above our door. Choose a piece from the shelf or tell us what you have in mind.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><b>Share your idea</b><p>DM us a name, a photo, a colour or a date that matters.</p></div></li>
+        <li><span class="n">2</span><div><b>Approve the design</b><p>We confirm the size, colours and details with you before we pour.</p></div></li>
+        <li><span class="n">3</span><div><b>We make it yours</b><p>Your piece is poured, finished and packed, ready to keep or to gift.</p></div></li>
+      </ol>
+      <a class="btn btn-white" href="#visit">Start a custom piece</a>
+    </div>
+    <div class="rs-cards">
+      <a class="rs-card" href="#bestsellers"><div class="ri"><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands with gold detail"></div><b>Faith Keepsakes</b><span>For the home mandir</span></a>
+      <a class="rs-card" href="#bestsellers"><div class="ri"><img loading="lazy" src="assets/products/resin-trays.jpg" alt="Gold-edged resin trays and dishes"></div><b>Trays &amp; Platters</b><span>Serve and style</span></a>
+      <a class="rs-card" href="#bestsellers"><div class="ri"><img loading="lazy" src="assets/products/clock-race.jpg" alt="Black resin wall clock with toy-car hour markers"></div><b>Wall Clocks</b><span>Time, with character</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · PETAL NOTES (journal, stock photos) -->
+<section class="section" id="notes">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Style tips, one read at a time</p>
+        <h2 class="h-section">Petal Notes</h2>
+      </div>
+      <a class="btn btn-outline" href="#">Go to blogs</a>
+    </div>
+    <div class="jgrid">
+      <article class="jcard">
+        <img loading="lazy" src="assets/stock/note-sofa.jpg" alt="Grey sofa styled with teal and patterned cushions">
+        <span class="tag">Styling</span>
+        <b>How to make a plain sofa look expensive</b>
+        <p>Two cushions, one throw and the simple layering trick that changes the whole room.</p>
+        <a class="rm" href="#">Read more</a>
+      </article>
+      <article class="jcard">
+        <img loading="lazy" src="assets/stock/note-table.jpg" alt="Dinner table laid with plates and glasses">
+        <span class="tag">Table</span>
+        <b>Mixing plates without the mess</b>
+        <p>How to pair stripes, florals and solids so your table looks collected rather than chaotic.</p>
+        <a class="rm" href="#">Read more</a>
+      </article>
+      <article class="jcard">
+        <img loading="lazy" src="assets/stock/note-resin.jpg" alt="Dark swirls of poured resin in blue and coral">
+        <span class="tag">Resin Care</span>
+        <b>Keeping resin pieces looking new</b>
+        <p>Where to display them, how to clean them, and what to keep them away from.</p>
+        <a class="rm" href="#">Read more</a>
+      </article>
+      <article class="jcard">
+        <img loading="lazy" src="assets/stock/note-gift.jpg" alt="Kraft gift box tied with a pink ribbon">
+        <span class="tag">Gifting</span>
+        <b>Housewarming gifts people actually use</b>
+        <p>Our shortlist for new homes, from cute everyday pieces to something a little bolder.</p>
+        <a class="rm" href="#">Read more</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · GIFTING (stock photos) -->
+<section class="gift" id="gifting">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">For the ones you love</p>
+        <h2 class="h-section">The Gifting Edit</h2>
+      </div>
+      <a class="btn btn-outline" href="#bestsellers">All gifts</a>
+    </div>
+    <div class="gift-grid">
+      <figure class="gtile tall"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-hands.jpg" alt="Hands holding out a wrapped gift"><figcaption><b>Little Cuties</b><span>Small gifts, big smiles</span></figcaption></a></figure>
+      <figure class="gtile"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-corporate.jpg" alt="Gold ribbon bows on a dark background"><figcaption><b>Corporate Gifting</b><span>Bulk orders welcome</span></figcaption></a></figure>
+      <figure class="gtile"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-occasion.jpg" alt="Pile of wrapped presents with red paper and twine"><figcaption><b>Special Occasions</b><span>Weddings &amp; festivals</span></figcaption></a></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · BUILD A TABLE SET -->
+<section class="section" id="bundle">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Mix &amp; match</p>
+        <h2 class="h-section">Build Your Table Set</h2>
+        <p class="sub">Pick any three table pieces. No two need to match, and that is the point.</p>
+      </div>
+    </div>
+    <div class="bundle-grid">
+      <aside class="bsum">
+        <p class="lab">Your set · pick 3</p>
+        <h3>Any 3 for ₹1,699</h3>
+        <div class="slots" aria-hidden="true"><span class="slot" id="slot0">1</span><span class="slot" id="slot1">2</span><span class="slot" id="slot2">3</span></div>
+        <div class="bprice"><b id="bTotal">₹0</b><span class="was" id="bWas"></span></div>
+        <p class="bsave" id="bSave">Choose three pieces to unlock the set price.</p>
+        <button class="btn btn-black" id="bundleAdd" disabled>Add set to cart</button>
+      </aside>
+      <div class="btiles" role="group" aria-label="Choose three table pieces">
+        <button class="btile" aria-pressed="false" data-name="Ma Chérie Plate" data-price="695" data-img="assets/products/plate-cherie.jpg"><span class="bb">Bestseller</span><img loading="lazy" src="assets/products/plate-cherie.jpg" alt=""><b>Ma Chérie Plate</b><span>₹695</span></button>
+        <button class="btile" aria-pressed="false" data-name="Lemon Stripe Plate" data-price="695" data-img="assets/products/plate-lemon.jpg"><span class="bb">New</span><img loading="lazy" src="assets/products/plate-lemon.jpg" alt=""><b>Lemon Stripe Plate</b><span>₹695</span></button>
+        <button class="btile" aria-pressed="false" data-name="Blue Vine Plate" data-price="695" data-img="assets/products/plate-vine.jpg"><img loading="lazy" src="assets/products/plate-vine.jpg" alt=""><b>Blue Vine Plate</b><span>₹695</span></button>
+        <button class="btile" aria-pressed="false" data-name="Blossom Plate" data-price="695" data-img="assets/products/plate-blossom.jpg"><span class="bb">New</span><img loading="lazy" src="assets/products/plate-blossom.jpg" alt=""><b>Blossom Plate</b><span>₹695</span></button>
+        <button class="btile" aria-pressed="false" data-name="Watermelon Plate" data-price="795" data-img="assets/products/plate-watermelon.jpg"><img loading="lazy" src="assets/products/plate-watermelon.jpg" alt=""><b>Watermelon Plate</b><span>₹795</span></button>
+        <button class="btile" aria-pressed="false" data-name="Pineapple Salt &amp; Pepper" data-price="595" data-img="assets/products/sp-pineapple.jpg"><img loading="lazy" src="assets/products/sp-pineapple.jpg" alt=""><b>Pineapple Salt &amp; Pepper</b><span>₹595</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · OUR STORY (words from their own reel) -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <p class="kick">Behind the sign</p>
+      <h2 class="h-section">Our Story</h2>
+      <p>Behind every small business is someone with a big dream, a million what-ifs and a lot of sleepless nights. Pretty Petals is no different. What if it doesn't work out?</p>
+      <p>Today that question has an answer you can walk into: a store full of resin art, crockery, home decor and gifts, with a purple sign above the door and something surprising on every shelf.</p>
+      <p class="sign">"But what if it does?"</p>
+      <p class="role">Founder · Pretty Petals</p>
+      <div style="margin-top:26px"><a class="btn btn-outline" href="#">Read our entire story</a></div>
+    </div>
+    <div class="por">
+      <img loading="lazy" src="assets/store/facade.jpg" alt="The Pretty Petals storefront sign, Resin and Home Decor">
+    </div>
+  </div>
+</section>
+
+<!-- 15 · BRAND FILM (real store footage) -->
+<section class="film">
+  <div class="film-tiles" aria-hidden="true">
+    <img loading="lazy" src="assets/store/shelf-baskets.jpg" alt="">
+    <img loading="lazy" src="assets/store/shelf-wide.jpg" alt="">
+    <img loading="lazy" src="assets/store/shelf-linen.jpg" alt="">
+    <img loading="lazy" src="assets/store/rack.jpg" alt="">
+  </div>
+  <div class="fin">
+    <p class="kick">Step inside</p>
+    <h2>A Million What-Ifs Later</h2>
+    <button class="play" data-video="assets/video/story.mp4" aria-label="Play the store film"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+  </div>
+</section>
+
+<!-- 16 · TESTIMONIALS: SAMPLE COPY. Replace with real customer reviews before launch. -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick" style="color:#E3C98F">Reviews</p>
+        <h2 class="h-section">What Our Customers Are Saying</h2>
+      </div>
+      <a class="btn btn-outline" href="#bestsellers" style="color:#F4ECEF">Shop now</a>
+    </div>
+    <div class="rgrid">
+      <article class="rcard">
+        <p class="q">"I came in for one plate and left with a full set. Every guest now asks where they are from."</p>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="who"><b>Customer name</b> · City</p>
+      </article>
+      <article class="rcard">
+        <p class="q">"The resin keepsake I ordered for my parents was beautiful. They have given it pride of place at home."</p>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="who"><b>Customer name</b> · City</p>
+      </article>
+      <article class="rcard">
+        <p class="q">"That sunflower cushion and throw made my sofa look brand new. This is my go-to shop for gifts now."</p>
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="who"><b>Customer name</b> · City</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 17 · CATEGORY STRIP -->
+<div class="certs"><span>Resin Art</span><span>Crockery</span><span>Table Essentials</span><span>Soft Furnishings</span><span>Statement Furniture</span><span>Drinkware</span><span>Gifting</span></div>
+
+<!-- 18 · REELS (real Instagram videos) -->
+<section class="section" id="videos">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Seen on Instagram</p>
+        <h2 class="h-section">Straight From Our Reels</h2>
+      </div>
+      <a class="btn btn-outline" href="#">Follow us</a>
+    </div>
+    <div class="shorts">
+      <figure class="short" data-video="assets/video/plates.mp4"><video muted loop playsinline preload="none" poster="assets/video/plates.jpg" src="assets/video/plates.mp4" aria-label="Your everyday plates, but cute"></video><button class="sp" aria-label="Play with sound: Your everyday plates, but cute"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>Your everyday plates, but cute</figcaption></figure>
+      <figure class="short" data-video="assets/video/table.mp4"><video muted loop playsinline preload="none" poster="assets/video/table.jpg" src="assets/video/table.mp4" aria-label="The cutest table essentials"></video><button class="sp" aria-label="Play with sound: The cutest table essentials"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>The cutest table essentials</figcaption></figure>
+      <figure class="short" data-video="assets/video/sofa.mp4"><video muted loop playsinline preload="none" poster="assets/video/sofa.jpg" src="assets/video/sofa.mp4" aria-label="Makes the sofa look so much better"></video><button class="sp" aria-label="Play with sound: Makes the sofa look so much better"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>Makes the sofa look so much better</figcaption></figure>
+      <figure class="short" data-video="assets/video/tumblers.mp4"><video muted loop playsinline preload="none" poster="assets/video/tumblers.jpg" src="assets/video/tumblers.mp4" aria-label="Little cuties for your everyday"></video><button class="sp" aria-label="Play with sound: Little cuties for your everyday"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>Little cuties for your everyday</figcaption></figure>
+      <figure class="short" data-video="assets/video/shell.mp4"><video muted loop playsinline preload="none" poster="assets/video/shell.jpg" src="assets/video/shell.mp4" aria-label="Too cute, isn’t it"></video><button class="sp" aria-label="Play with sound: Too cute, isn’t it"><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></i></button><figcaption>Too cute, isn’t it</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 19 · NEW · VISIT THE STORE (real store footage). Address, hours and contact are placeholders. -->
+<section class="gift" id="visit">
+  <div class="wrap">
+    <div class="sec-row">
+      <div>
+        <p class="kick">Come say hello</p>
+        <h2 class="h-section">Visit the Store</h2>
+        <p class="sub">Some things are better in person. Come in, pick things up, and stay a while.</p>
+      </div>
+      <a class="btn btn-outline" href="#">Get directions</a>
+    </div>
+    <div class="gift-grid">
+      <figure class="gtile tall"><img loading="lazy" src="assets/store/shelf-wide.jpg" alt="Lit shelves full of decor inside the store"><figcaption><b>Shelves to Get Lost In</b><span>Decor &amp; gifting</span></figcaption></figure>
+      <figure class="gtile"><img loading="lazy" src="assets/store/wall.jpg" alt="Wall of decorative plates and resin pieces inside the store"><figcaption><b>The Resin Wall</b><span>Plates &amp; keepsakes</span></figcaption></figure>
+      <figure class="gtile"><img loading="lazy" src="assets/store/mugs.jpg" alt="Glass shelves of mugs and cups inside the store"><figcaption><b>The Mug Wall</b><span>Crockery &amp; drinkware</span></figcaption></figure>
+    </div>
+    <div class="vinfo" data-reveal>
+      <div><h5>Address</h5><p>[Store address, city]</p></div>
+      <div><h5>Open</h5><p>[Days &amp; hours]</p></div>
+      <div><h5>Say hello</h5><p>[Instagram handle · phone]</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 · FOOTER -->
+<footer class="site" style="margin-top:0">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <img class="mark-img" src="assets/pp-logo-white.png" alt="Pretty Petals">
+        <p>Resin art, crockery, home decor and gifting, chosen to make everyday life a little prettier.</p>
+      </div>
+      <div>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#bestsellers">Crockery</a></li>
+          <li><a href="#bestsellers">Home decor</a></li>
+          <li><a href="#resin">Resin art</a></li>
+          <li><a href="#gifting">Gifting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#story">Our story</a></li>
+          <li><a href="#visit">Visit the store</a></li>
+          <li><a href="#notes">Petal Notes</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Customer care</h5>
+        <ul>
+          <li><a href="#">Shipping policy</a></li>
+          <li><a href="#">Returns &amp; refunds</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms &amp; conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Pretty Petals. All rights reserved.</span>
+      <span>[email] · [phone] · [city]</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"><i></i><span id="toastMsg"></span></div>
+
+<dialog class="lb" id="lb" aria-label="Video player">
+  <video id="lbVid" controls playsinline></video>
+  <button class="lb-x" id="lbX" aria-label="Close video"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+</dialog>
+
+<script>
+/* Native JS only — in the Shopify build these become deferred modules;
+   quick add and bundle add post to /cart/add.js instead of faking state. */
+
+/* mobile nav */
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+const closeSubDrawers=()=>nav.querySelectorAll('li.open').forEach(l=>l.classList.remove('open'));
+burger.addEventListener('click',()=>{
+  document.documentElement.style.setProperty('--navtop',document.querySelector('header').getBoundingClientRect().bottom+'px');
+  const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);if(!o)closeSubDrawers();
+});
+nav.querySelectorAll(':scope>li').forEach(li=>{
+  if(!li.querySelector('.mega'))return;
+  li.querySelector('.nav-link').addEventListener('click',e=>{
+    if(matchMedia('(max-width:760px)').matches){e.preventDefault();li.classList.add('open')}
+  });
+});
+document.querySelectorAll('.mback').forEach(b=>b.addEventListener('click',()=>b.closest('li').classList.remove('open')));
+nav.addEventListener('click',e=>{
+  const a=e.target.closest('a');
+  if(a&&!a.parentElement.querySelector('.mega')&&matchMedia('(max-width:760px)').matches){
+    nav.classList.remove('open');burger.setAttribute('aria-expanded',false);closeSubDrawers();
+  }
+});
+
+/* hero carousel */
+const slides=[...document.querySelectorAll('.slide')],dashes=document.getElementById('heroDashes');
+let si=0,heroTimer;
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.setAttribute('aria-label','Go to slide '+(i+1));
+  b.innerHTML='<i></i>';
+  b.addEventListener('click',()=>{goSlide(i);restartAuto()});
+  dashes.appendChild(b);
+});
+function goSlide(i){
+  si=(i+slides.length)%slides.length;
+  slides.forEach((s,n)=>s.classList.toggle('on',n===si));
+  [...dashes.children].forEach((d,n)=>d.setAttribute('aria-current',n===si));
+}
+function restartAuto(){
+  clearInterval(heroTimer);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
+    heroTimer=setInterval(()=>goSlide(si+1),6000);
+}
+document.getElementById('heroPrev').addEventListener('click',()=>{goSlide(si-1);restartAuto()});
+document.getElementById('heroNext').addEventListener('click',()=>{goSlide(si+1);restartAuto()});
+goSlide(0);restartAuto();
+
+/* cart + toast */
+let cart=0,tT;
+const cartN=document.getElementById('cartN'),toast=document.getElementById('toast'),toastMsg=document.getElementById('toastMsg');
+function addToCart(n,label){
+  cart+=n;cartN.textContent=cart;
+  cartN.classList.add('bump');setTimeout(()=>cartN.classList.remove('bump'),260);
+  document.getElementById('cartBtn').setAttribute('aria-label',`Cart, ${cart} items`);
+  toastMsg.textContent=label;toast.classList.add('show');
+  clearTimeout(tT);tT=setTimeout(()=>toast.classList.remove('show'),2500);
+}
+document.querySelectorAll('.qadd,.js-add').forEach(b=>b.addEventListener('click',()=>addToCart(1,`Added to cart: ${b.dataset.name}`)));
+
+/* bestseller tabs */
+const tabs=document.querySelectorAll('.tab'),cards=document.querySelectorAll('#pgrid .card'),shopAllBtn=document.getElementById('shopAllBtn');
+const tabLabel={best:'Best Sellers',new:'New Arrivals',crockery:'Crockery',table:'Table Essentials',decor:'Home Decor',resin:'Resin Art',gifts:'Gifts'};
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.setAttribute('aria-pressed',x===t));
+  const c=t.dataset.cat;
+  cards.forEach(card=>card.classList.toggle('hide',!card.dataset.cat.split(' ').includes(c)));
+  shopAllBtn.textContent='Shop All '+tabLabel[c];
+}));
+
+/* bundle builder */
+const tiles=document.querySelectorAll('.btile'),
+      slots=[0,1,2].map(i=>document.getElementById('slot'+i)),
+      bTotal=document.getElementById('bTotal'),bWas=document.getElementById('bWas'),
+      bSave=document.getElementById('bSave'),bAdd=document.getElementById('bundleAdd');
+const BUNDLE=1699;let picked=[];
+const inr=n=>'₹'+n.toLocaleString('en-IN');
+function renderBundle(){
+  tiles.forEach(x=>x.setAttribute('aria-pressed',picked.includes(x)));
+  slots.forEach((s,n)=>{
+    const p=picked[n];
+    s.classList.toggle('filled',!!p);
+    s.innerHTML=p?`<img src="${p.dataset.img}" alt="">`:(n+1);
+  });
+  const sum=picked.reduce((a,x)=>a+ +x.dataset.price,0);
+  if(picked.length===3){
+    bTotal.textContent=inr(BUNDLE);bWas.textContent=inr(sum);
+    bSave.textContent=`You save ${inr(sum-BUNDLE)} on this set.`;
+    bAdd.disabled=false;
+  }else{
+    bTotal.textContent=inr(sum);bWas.textContent='';
+    bSave.textContent=picked.length?`Pick ${3-picked.length} more to unlock ${inr(BUNDLE)}.`:'Choose three pieces to unlock the set price.';
+    bAdd.disabled=true;
+  }
+}
+tiles.forEach(t=>t.addEventListener('click',()=>{
+  const i=picked.indexOf(t);
+  if(i>-1)picked.splice(i,1);else if(picked.length<3)picked.push(t);else return;
+  renderBundle();
+}));
+bAdd.addEventListener('click',()=>{
+  addToCart(3,`Set added: ${picked.map(x=>x.dataset.name).join(' · ')} for ${inr(BUNDLE)}`);
+  picked=[];renderBundle();
+});
+
+/* mega menu — left rail switches the entry panels */
+const rail=document.getElementById('shopRail');
+if(rail){
+  rail.querySelectorAll('button[data-panel]').forEach(b=>{
+    const activate=()=>{
+      rail.querySelectorAll('button[data-panel]').forEach(x=>x.setAttribute('aria-current',x===b));
+      document.querySelectorAll('.mpanel').forEach(p=>p.classList.toggle('on',p.dataset.panel===b.dataset.panel));
+    };
+    b.addEventListener('mouseenter',activate);
+    b.addEventListener('focus',activate);
+    b.addEventListener('click',activate);
+  });
+}
+
+/* bestsellers carousel arrows */
+const pg=document.getElementById('pgrid');
+document.getElementById('carPrev').addEventListener('click',()=>pg.scrollBy({left:-pg.clientWidth,behavior:'smooth'}));
+document.getElementById('carNext').addEventListener('click',()=>pg.scrollBy({left:pg.clientWidth,behavior:'smooth'}));
+
+/* scroll reveal — fade-up with per-row stagger */
+document.documentElement.classList.add('anim');
+const groups=['.clist','.pgrid','.lgrid','.cgrid','.jgrid','.gift-grid','.btiles','.rgrid','.shorts','.rs-cards'];
+groups.forEach(sel=>document.querySelectorAll(sel).forEach(g=>
+  [...g.children].forEach((el,i)=>{el.dataset.reveal='';el.style.setProperty('--d',(i%6)*.07+'s')})));
+document.querySelectorAll('.sec-row,.love-head,.bsum,.story-grid>div,.fin,.spot-grid>div').forEach(el=>el.dataset.reveal='');
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.12,rootMargin:'0px 0px -30px'});
+document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+/* video lightbox: reels and store film, with sound */
+const lb=document.getElementById('lb'),lbVid=document.getElementById('lbVid');
+function openVideo(src){lbVid.src=src;lb.showModal();lbVid.play().catch(()=>{})}
+function closeVideo(){lb.close()}
+lb.addEventListener('close',()=>{lbVid.pause();lbVid.removeAttribute('src');lbVid.load()});
+document.getElementById('lbX').addEventListener('click',closeVideo);
+lb.addEventListener('click',e=>{if(e.target===lb)closeVideo()});
+document.querySelectorAll('.play[data-video]').forEach(b=>b.addEventListener('click',()=>openVideo(b.dataset.video)));
+
+/* reels: quiet preview on hover, full video with sound on click */
+const canMove=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.short').forEach(s=>{
+  const v=s.querySelector('video');
+  s.querySelector('.sp').addEventListener('click',()=>{v.pause();s.classList.remove('playing');openVideo(s.dataset.video)});
+  if(!canMove||!matchMedia('(hover:hover)').matches)return;
+  s.addEventListener('mouseenter',()=>{v.play().then(()=>s.classList.add('playing')).catch(()=>{})});
+  s.addEventListener('mouseleave',()=>{v.pause();s.classList.remove('playing')});
+});
+
+/* spotlight reel plays only while on screen */
+const spotVid=document.getElementById('spotVid');
+if(canMove)new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)spotVid.play().catch(()=>{});else spotVid.pause();
+}),{threshold:.35}).observe(spotVid);
+</script>
+</body>
+</html>
