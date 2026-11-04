@@ -222,6 +222,12 @@ html{scroll-padding-top:64px}
 .gtile figcaption{position:absolute;left:0;bottom:0;z-index:2;color:#fff;padding:22px}
 .gtile figcaption b{font-family:var(--serif);font-size:24px;font-weight:600;display:block}
 .gtile figcaption span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.gift-edit{grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:repeat(2,1fr)}
+.gift-edit .gtile img{position:absolute;inset:0}
+.gift-edit .gtile.tall{aspect-ratio:4/5}
+.gtile.plain::after{display:none}
+.sub-link{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.sub-link:hover{color:var(--tan)}
 
 /* ============ BUNDLE BUILDER (sections/bundle-builder.liquid) ============ */
 .bundle-grid{display:grid;grid-template-columns:380px 1fr;gap:clamp(24px,3vw,48px);align-items:start}
@@ -541,20 +547,20 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
                 </div>
                 <div class="mpanel" data-panel="gifts">
                   <div class="mentry">
-                    <img loading="lazy" src="assets/stock/gift-hands.jpg" alt="">
-                    <div><h5>Gifts Under ₹1,000</h5><p>Small, cute and very easy to say yes to.</p><a href="#gifting">See products</a></div>
+                    <img loading="lazy" src="assets/gifting/floral.jpg" alt="">
+                    <div><h5>The Floral Hamper</h5><p>Gold mesh gift box, Ivory floral accents, Snacks &amp; festive details.</p><a href="#gifting">See products</a></div>
                   </div>
                   <div class="mentry">
-                    <img loading="lazy" src="assets/stock/gift-occasion.jpg" alt="">
-                    <div><h5>Weddings &amp; Festivals</h5><p>Thoughtful hampers for the moments that matter.</p><a href="#gifting">See products</a></div>
+                    <img loading="lazy" src="assets/gifting/pink-frame.jpg" alt="">
+                    <div><h5>The Pink Frame Hamper</h5><p>Pearl-detailed pink drapes, White rose accents, Jars &amp; festive keepsakes.</p><a href="#gifting">See products</a></div>
                   </div>
                   <div class="mentry">
-                    <img loading="lazy" src="assets/stock/gift-corporate.jpg" alt="">
-                    <div><h5>Corporate Gifting</h5><p>Bulk orders for teams and clients. DM or WhatsApp us with your numbers.</p><a href="#gifting">See products</a></div>
+                    <img loading="lazy" src="assets/gifting/wooden.jpg" alt="">
+                    <div><h5>The Wooden Gift Box</h5><p>Tea &amp; sugar canisters, Chocolates &amp; branded jars, Wooden cutwork box.</p><a href="#gifting">See products</a></div>
                   </div>
                   <div class="mentry">
-                    <img loading="lazy" src="assets/products/plate-blossom.jpg" alt="">
-                    <div><h5>Build a Table Set</h5><p>Pick any three table pieces and save on the set.</p><a href="#bundle">See products</a></div>
+                    <img loading="lazy" src="assets/gifting/woven.jpg" alt="">
+                    <div><h5>The Woven Gift Basket</h5><p>Woven handle basket, Glass bottle &amp; candle, Pretty Petals jars.</p><a href="#gifting">See products</a></div>
                   </div>
                 </div>
               </div>
@@ -603,10 +609,10 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     </div>
   </div>
   <div class="slide">
-    <img src="assets/stock/hero-gift.jpg" alt="Pink gift box tied with a gold ribbon and confetti">
+    <img src="assets/gifting/hero.jpg" alt="Pretty Petals festive hampers: a wooden cutwork box, a woven basket and a pink frame hamper">
     <div class="slide-in">
-      <p class="k">Thoughtful gifts for birthdays, weddings, festivals and teams.</p>
-      <p class="h1">A Gift They<br>Will Keep.</p>
+      <p class="k">Find your festive favourite with Pretty Petals.</p>
+      <p class="h1">A Thoughtful<br>Gift.</p>
       <a class="btn btn-white" href="#gifting">Shop gifting</a>
     </div>
   </div>
@@ -675,6 +681,22 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
     </div>
 
     <div class="pgrid" id="pgrid">
+      <article class="card hide" data-cat="gifts new">
+        <div class="im"><span class="badge">Festive</span><img loading="lazy" src="assets/gifting/floral.jpg" alt="Gold mesh gift box with ivory flowers, dried grasses, snacks and Pretty Petals jars"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to Enquire</a></div>
+        <div class="info"><h3 class="name">The Floral Hamper</h3><div class="meta"><span>Festive Hamper</span><span class="from">On enquiry</span></div><p class="notes">Gold mesh gift box | Ivory floral accents | Snacks &amp; festive details</p></div>
+      </article>
+      <article class="card hide" data-cat="gifts new">
+        <div class="im"><span class="badge">Festive</span><img loading="lazy" src="assets/gifting/pink-frame.jpg" alt="Clear frame hamper with pearl-detailed pink drapes, white roses and jars"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to Enquire</a></div>
+        <div class="info"><h3 class="name">The Pink Frame Hamper</h3><div class="meta"><span>Festive Hamper</span><span class="from">On enquiry</span></div><p class="notes">Pearl-detailed pink drapes | White rose accents | Jars &amp; festive keepsakes</p></div>
+      </article>
+      <article class="card hide" data-cat="gifts new">
+        <div class="im"><span class="badge">Festive</span><img loading="lazy" src="assets/gifting/wooden.jpg" alt="Wooden cutwork box holding tea and sugar canisters, chocolates and Pretty Petals jars"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to Enquire</a></div>
+        <div class="info"><h3 class="name">The Wooden Gift Box</h3><div class="meta"><span>Festive Hamper</span><span class="from">On enquiry</span></div><p class="notes">Tea &amp; sugar canisters | Chocolates &amp; branded jars | Wooden cutwork box</p></div>
+      </article>
+      <article class="card hide" data-cat="gifts new">
+        <div class="im"><span class="badge">Festive</span><img loading="lazy" src="assets/gifting/woven.jpg" alt="Woven handle basket with a glass bottle, candle and Pretty Petals jars"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to Enquire</a></div>
+        <div class="info"><h3 class="name">The Woven Gift Basket</h3><div class="meta"><span>Festive Hamper</span><span class="from">On enquiry</span></div><p class="notes">Woven handle basket | Glass bottle &amp; candle | Pretty Petals jars</p></div>
+      </article>
       <article class="card" data-cat="best decor">
         <div class="im"><span class="badge">Best<br>Seller</span><img loading="lazy" src="assets/products/watch-table.jpg" alt="Pair of gold wristwatch-shaped nesting coffee tables"><button class="qadd" data-name="Wristwatch Coffee Table Set">+ Quick Add</button></div>
         <div class="info"><h3 class="name">Wristwatch Coffee Table Set</h3><div class="meta"><span>Statement Furniture</span><span class="from">₹24,999</span></div><p class="notes">Nesting pair | Gold finish | Glass top</p></div>
@@ -907,7 +929,7 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
         <a class="rm" href="#">Read more</a>
       </article>
       <article class="jcard">
-        <img loading="lazy" src="assets/stock/note-gift.jpg" alt="Kraft gift box tied with a pink ribbon">
+        <img loading="lazy" src="assets/gifting/wooden.jpg" style="object-position:50% 90%" alt="Wooden cutwork gift box with tea and sugar canisters">
         <span class="tag">Gifting</span>
         <b>Housewarming gifts people actually use</b>
         <p>Our shortlist for new homes, from cute everyday pieces to something a little bolder.</p>
@@ -922,15 +944,18 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   <div class="wrap">
     <div class="sec-row">
       <div>
-        <p class="kick">For the ones you love</p>
+        <p class="kick">Four thoughtful ways</p>
         <h2 class="h-section">The Gifting Edit</h2>
+        <p class="sub">Tell us which gift caught your eye. <a class="sub-link" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM us to enquire &amp; order.</a></p>
       </div>
-      <a class="btn btn-outline" href="#bestsellers">All gifts</a>
+      <a class="btn btn-outline" href="#bestsellers" data-open-tab="gifts">All gifts</a>
     </div>
-    <div class="gift-grid">
-      <figure class="gtile tall"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-hands.jpg" alt="Hands holding out a wrapped gift"><figcaption><b>Little Cuties</b><span>Small gifts, big smiles</span></figcaption></a></figure>
-      <figure class="gtile"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-corporate.jpg" alt="Gold ribbon bows on a dark background"><figcaption><b>Corporate Gifting</b><span>Bulk orders welcome</span></figcaption></a></figure>
-      <figure class="gtile"><a href="#bestsellers"><img loading="lazy" src="assets/stock/gift-occasion.jpg" alt="Pile of wrapped presents with red paper and twine"><figcaption><b>Special Occasions</b><span>Weddings &amp; festivals</span></figcaption></a></figure>
+    <div class="gift-grid gift-edit">
+      <figure class="gtile tall plain"><a href="#bestsellers" data-open-tab="gifts" aria-label="See all gifts"><img loading="lazy" src="assets/gifting/season.jpg" alt="Gifts to light up the season: four Pretty Petals festive hampers"></a></figure>
+      <figure class="gtile"><a href="#bestsellers" data-open-tab="gifts"><img loading="lazy" src="assets/gifting/floral.jpg" style="object-position:50% 74%" alt="Gold mesh gift box with ivory flowers, dried grasses, snacks and Pretty Petals jars"><figcaption><b>The Floral Hamper</b><span>Gold mesh box · Ivory florals</span></figcaption></a></figure>
+      <figure class="gtile"><a href="#bestsellers" data-open-tab="gifts"><img loading="lazy" src="assets/gifting/pink-frame.jpg" style="object-position:50% 76%" alt="Clear frame hamper with pearl-detailed pink drapes, white roses and jars"><figcaption><b>The Pink Frame Hamper</b><span>Pink drapes · White roses</span></figcaption></a></figure>
+      <figure class="gtile"><a href="#bestsellers" data-open-tab="gifts"><img loading="lazy" src="assets/gifting/wooden.jpg" style="object-position:50% 90%" alt="Wooden cutwork box holding tea and sugar canisters, chocolates and Pretty Petals jars"><figcaption><b>The Wooden Gift Box</b><span>Cutwork box · Tea &amp; sugar</span></figcaption></a></figure>
+      <figure class="gtile"><a href="#bestsellers" data-open-tab="gifts"><img loading="lazy" src="assets/gifting/woven.jpg" style="object-position:50% 78%" alt="Woven handle basket with a glass bottle, candle and Pretty Petals jars"><figcaption><b>The Woven Gift Basket</b><span>Woven basket · Bottle &amp; candle</span></figcaption></a></figure>
     </div>
   </div>
 </section>
@@ -1185,7 +1210,7 @@ function addToCart(n,label){
   toastMsg.textContent=label;toast.classList.add('show');
   clearTimeout(tT);tT=setTimeout(()=>toast.classList.remove('show'),2500);
 }
-document.querySelectorAll('.qadd,.js-add').forEach(b=>b.addEventListener('click',()=>addToCart(1,`Added to cart: ${b.dataset.name}`)));
+document.querySelectorAll('.qadd:not(.qenq),.js-add').forEach(b=>b.addEventListener('click',()=>addToCart(1,`Added to cart: ${b.dataset.name}`)));
 
 /* bestseller tabs */
 const tabs=document.querySelectorAll('.tab'),cards=document.querySelectorAll('#pgrid .card'),shopAllBtn=document.getElementById('shopAllBtn');
@@ -1196,6 +1221,8 @@ tabs.forEach(t=>t.addEventListener('click',()=>{
   cards.forEach(card=>card.classList.toggle('hide',!card.dataset.cat.split(' ').includes(c)));
   shopAllBtn.textContent='Shop All '+tabLabel[c];
 }));
+
+document.querySelectorAll('[data-open-tab]').forEach(a=>a.addEventListener('click',()=>document.querySelector(`.tab[data-cat="${a.dataset.openTab}"]`).click()));
 
 /* bundle builder */
 const tiles=document.querySelectorAll('.btile'),
