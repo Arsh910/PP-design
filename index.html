@@ -11,6 +11,10 @@
   · assets/stock: Unsplash photos, used where footage does not exist. Swappable 1:1.
   · Prices and reviews are samples until the client confirms them.
 -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/icon-192.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -392,6 +396,14 @@ footer.site{background:var(--ink);color:#D3C5CE;font-size:13.5px;margin-top:clam
   .film-tiles img:nth-child(n+3){display:none}
   .lb-x{top:8px;right:8px;background:rgba(0,0,0,.45)}
 }
+
+/* ============ ROUNDED CORNERS (trial): change these values, or delete this block for sharp corners ============ */
+:root{--r:16px;--r-sm:10px}
+.btn{border-radius:999px}
+.ccard,.card .im,.lcard,.ccrd .cim,.jcard img,.gtile,.bsum,.btile,.rs-card .ri,.rcard,.short,.spot-vid video,.spot-vid::after,.story .por img,.story .por::after,.lb video{border-radius:var(--r)}
+.btile,.lcard{overflow:hidden}
+.mentry img,.slot,.qadd,.bb{border-radius:var(--r-sm)}
+.toast{border-radius:999px}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
