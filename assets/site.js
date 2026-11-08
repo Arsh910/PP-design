@@ -145,7 +145,7 @@ rail && $$('button[data-panel]', rail).forEach(b => {
 /* current page in the nav */
 const here = location.pathname.split('/').pop() || 'index.html';
 $$('a', side).find(a => a.getAttribute('href') === here)?.setAttribute('aria-current', 'page');
-$$('#nav>li>.nav-link').forEach(a => { if (a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here)) a.setAttribute('aria-current', 'location') });
+$$('#nav>li>.nav-link').find(a => a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here))?.setAttribute('aria-current', 'location');
 $('.icon-btn[aria-label="Account"]')?.addEventListener('click', () => location.href = 'login.html');
 
 /* ---------- hero carousel ---------- */
