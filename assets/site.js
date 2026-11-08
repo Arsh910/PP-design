@@ -195,7 +195,7 @@ $$('[data-autoplay]').forEach(row => {
     if (paused || document.hidden) return;
     const card = row.firstElementChild.getBoundingClientRect().width + 14;
     row.scrollLeft + row.clientWidth >= row.scrollWidth - 4 ? row.scrollTo({ left: 0 }) : row.scrollBy({ left: card });
-  }, 5000);
+  }, 3000);
 });
 
 /* ---------- back to top ---------- */
