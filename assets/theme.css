@@ -415,7 +415,7 @@ footer.site{background:var(--deep);color:var(--stone);font-size:17px;margin-top:
 
 /* scroll reveal: hidden state only when JS runs and motion is allowed */
 @media (prefers-reduced-motion:no-preference){
-  .anim [data-reveal]{opacity:0;transform:translateY(32px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .anim [data-reveal]{opacity:.01;transform:translateY(2rem);transition:opacity .6s cubic-bezier(0,0,.3,1),transform .6s cubic-bezier(0,0,.3,1);transition-delay:var(--d,0s)}
   .anim [data-reveal].in{opacity:1;transform:none}
 }
 /* Lenis smooth scroll */
@@ -1158,3 +1158,43 @@ html.lenis,html.lenis body{height:auto}
 .side>*{flex:none}
 .side-links a[aria-current]{padding-left:0}
 @media (max-width:760px){.col-promo{padding:18px}.col-promo h3{font-size:24px}.col-promo .btn{padding:0 12px;min-height:44px;font-size:12px;letter-spacing:.1em}}
+
+/* parallax: image is 12% taller and drifts with scroll inside its frame */
+@media (prefers-reduced-motion:no-preference){
+  .plx{transform:translateY(var(--py,0)) scale(1.12);will-change:transform}
+  .promo:hover>img.plx{transform:translateY(var(--py,0)) scale(1.15)}
+  .newc,.look-img,.gift-hero{overflow:hidden}
+}
+
+/* ---------- reels coverflow ---------- */
+.reels-band{margin-top:var(--sp);padding:var(--sp) 0;background:var(--deep);color:var(--paper);overflow:hidden}
+.reels-head{text-align:center;margin-bottom:40px}
+.reels-head .kick{color:var(--tan)}
+.reels-head .h-section{color:var(--paper)}
+.reels-head .swash{margin-inline:auto}
+.reels{--w:clamp(220px,21vw,400px);--g:calc(24px - var(--w)*.1);position:relative}
+.reels-track{display:flex;align-items:center;gap:var(--g);transform:translateX(calc(50vw - var(--w)/2 - var(--i)*(var(--w) + var(--g))));transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.reel{position:relative;flex:none;width:var(--w);aspect-ratio:9/15;overflow:hidden;background:var(--ink);cursor:pointer;transform:scale(.8);opacity:.75;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.reel.on{transform:none;opacity:1;cursor:default}
+.reel video{width:100%;height:100%;object-fit:cover}
+.reel-ig{position:absolute;top:22px;right:20px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-size:14px;letter-spacing:.06em;opacity:0;transition:opacity .4s}
+.reel-ig svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6}
+.reel-snd{position:absolute;right:16px;bottom:16px;width:42px;height:42px;border-radius:50%;background:rgba(43,28,34,.55);color:var(--paper);display:grid;place-items:center;opacity:0;transition:opacity .4s}
+.reel-snd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
+.reel-snd .on,.reel.sound .reel-snd .off{display:none}
+.reel.sound .reel-snd .on{display:inline}
+.reel.on .reel-ig,.reel.on .reel-snd{opacity:1}
+.reels-arr{position:absolute;top:50%;z-index:3;width:48px;height:48px;margin-top:-24px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;transition:background .2s}
+.reels-arr:hover{background:var(--moss)}
+.reels-arr svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
+.reels-arr.l{left:var(--gut)}.reels-arr.r{right:var(--gut)}
+.reels-prods{display:grid;width:var(--w,clamp(220px,21vw,400px));margin:16px auto 0;width:clamp(220px,21vw,400px)}
+.reel-prod{grid-area:1/1;display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px;border:1px solid rgba(229,229,217,.2);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .4s,transform .4s,visibility 0s .4s}
+.reel-prod.on{opacity:1;visibility:visible;transform:none;transition-delay:.15s,.15s,0s}
+.reel-prod img{width:64px;aspect-ratio:4/5;object-fit:cover}
+.reel-prod small{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
+.reel-prod b{display:block;font-size:19px;line-height:1.2}
+.reel-prod em{font-style:normal;color:var(--tan);font-weight:700}
+.reel-prod .btn{min-height:40px;padding:0 16px;font-size:12px;background:var(--paper);color:var(--moss)}
+.reels-follow{text-align:center;margin-top:36px}
+@media (max-width:760px){.reels{--w:62vw;--g:calc(12px - var(--w)*.1)}.reels-arr{display:none}.reels-prods{width:calc(100% - 2*var(--gut))}}

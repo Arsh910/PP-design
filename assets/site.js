@@ -233,6 +233,24 @@ $$('.fgrid>div:not(:first-child) h5').forEach(h => h.addEventListener('click', (
 const capGrid = () => { const g = $('#pgrid'); if (!g) return; [...g.children].filter(c => !c.classList.contains('hide')).forEach((c, i) => c.classList.toggle('show-m-hide', i >= 6)) };
 capGrid(); $$('[data-grid="#pgrid"] .tab').forEach(t => t.addEventListener('click', () => setTimeout(capGrid, 300)));
 
+/* ---------- reels coverflow: centre reel plays (muted, sound toggle), its product shows below ---------- */
+const reelsEl = $('#reels');
+if (reelsEl) {
+  const reels = $$('.reel', reelsEl), prods = $$('.reel-prod');
+  let cur = +getComputedStyle(reelsEl).getPropertyValue('--i') || 0, sound = false;
+  const show = i => {
+    cur = (i + reels.length) % reels.length; reelsEl.style.setProperty('--i', cur);
+    reels.forEach((r, n) => { const on = n === cur, v = $('video', r); r.classList.toggle('on', on); r.classList.toggle('sound', on && sound); v.muted = !(on && sound); on && canMove ? v.play().catch(() => { }) : v.pause() });
+    prods.forEach((p, n) => p.classList.toggle('on', n === cur));
+  };
+  reels.forEach((r, n) => r.addEventListener('click', e => { if (e.target.closest('.reel-snd')) return; if (n !== cur) show(n) }));
+  $$('.reel-snd', reelsEl).forEach(b => b.addEventListener('click', () => { sound = !sound; show(cur) }));
+  $$('[data-reel]').forEach(b => b.addEventListener('click', () => show(cur + +b.dataset.reel)));
+  let sx = 0; reelsEl.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+  reelsEl.addEventListener('touchend', e => { const d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 40) show(cur + (d < 0 ? 1 : -1)) });
+  show(cur);
+}
+
 /* ---------- back to top ---------- */
 const toTop = $('#toTop');
 /* floating buttons wait until the hero is scrolled past, so they never cover it */
@@ -242,10 +260,27 @@ toTop.addEventListener('click', () => lenis ? lenis.scrollTo(0, { duration: 1.4 
 
 /* ---------- scroll reveal ---------- */
 document.documentElement.classList.add('anim');
-$$('.clist,.pgrid,.jgrid,.gift-grid,.rgrid,.shorts,.rs-cards,.perks,.spot-media,.trust,.vals,.pgrid-static').forEach(g => [...g.children].forEach((el, i) => { el.dataset.reveal = ''; el.style.setProperty('--d', (i % 6) * .07 + 's') }));
-$$('.sec-row,.sec-head,.bsum,.film-in,.spot-grid>div:first-child,.rs-grid>div:first-child,.reach,.faq,.page-head,.reveal').forEach(el => el.dataset.reveal = '');
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .12, rootMargin: '0px 0px -30px' });
+/* every block animates on its own (heading, text, button, each card), siblings 75ms apart, like the Wonder theme */
+const groupSel = '.clist,.pgrid,.jgrid,.gift-grid,.rgrid,.shorts,.rs-cards,.perks,.spot-media,.trust,.vals,.pgrid-static,.crow,.promo2,.look-list,.iotd,.mosaic,.steps,.addr-grid';
+const atomSel = '.sec-row>div>*,.sec-head>*,.sec-end,.tabs,.look-copy>p,.look-copy>h2,.ba-copy>*,.iotd-info>*,.rs-grid>div:first-child>:not(ol),.film-in>*,.promo>div>*,.newc>img,.page-head>*,.page-banner .wrap>*,.split>div>*,.split>img,.feat-post,.ba-view,.look-img,.bsum,.reach,.faq,.form-card,.cinfo>*,.pdp-gal,.pdp-info>*,.summary,.cart-table,.reveal';
+$$(groupSel).forEach(g => [...g.children].forEach((el, i) => { el.dataset.reveal = ''; el.style.setProperty('--d', (i % 8) * .075 + 's') }));
+$$(atomSel).forEach(el => {
+  if (el.closest('[data-reveal]') || el.closest('.mega,.side,.drawer,.sx,.nl,.hero')) return;
+  el.dataset.reveal = '';
+  const sibs = [...el.parentElement.children].filter(x => x.matches(atomSel));
+  el.style.setProperty('--d', Math.min(sibs.indexOf(el), 6) * .075 + 's');
+});
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .1, rootMargin: '0px 0px -40px' });
 $$('[data-reveal]').forEach(el => io.observe(el));
+
+/* ---------- parallax on large images (moves slower than the page) ---------- */
+const plx = $$('.film>img,.promo>img,.newc>img,.page-banner>img,.gift-hero img,.look-img img');
+if (canMove && plx.length) {
+  plx.forEach(i => i.classList.add('plx'));
+  let tick = false;
+  const run = () => { const h = innerHeight; plx.forEach(i => { const r = i.parentElement.getBoundingClientRect(); if (r.bottom < 0 || r.top > h) return; const p = (r.top + r.height / 2 - h / 2) / h; i.style.setProperty('--py', (p * -60).toFixed(1) + 'px') }); tick = false };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run) } }, { passive: true }); run();
+}
 
 /* ---------- petal swash under section headings ---------- */
 const swashIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); swashIO.unobserve(e.target) } }), { threshold: 1 });
