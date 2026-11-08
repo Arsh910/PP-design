@@ -184,6 +184,20 @@ $$('[data-open-tab]').forEach(a => a.addEventListener('click', () => $(`.tab[dat
 /* ---------- carousel arrows ---------- */
 $$('[data-scroll]').forEach(b => b.addEventListener('click', () => { const row = document.getElementById(b.dataset.scroll); row.scrollBy({ left: row.clientWidth * b.dataset.dir, behavior: 'smooth' }) }));
 
+/* ---------- auto-advancing carousels (reviews): loops, pauses on hover, progress bar ---------- */
+$$('[data-autoplay]').forEach(row => {
+  const bar = $('#rprog');
+  const sync = () => { const max = row.scrollWidth - row.clientWidth, vis = row.clientWidth / row.scrollWidth; bar?.style.setProperty('--w', vis * 100 + '%'); bar?.style.setProperty('--x', (max ? row.scrollLeft / max : 0) * (1 - vis) * 100 + '%') };
+  row.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync); sync();
+  let paused = false;
+  row.addEventListener('mouseenter', () => paused = true); row.addEventListener('mouseleave', () => paused = false);
+  if (canMove) setInterval(() => {
+    if (paused || document.hidden) return;
+    const card = row.firstElementChild.getBoundingClientRect().width + 14;
+    row.scrollLeft + row.clientWidth >= row.scrollWidth - 4 ? row.scrollTo({ left: 0 }) : row.scrollBy({ left: card });
+  }, 5000);
+});
+
 /* ---------- back to top ---------- */
 const toTop = $('#toTop');
 /* floating buttons wait until the hero is scrolled past, so they never cover it */

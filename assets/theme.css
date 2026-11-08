@@ -900,3 +900,17 @@ html.lenis,html.lenis body{height:auto}
 .gh-copy h1{font-size:clamp(40px,4vw,68px);margin-bottom:14px}
 .gh-copy p{color:var(--stone);max-width:42ch;margin-bottom:28px}
 @media (max-width:1080px){.gift-hero{grid-template-columns:1fr 1fr}.gh-copy{grid-column:1/-1}.gift-hero img{aspect-ratio:4/5;height:auto}}
+
+/* reviews carousel */
+.sarrs{display:flex;gap:8px}
+.sarr{width:48px;height:48px;border:1px solid var(--sage);border-radius:50%;display:grid;place-items:center;color:var(--moss);transition:background .2s,color .2s,border-color .2s}
+.sarr:hover{background:var(--moss);border-color:var(--moss);color:var(--paper)}
+.sarr svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none}
+.rgrid.rrow{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 28px)/3);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;max-width:none}
+.rrow::-webkit-scrollbar{display:none}
+.rrow>.rcard{scroll-snap-align:start}
+.rcard .who a{color:var(--moss);text-decoration:underline;text-underline-offset:3px}
+.rprog{height:2px;background:rgba(91,58,70,.15);margin-top:32px}
+.rprog i{display:block;height:100%;width:var(--w,33%);margin-left:var(--x,0);background:var(--moss);transition:margin-left .4s ease,width .4s ease}
+@media (max-width:1080px){.rgrid.rrow{grid-auto-columns:calc((100% - 14px)/2)}}
+@media (max-width:760px){.rgrid.rrow{grid-auto-columns:85%}.reviews .sarrs{display:none}}
