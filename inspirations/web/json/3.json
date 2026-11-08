@@ -1,0 +1,148 @@
+{
+  "name": "Inspiration Storefront – Most Popular (Product Grid)",
+  "viewport": { "width": 834, "height": 880 },
+  "tokens": {
+    "colors": {
+      "primary": "#1C2E3D",
+      "background": "#FFFFFF",
+      "surfaceMuted": "#E8E8E8",
+      "cardBackground": "#EEEEEE",
+      "text": "#1C2E3D",
+      "textMuted": "#555B61",
+      "border": "#D9D9D9",
+      "saleRed": "#C4161C",
+      "saleBadgeBg": "#FFFFFF"
+    },
+    "typography": {
+      "heading": { "family": "Serif Display (e.g. 'Canela', 'Playfair Display')", "weight": 400 },
+      "body": { "family": "Inter, sans-serif", "weights": [400, 500] },
+      "scale": { "sectionTitle": 17, "chip": 10, "vendor": 11, "title": 11, "price": 11, "badge": 10, "button": 11 }
+    },
+    "radius": { "sm": 2, "md": 6 },
+    "spacing": { "xs": 4, "sm": 8, "md": 14, "lg": 24, "xl": 40 }
+  },
+  "layout": {
+    "type": "section",
+    "id": "mostPopular",
+    "padding": "0 14px",
+    "children": [
+      {
+        "id": "header",
+        "type": "row",
+        "justify": "space-between",
+        "align": "center",
+        "height": 31,
+        "marginTop": 22,
+        "children": [
+          { "type": "heading", "text": "Most Popular", "font": "heading", "size": 17, "color": "text" },
+          {
+            "type": "button",
+            "variant": "secondary",
+            "label": "View All",
+            "size": { "width": 69, "height": 31 },
+            "background": "surfaceMuted",
+            "radius": "md"
+          }
+        ]
+      },
+      {
+        "id": "filterChips",
+        "type": "row",
+        "gap": 6,
+        "marginTop": 14,
+        "items": ["Bestsellers", "Sale", "New Arrivals", "Graphic", "Illustrations", "Line"],
+        "active": "Bestsellers",
+        "chip": {
+          "height": 26,
+          "padding": "0 14px",
+          "radius": "md",
+          "size": 10,
+          "color": "text",
+          "background": "background",
+          "border": "1px solid border"
+        },
+        "activeChip": { "background": "surfaceMuted", "border": "none" }
+      },
+      {
+        "id": "productGrid",
+        "type": "grid",
+        "columns": 3,
+        "columnGap": 16,
+        "rowGap": 40,
+        "marginTop": 24,
+        "card": {
+          "type": "productCard",
+          "width": 259,
+          "media": {
+            "height": 344,
+            "background": "cardBackground",
+            "radius": "md",
+            "layout": "center",
+            "image": { "width": 157, "height": 218, "fit": "contain", "note": "Framed print with white border, centered" },
+            "badge": {
+              "optional": true,
+              "text": "Sale",
+              "position": { "top": 8, "left": 8 },
+              "padding": "2px 8px",
+              "size": 10,
+              "color": "saleRed",
+              "background": "saleBadgeBg",
+              "radius": "sm"
+            }
+          },
+          "info": {
+            "marginTop": 8,
+            "gap": 4,
+            "rows": [
+              { "field": "collection", "size": 11, "weight": 500, "color": "text" },
+              { "field": "title", "size": 11, "weight": 400, "color": "textMuted" },
+              {
+                "field": "price",
+                "size": 11,
+                "weight": 500,
+                "color": "text",
+                "compareAtPrice": { "strike": true, "color": "textMuted", "marginLeft": 6 }
+              }
+            ]
+          }
+        },
+        "items": [
+          {
+            "image": "little-pearl-asthet.jpg",
+            "alt": "Beige abstract line art with pearl circle",
+            "collection": "Swipe Pastel",
+            "title": "Little Pearl by Ästhet",
+            "price": "$220.00",
+            "badge": null
+          },
+          {
+            "image": "line-art-02-jonas-wagell.jpg",
+            "alt": "Blue watercolor shapes on white",
+            "collection": "Swipe Pastel",
+            "title": "Line Art 02 by Jonas Wagell",
+            "price": "$130.00",
+            "compareAtPrice": "$180.00",
+            "badge": "Sale"
+          },
+          {
+            "image": "different-ways-blue-robin-ahlgren.jpg",
+            "alt": "Blue looping line on cream background",
+            "collection": "Swipe Pastel",
+            "title": "Different Ways - Blue By Robin Ahlgren",
+            "price": "$145.00",
+            "badge": null
+          },
+          {
+            "image": "purple-figure-print.jpg",
+            "alt": "Deep purple abstract figure on white",
+            "collection": null,
+            "title": null,
+            "price": null,
+            "badge": null,
+            "note": "Cut off at viewport bottom; text not visible"
+          }
+        ]
+      }
+    ]
+  }
+}

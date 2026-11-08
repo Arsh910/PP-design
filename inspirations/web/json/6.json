@@ -1,0 +1,150 @@
+{
+  "name": "Inspiration Storefront – New Collection Carousel, Features, Discount Delights",
+  "viewport": { "width": 834, "height": 880 },
+  "tokens": {
+    "colors": {
+      "primary": "#1C2E3D",
+      "background": "#FFFFFF",
+      "surfaceMuted": "#E8E8E8",
+      "cardBackground": "#EEEEEE",
+      "text": "#1C2E3D",
+      "textMuted": "#555B61",
+      "border": "#9AA0A6",
+      "trackBorder": "#BFC3C7"
+    },
+    "typography": {
+      "heading": { "family": "Serif Display (e.g. 'Canela', 'Playfair Display')", "weight": 400 },
+      "body": { "family": "Inter, sans-serif", "weights": [400, 500] },
+      "scale": { "eyebrow": 10, "sectionTitle": 15, "featureTitle": 17, "featureBody": 10, "vendor": 10, "productTitle": 10, "price": 10 }
+    },
+    "radius": { "md": 6 },
+    "spacing": { "xs": 4, "sm": 8, "md": 14, "lg": 24, "xl": 40 }
+  },
+  "layout": {
+    "type": "page",
+    "children": [
+      {
+        "id": "newCollection",
+        "type": "section",
+        "padding": "20px 14px 0",
+        "card": {
+          "layout": "row",
+          "height": 383,
+          "radius": "md",
+          "overflow": "hidden",
+          "left": {
+            "width": 399,
+            "background": { "type": "image", "src": "new-collection-framed-bag-painting.jpg", "fit": "cover" }
+          },
+          "right": {
+            "width": 410,
+            "background": "surfaceMuted",
+            "padding": "27px 45px 0",
+            "header": {
+              "layout": "row, space-between",
+              "left": {
+                "eyebrow": { "text": "New Collection", "size": 10, "color": "textMuted" },
+                "title": { "text": "Discover the Newest Additions to Our Art Collection", "font": "heading", "size": 15, "lineHeight": 1.0, "maxWidth": 250, "marginTop": 4 }
+              },
+              "nav": [
+                { "type": "iconButton", "name": "arrow-left", "state": "disabled", "color": "textMuted" },
+                { "type": "iconButton", "name": "arrow-right", "state": "enabled", "color": "text" }
+              ]
+            },
+            "carousel": {
+              "marginTop": 24,
+              "gap": 4,
+              "cardWidth": 115,
+              "overflow": "visible-right",
+              "peek": { "right": true, "note": "4th card cut off at right edge" },
+              "card": {
+                "media": {
+                  "height": 152,
+                  "background": "cardBackground",
+                  "radius": "md",
+                  "image": { "width": 70, "height": 97, "fit": "contain", "layout": "center" }
+                },
+                "info": {
+                  "marginTop": 8,
+                  "gap": 2,
+                  "rows": [
+                    { "field": "collection", "size": 10, "weight": 500, "color": "text" },
+                    { "field": "title", "size": 10, "color": "textMuted", "maxLines": 3 },
+                    { "field": "price", "size": 10, "weight": 500, "color": "text" }
+                  ]
+                }
+              },
+              "items": [
+                { "image": "comfort-yellow.jpg", "collection": "Swipe Pastel", "title": "Comfort - Yellow By Ronelle Pienaar Jenkin x Lemon", "price": "$180.00" },
+                { "image": "comfort-blue.jpg", "collection": "Swipe Pastel", "title": "Comfort - Blue By Ronelle Pienaar Jenkin x Lemon", "price": "$180.00" },
+                { "image": "linocut-ii-jazmine-joye.jpg", "collection": "Swipe Pastel", "title": "Linocut II By Jazmine Joye", "price": "$215.00" }
+              ]
+            },
+            "progressBar": {
+              "marginTop": 16,
+              "height": 1,
+              "track": "trackBorder",
+              "fill": "primary",
+              "fillWidth": "25%",
+              "progress": 0.25
+            }
+          }
+        }
+      },
+      {
+        "id": "features",
+        "type": "grid",
+        "columns": 3,
+        "columnGap": 24,
+        "rowGap": 56,
+        "padding": "56px 14px 0",
+        "item": {
+          "layout": "column",
+          "icon": { "size": 24, "color": "primary", "marginBottom": 40 },
+          "title": { "font": "heading", "size": 17, "color": "text" },
+          "body": { "size": 10, "lineHeight": 1.45, "color": "textMuted", "marginTop": 4, "maxWidth": 235 }
+        },
+        "items": [
+          {
+            "icon": "sustainable-materials",
+            "title": "Sustainable Materials",
+            "body": "Choose art crafted with premium sustainable materials, ensuring eco-conscious elegance and long-lasting quality."
+          },
+          {
+            "icon": "secure-payment",
+            "title": "Secure Payment",
+            "body": "Shop with confidence using our secure, encrypted payment options, designed for safe and reliable online transactions."
+          },
+          {
+            "icon": "free-returns",
+            "title": "30 Days Free Returns",
+            "body": "Take advantage of our 30-day free returns policy, offering you hassle-free refunds and exchanges for total convenience."
+          },
+          {
+            "icon": "worldwide-shipping",
+            "title": "Worldwide Shipping",
+            "body": "Enjoy worldwide shipping with our service, ensuring fast, reliable delivery of premium art directly to your doorstep."
+          }
+        ]
+      },
+      {
+        "id": "discountDelights",
+        "type": "section",
+        "padding": "56px 14px 0",
+        "card": {
+          "layout": "row",
+          "radius": "md",
+          "overflow": "hidden",
+          "left": { "width": 405, "background": { "type": "image", "src": "discount-delights-blue-art.jpg", "fit": "cover" } },
+          "right": {
+            "width": 405,
+            "background": "surfaceMuted",
+            "padding": "0 28px",
+            "eyebrow": { "text": "Discount Delights", "size": 10, "color": "textMuted" },
+            "note": "Cut off at viewport bottom; remaining content not visible"
+          }
+        }
+      }
+    ]
+  }
+}

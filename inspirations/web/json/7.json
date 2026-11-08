@@ -1,0 +1,111 @@
+{
+  "name": "Inspiration Storefront – Discount Delights Countdown + Bestsellers (Large Cards)",
+  "viewport": { "width": 834, "height": 880 },
+  "tokens": {
+    "colors": {
+      "primary": "#1C2E3D",
+      "onPrimary": "#F2EBCB",
+      "background": "#FFFFFF",
+      "surfaceMuted": "#E8E8E8",
+      "text": "#1C2E3D",
+      "textMuted": "#6B7280",
+      "onImage": "#FFFFFF",
+      "countdownSeparator": "rgba(255,255,255,0.5)"
+    },
+    "typography": {
+      "heading": { "family": "Serif Display (e.g. 'Canela', 'Playfair Display')", "weight": 400 },
+      "body": { "family": "Inter, sans-serif", "weights": [400, 500] },
+      "scale": { "eyebrow": 10, "promoTitle": 20, "promoBody": 14, "countdownNumber": 40, "countdownLabel": 10, "sectionTitle": 17, "badge": 10, "button": 10 }
+    },
+    "radius": { "md": 6 },
+    "spacing": { "xs": 4, "sm": 8, "md": 14, "lg": 24, "xl": 40 }
+  },
+  "layout": {
+    "type": "page",
+    "children": [
+      {
+        "id": "discountDelights",
+        "type": "section",
+        "padding": "17px 14px 0",
+        "card": {
+          "layout": "row",
+          "height": 210,
+          "radius": "md",
+          "overflow": "hidden",
+          "left": {
+            "width": 405,
+            "background": { "type": "image", "src": "discount-delights-blue-painting.jpg", "fit": "cover", "overlay": "rgba(0,0,0,0.25)" },
+            "countdown": {
+              "type": "countdownTimer",
+              "layout": "row, center, align-center",
+              "gap": 16,
+              "units": [
+                { "label": "Days", "value": "02" },
+                { "label": "Hours", "value": "02" },
+                { "label": "Minutes", "value": "56" },
+                { "label": "Seconds", "value": "52" }
+              ],
+              "number": { "size": 40, "weight": 500, "color": "onImage", "fontVariant": "tabular-nums" },
+              "label": { "size": 10, "color": "onImage", "marginTop": -2 },
+              "separator": { "type": "colon", "color": "countdownSeparator", "size": 6 },
+              "behavior": "ticks every second to target date"
+            }
+          },
+          "right": {
+            "width": 405,
+            "background": "surfaceMuted",
+            "padding": "0 27px",
+            "layout": "column, center",
+            "eyebrow": { "text": "Discount Delights", "size": 10, "color": "textMuted" },
+            "title": { "text": "20% Discount on New Art Arrivals", "font": "heading", "size": 20, "color": "text", "marginTop": 6 },
+            "body": {
+              "text": "Don't miss out on our art discounts, offering beautiful pieces at unbeatable prices.",
+              "size": 14,
+              "lineHeight": 1.4,
+              "color": "textMuted",
+              "maxWidth": 340,
+              "marginTop": 8
+            },
+            "button": {
+              "variant": "primary",
+              "label": "Shop Now",
+              "size": { "width": 80, "height": 31 },
+              "background": "primary",
+              "color": "onPrimary",
+              "radius": "md",
+              "marginTop": 16
+            }
+          }
+        }
+      },
+      {
+        "id": "bestsellersLarge",
+        "type": "section",
+        "padding": "52px 14px 0",
+        "header": {
+          "title": "Bestsellers",
+          "font": "heading",
+          "size": 17,
+          "actions": [
+            { "type": "button", "variant": "secondary", "label": "View All", "size": { "width": 69, "height": 31 }, "background": "surfaceMuted", "color": "text", "radius": "md" }
+          ]
+        },
+        "media": {
+          "marginTop": 16,
+          "width": 806,
+          "radius": "md",
+          "overflow": "hidden",
+          "background": { "type": "image", "src": "bestsellers-lifestyle-woman-walking-framed-art.jpg", "fit": "cover" },
+          "badge": {
+            "text": "New",
+            "position": { "top": 22, "left": 22 },
+            "size": 10,
+            "color": "onImage",
+            "background": "transparent"
+          },
+          "note": "Full-width lifestyle card; large (~806px wide, 500px+ tall), cut off at viewport bottom; product info/CTA below not visible"
+        }
+      }
+    ]
+  }
+}

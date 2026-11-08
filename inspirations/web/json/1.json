@@ -1,0 +1,230 @@
+{
+  "name": "Inspiration Storefront – Home + Newsletter Modal",
+  "viewport": { "width": 834, "height": 880 },
+  "tokens": {
+    "colors": {
+      "primary": "#1C2E3D",
+      "onPrimary": "#FFFFFF",
+      "background": "#FFFFFF",
+      "surface": "#F2F2F2",
+      "surfaceMuted": "#E8E8E8",
+      "text": "#1C2E3D",
+      "textMuted": "#6B7280",
+      "border": "#D9D9D9",
+      "overlay": "rgba(255,255,255,0.75)",
+      "accentRed": "#C0392B"
+    },
+    "typography": {
+      "heading": { "family": "Serif Display (e.g. 'Canela', 'Playfair Display')", "weights": [400, 500] },
+      "body": { "family": "Inter, sans-serif", "weights": [400, 500] },
+      "scale": {
+        "announcement": { "size": 10, "weight": 500 },
+        "nav": { "size": 12, "weight": 500 },
+        "hero": { "size": 32, "lineHeight": 1.1, "weight": 400 },
+        "badge": { "size": 24, "weight": 400 },
+        "sectionTitle": { "size": 17, "weight": 400, "family": "heading" },
+        "modalTitle": { "size": 14, "weight": 500, "family": "heading" },
+        "body": { "size": 12, "weight": 400 },
+        "caption": { "size": 10, "weight": 400 },
+        "button": { "size": 11, "weight": 500 }
+      }
+    },
+    "radius": { "sm": 4, "md": 6, "lg": 8, "pill": 999, "circle": "50%" },
+    "spacing": { "xs": 4, "sm": 8, "md": 14, "lg": 24, "xl": 40 },
+    "shadow": { "modal": "0 10px 40px rgba(0,0,0,0.25)" }
+  },
+  "layout": {
+    "type": "page",
+    "children": [
+      {
+        "id": "announcementBar",
+        "type": "bar",
+        "height": 28,
+        "background": "primary",
+        "content": {
+          "type": "text",
+          "align": "center",
+          "color": "onPrimary",
+          "text": "Back in Stock: Your Favorites are Here! ",
+          "link": { "text": "Shop Now", "underline": true }
+        }
+      },
+      {
+        "id": "header",
+        "type": "navbar",
+        "height": 42,
+        "background": "background",
+        "padding": "0 14px",
+        "layout": "row, space-between, align-center",
+        "left": [
+          { "type": "icon", "name": "menu" },
+          { "type": "logo", "text": "INSPIRATION", "weight": 600, "letterSpacing": "0.12em", "size": 14 },
+          {
+            "type": "navLinks",
+            "items": ["Shop All", "Collections", "Journal", "Features"]
+          }
+        ],
+        "right": [
+          { "type": "regionSelector", "flag": "CA", "label": "Change the Region" },
+          { "type": "icon", "name": "search" },
+          { "type": "icon", "name": "moon" },
+          { "type": "icon", "name": "user" },
+          { "type": "icon", "name": "bag" }
+        ]
+      },
+      {
+        "id": "hero",
+        "type": "section",
+        "height": 320,
+        "background": { "type": "image", "src": "hero-woman-hanging-frame.jpg", "fit": "cover" },
+        "children": [
+          {
+            "type": "badge",
+            "shape": "circle",
+            "size": 112,
+            "position": { "top": 14, "left": 14 },
+            "background": "primary",
+            "text": ["50%", "Off"],
+            "color": "onPrimary",
+            "font": "heading"
+          },
+          { "type": "eyebrow", "text": "Sale", "size": 10, "color": "#FFFFFF" },
+          {
+            "type": "heading",
+            "text": "Buy Art Online: Prints, Home & Office Decor",
+            "color": "#F2EBDD",
+            "font": "heading",
+            "size": 32
+          },
+          {
+            "type": "button",
+            "variant": "primary",
+            "label": "Shop Now",
+            "size": { "width": 80, "height": 30 },
+            "radius": "md"
+          },
+          {
+            "type": "marquee",
+            "icon": "dot",
+            "text": "End of the Season. Sale Up to 50% Off",
+            "color": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "id": "discoverArtwork",
+        "type": "section",
+        "padding": "24px 14px",
+        "header": {
+          "title": "Discover Artwork",
+          "font": "heading",
+          "actions": [
+            { "type": "iconButton", "name": "chevron-left" },
+            { "type": "iconButton", "name": "chevron-right" },
+            { "type": "button", "variant": "secondary", "label": "View All" }
+          ]
+        },
+        "grid": { "columns": 3, "gap": 16 },
+        "cards": [
+          { "image": "graphic.jpg", "eyebrow": "Collection", "title": "Graphic", "imageHeight": 145, "radius": "md" },
+          { "image": "illustrations.jpg", "eyebrow": "Collection", "title": "Illustrations", "imageHeight": 145, "radius": "md" },
+          { "image": "line.jpg", "eyebrow": "Collection", "title": "Line", "imageHeight": 145, "radius": "md" }
+        ],
+        "progressBar": { "height": 2, "track": "border", "fill": "textMuted", "progress": 0.33 }
+      },
+      {
+        "id": "mostPopular",
+        "type": "section",
+        "padding": "24px 14px",
+        "header": {
+          "title": "Most Popular",
+          "font": "heading",
+          "actions": [{ "type": "button", "variant": "secondary", "label": "View All" }]
+        },
+        "filterChips": {
+          "items": ["Bestsellers", "Sale", "New Arrivals", "Graphic", "Illustrations", "Line"],
+          "active": "Bestsellers",
+          "chip": { "height": 26, "radius": "md", "border": "border", "size": 10 },
+          "activeChip": { "background": "surfaceMuted" }
+        },
+        "productGrid": { "columns": 3, "gap": 16 }
+      }
+    ]
+  },
+  "overlay": {
+    "id": "newsletterModalBackdrop",
+    "type": "backdrop",
+    "background": "overlay",
+    "backdropFilter": "blur(4px)",
+    "children": [
+      {
+        "id": "newsletterModal",
+        "type": "modal",
+        "size": { "width": 612, "height": 307 },
+        "position": "center",
+        "background": "background",
+        "radius": "md",
+        "shadow": "modal",
+        "layout": "row",
+        "closeButton": { "icon": "x", "position": { "top": 12, "right": 12 }, "size": 16 },
+        "left": {
+          "width": 307,
+          "type": "image",
+          "src": "framed-prints-on-paper.jpg",
+          "fit": "cover",
+          "overlayText": { "text": ["10%", "OFF"], "font": "heading", "size": 64, "color": "#FFFFFF", "lineHeight": 0.95 }
+        },
+        "right": {
+          "padding": "30px 36px 30px 33px",
+          "layout": "column",
+          "children": [
+            {
+              "type": "heading",
+              "text": "Subscribe to Our Newsletter and Get 10% Off for Your Next Purchase",
+              "font": "heading",
+              "size": 14
+            },
+            {
+              "type": "text",
+              "text": "Stay in the loop with our latest updates, exclusive offers, and exciting product launches.",
+              "color": "textMuted",
+              "size": 11
+            },
+            { "type": "spacer", "flex": 1 },
+            {
+              "type": "input",
+              "inputType": "email",
+              "placeholder": "E-mail",
+              "height": 31,
+              "background": "surfaceMuted",
+              "radius": "md",
+              "padding": "0 12px"
+            },
+            {
+              "type": "button",
+              "variant": "primary",
+              "label": "Subscribe",
+              "height": 30,
+              "fullWidth": true,
+              "radius": "md",
+              "marginTop": 6
+            },
+            {
+              "type": "legal",
+              "size": 9,
+              "text": "By subscribing, you agree to our {terms} and {privacy}.",
+              "links": { "terms": "Terms of Use", "privacy": "Privacy Policy" },
+              "linkStyle": "underline"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "components": {
+    "button": {
+      "primary": { "background": "primary", "color": "onPrimary", "radius": "md", "weight": 500 },
+      "secondary": { "background": "surfaceMuted", "color": "text", "radius": "md", "padding": "8px 16px" }
+    }
+  }
+}

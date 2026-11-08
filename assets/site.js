@@ -57,7 +57,7 @@ function toast(msg) { $('#toastMsg').textContent = msg; $('#toast').classList.ad
 /* ---------- overlays: cart drawer + search panel ---------- */
 const scrim = $('#scrim');
 function openLayer(el) { closeLayers(); el.classList.add('open'); el.setAttribute('aria-hidden', 'false'); scrim.classList.add('show'); lenis?.stop() }
-function closeLayers() { $$('.drawer.open,.sx.open').forEach(x => { x.classList.remove('open'); x.setAttribute('aria-hidden', 'true') }); scrim.classList.remove('show'); lenis?.start() }
+function closeLayers() { $$('.drawer.open,.sx.open,.side.open').forEach(x => { x.classList.remove('open'); x.setAttribute('aria-hidden', 'true') }); scrim.classList.remove('show'); lenis?.start() }
 scrim.addEventListener('click', closeLayers);
 $$('[data-close]').forEach(b => b.addEventListener('click', closeLayers));
 addEventListener('keydown', e => { if (e.key === 'Escape') closeLayers() });
@@ -121,20 +121,22 @@ $('#sxInput').addEventListener('input', e => renderSuggest(e.target.value));
 $$('.search').forEach(s => s.addEventListener('click', e => { e.preventDefault(); openLayer($('#searchPanel')); setTimeout(() => $('#sxInput').focus(), 250) }));
 
 /* ---------- header: mobile nav + mega menu ---------- */
-const burger = $('#burger'), nav = $('#nav');
-if (burger && nav) {
-  const closeSub = () => $$('li.open', nav).forEach(l => l.classList.remove('open'));
-  burger.addEventListener('click', () => {
-    document.documentElement.style.setProperty('--navtop', $('header').getBoundingClientRect().bottom + 'px');
-    const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); if (!o) closeSub();
-    o ? lenis?.stop() : lenis?.start();
-  });
-  $$(':scope>li', nav).forEach(li => {
-    if (!$('.mega', li)) return;
-    $('.nav-link', li).addEventListener('click', e => { if (matchMedia('(max-width:760px)').matches) { e.preventDefault(); li.classList.add('open') } });
-  });
-  $$('.mback').forEach(b => b.addEventListener('click', () => b.closest('li').classList.remove('open')));
-}
+/* ---------- menu sidebar (all screen sizes): burger opens a left drawer ---------- */
+document.body.insertAdjacentHTML('beforeend', `
+<aside class="side" id="sideNav" aria-label="Menu" aria-hidden="true">
+  <button class="dr-x" data-close aria-label="Close menu"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+  <nav class="side-links">
+    <a href="index.html">Home</a><a href="collection.html">Crockery &amp; Table</a><a href="collection.html">Home Decor</a><a href="product-custom.html">Resin Studio</a>
+    <a href="gifting.html">Gifting</a><a href="collections.html">Shop All</a>
+  </nav>
+  <nav class="side-sub"><a href="blog.html">Petal Notes</a><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a></nav>
+  <a class="side-promo" href="gifting.html"><img src="assets/gifting/woven.jpg" alt=""><span class="new">New</span><b>Explore the Festive Edit</b></a>
+  <div class="side-acct"><h4>My Account</h4><a class="btn btn-solid" href="login.html">Log in</a></div>
+</aside>`);
+const burger = $('#burger'), side = $('#sideNav');
+$$('#sideNav [data-close]').forEach(b => b.addEventListener('click', closeLayers));
+burger?.addEventListener('click', () => { openLayer(side); burger.setAttribute('aria-expanded', true) });
+side.addEventListener('transitionend', () => { if (!side.classList.contains('open')) burger?.setAttribute('aria-expanded', false) });
 const rail = $('#shopRail');
 rail && $$('button[data-panel]', rail).forEach(b => {
   const on = () => { $$('button[data-panel]', rail).forEach(x => x.setAttribute('aria-current', x === b)); $$('.mpanel').forEach(p => p.classList.toggle('on', p.dataset.panel === b.dataset.panel)) };
@@ -142,6 +144,7 @@ rail && $$('button[data-panel]', rail).forEach(b => {
 });
 /* current page in the nav */
 const here = location.pathname.split('/').pop() || 'index.html';
+$$('a', side).find(a => a.getAttribute('href') === here)?.setAttribute('aria-current', 'page');
 $$('#nav>li>.nav-link').forEach(a => { if (a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here)) a.setAttribute('aria-current', 'location') });
 $('.icon-btn[aria-label="Account"]')?.addEventListener('click', () => location.href = 'login.html');
 
@@ -185,18 +188,50 @@ $$('[data-open-tab]').forEach(a => a.addEventListener('click', () => $(`.tab[dat
 $$('[data-scroll]').forEach(b => b.addEventListener('click', () => { const row = document.getElementById(b.dataset.scroll); row.scrollBy({ left: row.clientWidth * b.dataset.dir, behavior: 'smooth' }) }));
 
 /* ---------- auto-advancing carousels (reviews): loops, pauses on hover, progress bar ---------- */
-$$('[data-autoplay]').forEach(row => {
-  const bar = $('#rprog');
+$$('[data-autoplay],[data-progress]').forEach(row => {
+  const bar = $(row.dataset.progress || '#rprog');
   const sync = () => { const max = row.scrollWidth - row.clientWidth, vis = row.clientWidth / row.scrollWidth; bar?.style.setProperty('--w', vis * 100 + '%'); bar?.style.setProperty('--x', (max ? row.scrollLeft / max : 0) * (1 - vis) * 100 + '%') };
   row.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync); sync();
   let paused = false;
   row.addEventListener('mouseenter', () => paused = true); row.addEventListener('mouseleave', () => paused = false);
-  if (canMove) setInterval(() => {
+  if (canMove && row.hasAttribute('data-autoplay')) setInterval(() => {
     if (paused || document.hidden) return;
     const card = row.firstElementChild.getBoundingClientRect().width + 14;
     row.scrollLeft + row.clientWidth >= row.scrollWidth - 4 ? row.scrollTo({ left: 0 }) : row.scrollBy({ left: card });
   }, 3000);
 });
+
+/* ---------- shop the shelf: pins and list highlight each other ---------- */
+$$('[data-pin]').forEach(el => {
+  const on = v => $$(`[data-pin="${el.dataset.pin}"]`).forEach(x => x.classList.toggle('on', v));
+  el.addEventListener('mouseenter', () => on(true)); el.addEventListener('mouseleave', () => on(false));
+  if (el.classList.contains('pin')) el.addEventListener('click', () => $(`.look-list [data-pin="${el.dataset.pin}"]`).click());
+});
+
+/* ---------- newsletter popup: once per visit, after a short delay ---------- */
+const nl = $('#nl');
+if (nl) {
+  let seen = false; try { seen = sessionStorage.getItem('ppNl') } catch (e) { }
+  const close = () => { nl.classList.remove('open'); nl.setAttribute('aria-hidden', 'true'); try { sessionStorage.setItem('ppNl', 1) } catch (e) { } };
+  if (!seen) setTimeout(() => { if (!$('.drawer.open,.sx.open')) { nl.classList.add('open'); nl.setAttribute('aria-hidden', 'false') } }, 9000);
+  $$('[data-nl-close]').forEach(b => b.addEventListener('click', close));
+  nl.addEventListener('click', e => { if (e.target === nl) close() });
+  $('form', nl).addEventListener('submit', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape') close() });
+}
+
+/* ---------- before / after slider ---------- */
+$$('.ba-view').forEach(v => $('input', v).addEventListener('input', e => v.style.setProperty('--pos', e.target.value + '%')));
+
+/* ---------- phone: full-width "View all" under each section, collapsible footer ---------- */
+$$('.sec-end .vall').forEach(v => {
+  const sec = v.closest('.wrap'); if (!sec) return;
+  const m = v.cloneNode(true); m.className = 'vall vall-m'; m.removeAttribute('id'); sec.appendChild(m);
+});
+$$('.fgrid>div:not(:first-child) h5').forEach(h => h.addEventListener('click', () => h.parentElement.classList.toggle('fopen')));
+/* phone: Most Popular shows the first six visible cards */
+const capGrid = () => { const g = $('#pgrid'); if (!g) return; [...g.children].filter(c => !c.classList.contains('hide')).forEach((c, i) => c.classList.toggle('show-m-hide', i >= 6)) };
+capGrid(); $$('[data-grid="#pgrid"] .tab').forEach(t => t.addEventListener('click', () => setTimeout(capGrid, 300)));
 
 /* ---------- back to top ---------- */
 const toTop = $('#toTop');
