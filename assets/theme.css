@@ -1322,3 +1322,11 @@ html{scroll-padding-top:130px}
 }
 .head2 .logo .mark-img{transform:translateY(7px)} /* optical: the swash tail makes the wordmark sit high */
 @media (max-width:760px){.head2 .logo .mark-img{transform:translateY(4px)}}
+/* phone overflow fixes: text columns in product rows may shrink and wrap */
+.look-list a,.ba-item,.reel-prod{grid-template-columns:auto minmax(0,1fr) auto}
+.look-list span,.ba-item span,.reel-prod span{min-width:0}
+@media (max-width:760px){.look-list a{grid-template-columns:72px minmax(0,1fr) 18px;gap:14px}.look-list img{width:72px}.look-list b{font-size:21px}}
+html,body{overflow-x:clip}
+@media (max-width:1080px){.look{grid-template-columns:1fr}}
+@media (max-width:760px){.look-list a{grid-template-columns:72px minmax(0,1fr) 18px;gap:14px}.look-list img{width:72px}.look-copy h2.h-section{font-size:40px}}
+html,body{overflow-x:clip}
