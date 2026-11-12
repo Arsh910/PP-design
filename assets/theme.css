@@ -1390,3 +1390,204 @@ html,body{overflow-x:clip}
 .reviews{margin-top:var(--sp)}
 /* sidebar: current page is bold plum with the gold underline used in the top nav */
 .side-links a[aria-current],.side-sub a[aria-current]{color:var(--moss);font-weight:700;text-decoration:underline;text-decoration-color:var(--tan);text-decoration-thickness:2px;text-underline-offset:6px}
+
+/* =====================================================================
+   v7 · gallery architecture
+   White canvas, deep-plum panels, hairlines, no shadows, radii 4 / 8 / pill.
+   Colours are taken from the logo: Plum wordmark, Petal Gold as the one accent.
+   ===================================================================== */
+:root{
+  --paper:#FFFFFF;   /* canvas */
+  --stone:#F5F2EF;   /* soft surface */
+  --hair:#E7E1DC;    /* hairline */
+  --sage:#D3CAC4;    /* input / chip border */
+  --ink:#241A1F;     /* text */
+  --moss:#5B3A46;    /* logo Plum */
+  --deep:#2A1820;    /* deep panel */
+  --tan:#C4A27D;     /* Petal Gold, accent only */
+  --muted:#6F6368;
+  --sp:clamp(56px,6vw,80px);
+}
+/* ponytail: one blanket rule keeps the system flat; scope it per component if a shadow is ever wanted */
+*,*::before,*::after{box-shadow:none!important}
+/* no page max-width: sections run edge to edge on the fluid gutter, so headings, grids and rails share one left edge */
+.drawer{border-left:1px solid var(--hair)}.side{border-right:1px solid var(--hair)}
+
+/* type: display serif at regular weight with tight tracking; labels are small tracked caps */
+h1,h2,h3{font-weight:400;letter-spacing:-.02em}
+.h-section{font-size:clamp(38px,3.8vw,56px);line-height:1.08}
+.h-section::after{content:" —";color:var(--tan)}
+.swash{display:none}
+.kick{font-size:13px;letter-spacing:.14em;color:var(--muted)}
+.ed b,.jcard b,.look-list b,.reel-prod b,.card .info .name{font-weight:400;letter-spacing:0}
+
+/* buttons, inputs, arrows: 4px corners */
+.btn{min-height:48px;padding:0 24px;border-radius:4px;font-size:14px;letter-spacing:.12em}
+.btn-solid{background:var(--deep)}.btn-solid:hover{background:var(--moss)}
+.field input,.field select,.field textarea,.news input,.qadd,.harr,.sarr,.ed-arr,.reels-arr,.car-arr,.ed-go{border-radius:4px}
+@media (min-width:761px){.vall{min-height:0;padding:0 0 3px;background:none;border-bottom:1px solid currentColor;font-size:14px;letter-spacing:.12em;text-transform:uppercase}.vall:hover{background:none;color:var(--moss)}}
+@media (max-width:760px){.vall-m,.edit-band .vall-m{background:none;color:var(--ink);border:1px solid var(--ink);border-radius:4px;font-size:14px;letter-spacing:.12em;text-transform:uppercase}}
+
+/* announcement + header */
+.announce2{background:var(--deep);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.nav2 .nav-link{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+@media (min-width:1181px){.nav2 .nav-link{height:68px;font-size:14px}.head2 .logo .mark-img{height:46px}}
+
+/* hero: 50/50 split, copy on the deep panel, photo flush to the edge */
+.hero{height:clamp(480px,calc(100svh - 180px),640px);min-height:0;background:var(--deep)}
+.slide::after{display:none}
+.slide>img{left:50%;width:50%}
+.slide .trio{left:50%;grid-template-columns:1fr 1fr}
+.slide .trio img:first-child{display:none}
+.slide-in{width:50%;padding:0 clamp(24px,5vw,80px) 64px var(--gut)}
+.slide-in h1,.slide-in .h1{font-weight:400;font-style:italic;font-size:clamp(44px,5vw,80px);letter-spacing:-.025em;line-height:1.05;margin-bottom:16px}
+.slide-in .k{font-size:18px;color:var(--paper);opacity:.8;max-width:38ch}
+.hero-bar{right:50%;background:none;justify-content:flex-start}
+.perks-mini{display:none}
+.harr{width:40px;height:40px}
+
+/* strip under the hero: a hairline label row */
+.strip{background:var(--paper);border-bottom:1px solid var(--hair);padding:13px 0}
+.strip span{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.strip span::after{width:5px;height:5px}
+
+/* filter chips */
+.etabs{gap:8px;margin:24px 0 32px}
+.pills .tab,.etabs .tab{padding:9px 20px;border:1px solid var(--sage);border-radius:99px;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.pills .tab:hover,.etabs .tab:hover{color:var(--ink);border-color:var(--ink)}
+.pills .tab[aria-pressed="true"],.etabs .tab[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:var(--paper)}
+.etabs .tab-ink{display:none}
+
+/* collections: light band, flat tiles */
+.edit-band{background:var(--paper);color:var(--ink);padding:var(--sp) 0 0}
+.edit-head .kick,.ed .lab,.ed-meta{color:var(--muted)}
+.edit-head .h-section,.ed{color:var(--ink)}
+.edrow{gap:24px}
+.ed-im{border-radius:8px;background:var(--stone)}
+.pill,.card .im .badge,.look-tag{background:var(--deep);color:var(--paper);border-radius:99px;padding:4px 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ed-arr{background:var(--paper);color:var(--ink);border:1px solid var(--sage)}
+.ed-arr:hover{background:var(--deep);color:var(--paper)}
+.edit-band .rprog{background:var(--hair)}.edit-band .rprog i{background:var(--ink)}
+
+/* product grid: borderless cards, whitespace does the separating */
+.pgrid-static{gap:40px 24px}
+.card .im,.jcard .ji,.look-img,.iotd-a,.iotd-b,.iotd-info,.rcard,.reel,.reel-prod{border-radius:8px}
+.look-img,.reel-prod{overflow:hidden}
+.card .info .name{font-size:20px}
+.card .im .badge{top:10px;left:10px}
+.iotd{gap:24px}
+@media (min-width:1081px){.crow{gap:24px;grid-auto-columns:calc((100% - 72px)/4)}}
+
+/* split panels (resin, gifting) and the story band share one 50/50 pattern */
+.splitp{display:grid;grid-template-columns:1fr 1fr;margin-top:var(--sp);min-height:clamp(420px,42vw,600px);background:var(--stone)}
+.splitp+.splitp{margin-top:0}
+.splitp-im{position:relative}
+.splitp-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.splitp.rev .splitp-im{order:2}
+.splitp-in,.film-in{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(40px,6vw,96px) clamp(24px,6vw,96px)}
+.splitp.dark{background:var(--deep);color:var(--paper)}
+.splitp.dark .kick{color:var(--tan)}
+.splitp h2,.film h2{font-style:italic;font-size:clamp(36px,3.8vw,56px);line-height:1.08;margin-bottom:14px;max-width:15ch}
+.splitp-in>p:not(.kick){max-width:40ch;margin-bottom:28px;opacity:.85}
+.film{display:grid;grid-template-columns:1fr 1fr;min-height:clamp(420px,42vw,600px);background:var(--deep)}
+.film::after{display:none}
+.film>img{left:50%;width:50%}
+.film-in .mark-img{margin-bottom:40px}
+.film .kick{margin-top:0}
+
+/* reviews, perks: flat surfaces */
+.reviews{background:var(--stone)}
+.perks-band{background:var(--paper)}
+.perk{border-left-color:var(--hair)}
+.perk .pi{stroke:var(--ink)}
+.perk h3{color:var(--ink)}
+
+@media (max-width:760px){
+  .hero{height:calc(62vw + 430px)}
+  .slide>img,.slide .trio{left:0;width:100%;height:62vw;bottom:auto}
+  .slide .trio{grid-template-columns:1fr}.slide .trio img:not(:last-child){display:none}
+  .slide-in{position:absolute;top:62vw;left:0;right:0;bottom:0;width:auto;height:auto;padding:28px var(--gut) 72px;justify-content:flex-start}
+  .slide-in h1,.slide-in .h1{font-size:42px}
+  .hero-bar{right:0}
+  .splitp,.film{grid-template-columns:1fr}
+  .splitp-im{aspect-ratio:4/3;order:0!important}
+  .film{padding-top:62vw;min-height:0}
+  .film>img{left:0;width:100%;height:62vw}
+}
+.splitp:not(.dark) .btn-outline{color:var(--ink)}
+/* split-panel copy sits on the page gutter, same left edge as every other section */
+.splitp-in,.film-in{padding-inline:var(--gut)}
+
+/* =====================================================================
+   v8 · gallery architecture on the inner pages
+   ===================================================================== */
+/* bare `header{}` rules above also hit <header class="art-hero">; undo them there */
+.art-hero{display:block;position:static;border:0;background:none;z-index:auto;padding-inline:var(--gut)}
+.art-hero h1{font-style:italic}
+
+/* page banner: the same 50/50 split as the home hero, no text over photos */
+.page-banner{background:var(--deep);min-height:clamp(300px,30vw,440px);align-items:center}
+.page-banner::after{display:none}
+.page-banner>img{left:50%;width:50%}
+.page-banner .wrap{width:50%;padding-block:48px}
+.page-banner .kick{color:var(--tan)}
+.page-banner h1{font-style:italic;font-size:clamp(44px,5vw,76px);line-height:1.05}
+.page-banner p{color:var(--paper);opacity:.8}
+.page-head h1{font-style:italic;font-size:clamp(44px,4.6vw,72px)}
+
+/* one deep tone for every dark surface; logo Plum stays for hovers and small marks */
+.col-promo,.gc-card,.call .ci,.gift-hero,.gh-copy,.pager a[aria-current],.opts button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep)}
+.pager a,.opts button,.cgo,.pdp-thumbs img,.qty{border-radius:4px}
+.col-promo,.gc-card,.vals div,.form-card,.feat-post img,.art-img,.inline-prod,.inline-prod img,.split img,.mosaic img,.pdp-main img,.cline img,.reach,.dr-items img,.sx-res img,.look-list img,.mpromo img,.side-promo{border-radius:8px}
+.reach{overflow:hidden}
+
+/* every tab row is a chip row */
+.tabs{border-bottom:0;gap:8px;flex-wrap:wrap}
+.tabs .tab{padding:9px 20px;border:1px solid var(--sage);border-radius:99px;color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.tabs .tab:hover{border-color:var(--ink)}
+.tabs .tab[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:var(--paper)}
+.tab-ink{display:none}
+
+/* collection list: flat photo tiles, same language as the home carousel */
+.clist{gap:40px 24px}
+.ccard .ci{padding:0;background:none;border-radius:8px;overflow:hidden}
+.ccard img{aspect-ratio:4/5}
+.ccard .lab{z-index:2;top:10px;left:10px;background:var(--deep);color:var(--paper);border-radius:99px;padding:4px 10px;font-size:11px;letter-spacing:.1em}
+.ccard b{font-size:24px;font-weight:400}
+.call .ci{border-radius:8px}
+
+/* about: manifesto line on the canvas between hairlines; quiet value cards */
+.quote-band{background:var(--paper);color:var(--ink);border-block:1px solid var(--hair)}
+.quote-band span{color:var(--muted)}
+.vals{gap:24px}
+.vals .pn{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+.vals h3{font-size:26px}
+
+/* newsletter: a quiet corner card instead of a modal over the page */
+.nl{inset:auto 24px 24px auto;display:block;padding:0;background:none}
+.nl-box{grid-template-columns:1fr;width:min(360px,calc(100vw - 32px));background:var(--deep);color:var(--paper);border-radius:8px;overflow:hidden}
+.nl-box>img{display:none}
+.nl-in{padding:28px}
+.nl-in .kick{color:var(--tan)}
+.nl-in h2{font-style:italic;font-size:30px}
+.nl-in>p,.nl-in .fine{color:var(--paper);opacity:.75;font-size:16px}
+.nl-in .field input{background:transparent;border-color:rgba(255,255,255,.3);color:var(--paper)}
+.nl-in .btn{background:var(--paper);color:var(--ink)}
+
+@media (max-width:760px){
+  .page-banner{display:block;min-height:0}
+  .page-banner>img{position:static;width:100%;aspect-ratio:16/10}
+  .page-banner .wrap{width:100%;padding-block:32px}
+  .nl{inset:auto 16px 16px 16px}.nl-box{width:100%}
+}
+/* editorial cards (journal + "Shopping With Us"): photo, small-caps label, headline, one muted line */
+.jgrid{gap:24px}
+/* promise band: type only (no photos, icons or rules), soft surface, flush to the footer */
+.promise{margin-top:var(--sp);padding:var(--sp) 0;background:var(--stone)}
+main:has(>.promise:last-child)+footer.site{margin-top:0}
+.promise-list{display:grid;grid-template-columns:repeat(4,1fr);gap:40px clamp(24px,4vw,64px)}
+.promise-list .kick{display:block;margin-bottom:14px}
+.promise-list b{display:block;font-weight:400;font-style:italic;font-size:clamp(26px,2.2vw,34px);line-height:1.12;letter-spacing:-.01em;margin-bottom:12px}
+.promise-list p{color:var(--muted);font-size:17px;line-height:1.5;max-width:28ch}
+@media (max-width:1080px){.promise-list{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.promise-list{grid-template-columns:1fr;gap:28px}}
