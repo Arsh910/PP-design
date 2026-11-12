@@ -1798,3 +1798,7 @@ main:has(>.band:last-child)+footer.site{margin-top:0}
 /* on the dark reels band the plum accent would vanish, so it turns gold mist */
 .reels-head .sm-bloom{fill:var(--sage)}
 @media (prefers-reduced-motion:reduce){.anim .h-mark.in .sm-fall{animation:none}}
+/* the tint follows the vine's wave, so there are no slivers between the curve and a straight edge */
+.drawer .dr-gift{background:url(vine-fill-top.svg) left -8px/100px 30px repeat-x,url(vine-fill-bottom.svg) -50px calc(100% + 8px)/100px 30px repeat-x,linear-gradient(var(--stone),var(--stone)) 0 21px/100% calc(100% - 42px) no-repeat}
+.dr-gift::before{top:-8px}
+.dr-gift::after{bottom:-8px}
