@@ -11,16 +11,24 @@ document.body.insertAdjacentHTML('beforeend', `
 <div class="toast" id="toast" role="status"><i></i><span id="toastMsg"></span></div>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="cartDrawer" aria-label="Your cart" aria-hidden="true">
-  <div class="dr-head"><h3>Your Cart <span id="drCount"></span></h3><button class="dr-x" data-close aria-label="Close cart"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
+  <div class="dr-head"><h3>Cart <span id="drCount"></span></h3><button class="dr-x" data-close aria-label="Close cart"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
   <div class="dr-ship"><p id="drShipMsg"></p><div class="bar"><i id="drShipBar"></i></div></div>
-  <ul class="dr-items" id="drItems"></ul>
-  <div class="dr-empty" id="drEmpty"><p>Your cart is empty.</p><a class="btn btn-solid" href="collection.html">Start shopping</a></div>
+  <div class="dr-body">
+    <ul class="dr-items" id="drItems"></ul>
+    <div class="dr-empty" id="drEmpty"><p>Your cart is empty.</p><a class="btn btn-solid" href="collection.html">Start shopping</a></div>
+    <section class="dr-gift" id="drGift">
+      <p class="dr-label">Make it a gift</p>
+      <div class="dr-gift-row"><img src="assets/gifting/wooden.jpg" alt="" loading="lazy">
+        <div><b>Gift wrap &amp; note</b><span>Free</span></div>
+        <button type="button" class="dr-add" id="drGiftBtn" aria-pressed="false">Add</button></div>
+      <ul class="dr-gift-list"><li>Wrapped by hand in the store</li><li>A handwritten note with your message</li></ul>
+      <div class="dr-gift-note" id="drGiftNote"><div><label for="drNote">Your note</label><textarea id="drNote" rows="3" maxlength="200" placeholder="Happy housewarming, love from…"></textarea></div></div>
+    </section>
+    <section class="dr-recs"><p class="dr-label">Recommended for you</p><ul id="drRecs"></ul></section>
+  </div>
   <div class="dr-foot">
-    <label class="dr-note"><input type="checkbox"> Add gift wrapping &amp; a handwritten note</label>
-    <div class="dr-total"><span>Subtotal</span><b id="drSub">₹0</b></div>
-    <p class="dr-fine">Taxes included. Shipping calculated at checkout.</p>
-    <a class="btn btn-solid" href="cart.html">Checkout</a>
-    <a class="dr-view" href="cart.html">View cart</a>
+    <a class="btn btn-solid dr-checkout" href="cart.html">Checkout<span id="drSub"></span></a>
+    <div class="dr-fine"><span>Taxes included. Shipping at checkout.</span><a class="dr-view" href="cart.html">View cart</a></div>
   </div>
 </aside>
 <div class="sx" id="searchPanel" aria-hidden="true">
@@ -68,22 +76,51 @@ const cart = [
   { name: 'Ma Chérie Plate', meta: 'Everyday Plate', price: 695, qty: 2, img: 'assets/products/plate-cherie.jpg' },
   { name: 'Pineapple Salt & Pepper', meta: 'Set of two', price: 595, qty: 1, img: 'assets/products/sp-pineapple.jpg' }
 ];
+const RECS = [
+  { name: 'Blossom Plate', meta: 'Everyday Plate', price: 695, img: 'assets/products/plate-blossom.jpg' },
+  { name: 'Character Tumblers', meta: 'Drinkware', price: 899, img: 'assets/products/tumbler-set.jpg' },
+  { name: 'Dice Salt & Pepper', meta: 'Set of two', price: 645, img: 'assets/products/sp-dice.jpg' },
+  { name: 'Floral Resin Trays', meta: 'Resin Art', price: 1995, img: 'assets/products/resin-trays.jpg' },
+  { name: 'Sunflower Tufted Cushion', meta: 'Soft Furnishing', price: 1295, img: 'assets/products/cushion-sunflower.jpg' }
+];
+let giftWrap = false;
+const minus = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg>', plus = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg>';
 function renderCart() {
   const count = cart.reduce((a, x) => a + x.qty, 0), sub = cart.reduce((a, x) => a + x.qty * x.price, 0);
   $$('#cartN').forEach(n => n.textContent = count);
-  $('#drCount').textContent = count ? `(${count})` : '';
-  $('#drSub').textContent = inr(sub);
-  $('#drItems').innerHTML = cart.map((x, i) => `<li><img src="${x.img}" alt=""><div><b>${x.name}</b><span>${x.meta}</span><div class="qty sm"><button data-q="${i}" data-d="-1" aria-label="Fewer">−</button><span>${x.qty}</span><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div><div class="dr-r"><b>${inr(x.price * x.qty)}</b><button class="dr-rm" data-rm="${i}">Remove</button></div></li>`).join('');
+  $('#drCount').textContent = `(${count})`;
+  $('#drSub').textContent = count ? inr(sub) : '';
+  $('#drItems').innerHTML = cart.map((x, i) => `<li>
+    <img src="${x.img}" alt="">
+    <div class="dr-it">
+      <b class="dr-name">${x.name}</b>${x.meta ? `<span class="dr-meta">${x.meta}</span>` : ''}
+      <span class="dr-price">${inr(x.price * x.qty)}${x.qty > 1 ? `<small>${inr(x.price)} each</small>` : ''}</span>
+      <div class="dr-row"><div class="dr-qty"><button data-q="${i}" data-d="-1" aria-label="One fewer ${x.name}"${x.qty < 2 ? ' disabled' : ''}>${minus}</button><span aria-live="polite">${x.qty}</span><button data-q="${i}" data-d="1" aria-label="One more ${x.name}">${plus}</button></div>
+        <button class="dr-rm" data-rm="${i}">Remove</button></div>
+    </div></li>`).join('');
   $('#cartDrawer').classList.toggle('empty', !count);
   const left = FREE_SHIP - sub;
-  $('#drShipMsg').innerHTML = left > 0 ? `You are <b>${inr(left)}</b> away from free delivery.` : 'You have unlocked <b>free delivery</b>.';
+  $('#drShipMsg').innerHTML = left > 0 ? `Add <b>${inr(left)}</b> more for free delivery` : 'You have unlocked <b>free delivery</b>';
   $('#drShipBar').style.width = Math.min(sub / FREE_SHIP, 1) * 100 + '%';
+  const gb = $('#drGiftBtn');
+  gb.setAttribute('aria-pressed', giftWrap); gb.textContent = giftWrap ? 'Added' : 'Add';
+  $('#drGift').classList.toggle('on', giftWrap);
+  $('#drRecs').innerHTML = RECS.filter(r => !cart.some(x => x.name === r.name)).slice(0, 3).map(r => `<li>
+    <img src="${r.img}" alt="" loading="lazy">
+    <div><b class="dr-name">${r.name}</b><span class="dr-price">${inr(r.price)}</span></div>
+    <button type="button" class="dr-add" data-rec="${r.name}" aria-label="Add ${r.name} to cart">Add</button></li>`).join('');
 }
 $('#drItems').addEventListener('click', e => {
   const q = e.target.closest('[data-q]'), rm = e.target.closest('[data-rm]');
   if (q) { const it = cart[q.dataset.q]; it.qty = Math.max(1, it.qty + +q.dataset.d) }
   if (rm) cart.splice(rm.dataset.rm, 1);
   if (q || rm) renderCart();
+});
+$('#drGiftBtn').addEventListener('click', () => { giftWrap = !giftWrap; renderCart(); if (giftWrap) setTimeout(() => $('#drNote').focus({ preventScroll: true }), 350) });
+$('#drRecs').addEventListener('click', e => {
+  const b = e.target.closest('[data-rec]'); if (!b) return;
+  cart.push({ qty: 1, ...RECS.find(r => r.name === b.dataset.rec) });
+  renderCart(); toast(b.dataset.rec + ' added to your cart.');
 });
 function addToCart(item) {
   const hit = cart.find(x => x.name === item.name);
@@ -212,6 +249,20 @@ $$('[data-autoplay],[data-progress]').forEach(row => {
   }, 3000);
 });
 
+/* ---------- reviews: mark the card nearest the row's centre ---------- */
+$$('.rrow').forEach(row => {
+  let raf = 0;
+  const mark = () => {
+    raf = 0;
+    const r = row.getBoundingClientRect(), mid = r.left + r.width / 2;
+    let best = null, bd = Infinity;
+    [...row.children].forEach(c => { const b = c.getBoundingClientRect(), d = Math.abs(b.left + b.width / 2 - mid); if (d < bd) { bd = d; best = c } });
+    [...row.children].forEach(c => c.classList.toggle('mid', c === best));
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(mark) };
+  row.addEventListener('scroll', queue, { passive: true }); addEventListener('resize', queue); mark();
+});
+
 /* ---------- shop the shelf: pins and list highlight each other ---------- */
 $$('[data-pin]').forEach(el => {
   const on = v => $$(`[data-pin="${el.dataset.pin}"]`).forEach(x => x.classList.toggle('on', v));
@@ -273,7 +324,7 @@ toTop.addEventListener('click', () => lenis ? lenis.scrollTo(0, { duration: 1.4 
 document.documentElement.classList.add('anim');
 /* every block animates on its own (heading, text, button, each card), siblings 75ms apart, like the Wonder theme */
 const groupSel = '.clist,.pgrid,.jgrid,.gift-grid,.rgrid,.shorts,.rs-cards,.perks,.spot-media,.trust,.vals,.pgrid-static,.crow,.promo2,.look-list,.iotd,.mosaic,.steps,.addr-grid';
-const atomSel = '.sec-row>div>*,.sec-head>*,.sec-end,.tabs,.look-copy>p,.look-copy>h2,.ba-copy>*,.iotd-info>*,.rs-grid>div:first-child>:not(ol),.film-in>*,.promo>div>*,.newc>img,.page-head>*,.page-banner .wrap>*,.split>div>*,.split>img,.feat-post,.ba-view,.look-img,.bsum,.reach,.faq,.form-card,.cinfo>*,.pdp-gal,.pdp-info>*,.summary,.cart-table,.reveal';
+const atomSel = '.sec-row>div>*,.sec-head>*,.sec-end,.tabs,.look-copy>p,.look-copy>h2,.ba-copy>*,.iotd-info>*,.rs-grid>div:first-child>:not(ol),.film-in>*,.promo>div>*,.newc>img,.page-head>*,.page-banner .wrap>*,.split>div>*,.split>img,.feat-post,.ba-view,.look-img,.bsum,.reach,.faq,.form-card,.cinfo>*,.pdp-gal,.pdp-info>*,.summary,.cart-table,.reveal,.h-mark';
 $$(groupSel).forEach(g => [...g.children].forEach((el, i) => { el.dataset.reveal = ''; el.style.setProperty('--d', (i % 8) * .075 + 's') }));
 $$(atomSel).forEach(el => {
   if (el.closest('[data-reveal]') || el.closest('.mega,.side,.drawer,.sx,.nl,.hero')) return;
@@ -330,8 +381,104 @@ $$('.qty:not(.sm)').forEach(q => q.addEventListener('click', e => { const b = e.
 $('.js-pdp')?.addEventListener('click', e => { e.stopPropagation(); const b = e.currentTarget; addToCart({ name: b.dataset.name, price: +$('#pdpPrice').textContent.replace(/\D/g, ''), img: $('#pdpMain').getAttribute('src'), meta: $('[data-opt-label]')?.textContent || '', qty: +$('#pdpQty').textContent }) });
 
 /* ---------- collection page: filter drawer on small screens, view toggle ---------- */
-$('#filterBtn')?.addEventListener('click', () => document.body.classList.toggle('filters-open'));
 $$('[data-filters-close]').forEach(b => b.addEventListener('click', () => document.body.classList.remove('filters-open')));
+(() => {
+  const panel = $('aside.filters'), grid = $('#colGrid');
+  if (!panel || !grid) return;
+  const cards = $$('.card[data-f]', grid), chips = $$('.fchip', panel), bar = $('.chips'), count = $('#colCount'), empty = $('.fempty');
+  const tbar = $('.col-bar'), promo = $('.col-promo', grid), wide = matchMedia('(min-width:1081px)');
+  cards.forEach((c, i) => c.dataset.i = i);
+  const facetOf = c => c.closest('[data-facet]').dataset.facet;
+  const label = c => [...c.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+  const isOn = c => c.getAttribute('aria-pressed') === 'true';
+  const chipFor = (f, v) => $(`[data-facet="${f}"] .fchip[data-v="${v}"]`, panel);
+  // price options carry "min-max" and read data-price; the rest match "facet:value" tags in data-f
+  const hit = (card, f, v) => {
+    if (f !== 'price') return card.dataset.f.split(' ').includes(f + ':' + v);
+    const [lo, hi] = v.split('-'), p = +card.dataset.price;
+    return p >= +lo && (hi === '' || p <= +hi);
+  };
+  const picked = () => chips.filter(isOn).reduce((m, c) => ((m[facetOf(c)] ||= []).push(c.dataset.v), m), {});
+  // options in one facet widen (OR); different facets narrow (AND)
+  const passes = (card, sel, skip) => Object.entries(sel).every(([f, vs]) => f === skip || vs.some(v => hit(card, f, v)));
+  const items = n => n + (n === 1 ? ' item' : ' items');
+  const render = animate => {
+    const sel = picked(), shown = cards.filter(c => passes(c, sel)), n = chips.filter(isOn).length;
+    cards.forEach(c => c.classList.toggle('f-out', !shown.includes(c)));
+    if (animate) shown.forEach((c, i) => { c.classList.remove('enter'); void c.offsetWidth; c.style.setProperty('--cd', Math.min(i, 8) * .05 + 's'); c.classList.add('enter') });
+    // each option shows how many pieces it would give, given the picks in the other facets
+    chips.forEach(c => {
+      const f = facetOf(c), k = cards.filter(x => passes(x, sel, f) && hit(x, f, c.dataset.v)).length;
+      $('small', c).textContent = k;
+      c.disabled = !k && !isOn(c);
+    });
+    count.textContent = items(shown.length);
+    if (promo) promo.hidden = n > 0;  // the custom-piece card only sits in the full, unfiltered grid
+    empty.hidden = shown.length > 0;
+    $$('.fclear', panel).forEach(b => b.disabled = !n);
+    $('.fapply', panel).textContent = n ? 'Show ' + items(shown.length) : 'Apply';
+    bar.innerHTML = chips.filter(isOn).map(c => `<button type="button" data-facet="${facetOf(c)}" data-v="${c.dataset.v}" aria-label="Remove filter: ${label(c)}">${label(c)}</button>`).join('')
+      + (n ? '<button type="button" class="chips-clear">Clear all</button>' : '');
+    // toolbar mirrors the panel: count, quick menus, switches
+    $('#fCount').textContent = n;
+    $$('[data-dd]', tbar).forEach(d => {
+      const opts = $(`[data-facet="${d.dataset.dd}"]`, panel);
+      $('.cb-pop', d).innerHTML = opts.innerHTML;
+      $('.cb-btn', d).classList.toggle('has-sel', $$('.fchip', opts).some(isOn));
+    });
+    $$('[data-tog]', tbar).forEach(t => t.checked = isOn(chipFor('tag', t.dataset.tog)));
+  };
+  const toggle = (c, on = !isOn(c)) => { c.setAttribute('aria-pressed', on); render(true) };
+  const clear = () => { chips.forEach(c => c.setAttribute('aria-pressed', 'false')); render(true) };
+  panel.addEventListener('click', e => {
+    const h = e.target.closest('.fsec-h');
+    if (h) { h.setAttribute('aria-expanded', h.closest('.fsec').classList.toggle('open')); return }
+    const c = e.target.closest('.fchip');
+    if (c && !c.disabled) return toggle(c);
+    if (e.target.closest('.fclear')) clear();
+  });
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.classList.contains('chips-clear')) return clear();
+    toggle(chipFor(b.dataset.facet, b.dataset.v), false);
+  });
+  empty.addEventListener('click', e => { if (e.target.closest('.fclear')) clear() });
+
+  /* toolbar */
+  const fbtn = $('#filterBtn');
+  const syncFbtn = () => fbtn.setAttribute('aria-expanded', wide.matches ? !document.body.classList.contains('filters-hidden') : document.body.classList.contains('filters-open'));
+  fbtn.addEventListener('click', () => { document.body.classList.toggle(wide.matches ? 'filters-hidden' : 'filters-open'); syncFbtn() });
+  wide.addEventListener('change', syncFbtn); syncFbtn();
+  const closeAll = except => $$('.cb-dd.open', tbar).forEach(d => { if (d !== except) { d.classList.remove('open'); $('.cb-btn', d).setAttribute('aria-expanded', 'false') } });
+  $$('.cb-dd', tbar).forEach(d => {
+    const b = $('.cb-btn', d);
+    b.addEventListener('click', () => { closeAll(d); b.setAttribute('aria-expanded', d.classList.toggle('open')) });
+  });
+  $$('[data-dd] .cb-pop', tbar).forEach(p => p.addEventListener('click', e => {
+    const c = e.target.closest('.fchip'); if (!c || c.disabled) return;
+    toggle(chipFor(p.parentElement.dataset.dd, c.dataset.v));
+  }));
+  $$('[data-tog]', tbar).forEach(t => t.addEventListener('change', () => toggle(chipFor('tag', t.dataset.tog), t.checked)));
+  document.addEventListener('click', e => { if (!e.composedPath().some(n => n.classList?.contains('cb-dd'))) closeAll() });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll() });
+
+  /* sort: reorder the cards, keep the custom-piece promo in its slot */
+  const sorters = { best: (a, b) => a.dataset.i - b.dataset.i, new: (a, b) => hit(b, 'tag', 'new') - hit(a, 'tag', 'new') || a.dataset.i - b.dataset.i, asc: (a, b) => a.dataset.price - b.dataset.price, desc: (a, b) => b.dataset.price - a.dataset.price };
+  const slot = promo ? [...grid.children].indexOf(promo) : -1;
+  const sortBy = li => {
+    $$('[role="option"]', tbar).forEach(o => o.setAttribute('aria-selected', o === li));
+    $('#sortLabel').textContent = li.textContent;
+    const order = [...cards].sort(sorters[li.dataset.sort]);
+    if (promo) order.splice(slot, 0, promo);
+    order.forEach(el => grid.append(el));
+    closeAll(); render(true);
+  };
+  $$('[role="option"]', tbar).forEach(li => {
+    li.addEventListener('click', () => sortBy(li));
+    li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sortBy(li) } });
+  });
+  render(false);
+})();
 
 /* ---------- forms and pages that arrive with the Shopify build ---------- */
 $$('form[data-demo]').forEach(f => f.addEventListener('submit', e => { e.preventDefault(); toast(f.dataset.demo); f.reset() }));
@@ -339,3 +486,6 @@ $$('a[href="#"]:not(.logo)').forEach(a => a.addEventListener('click', e => { e.p
 $$('[data-copy]').forEach(b => b.addEventListener('click', () => { navigator.clipboard?.writeText(b.dataset.copy); toast('Gift card code copied.') }));
 const q = new URLSearchParams(location.search).get('q');
 if (q) $$('[data-query]').forEach(el => el.tagName === 'INPUT' ? el.value = q : el.textContent = q);
+
+/* ---------- Lenis swallows wheel events (even while stopped), so panels that scroll on their own opt out ---------- */
+$$('.drawer,.sx,.side,aside.filters,.nl').forEach(el => el.setAttribute('data-lenis-prevent', ''));

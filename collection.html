@@ -62,88 +62,86 @@
   <div class="wrap"><p class="kick">Collection</p><h1>Crockery</h1><p>Stripes, cherries and blooms. Everyday plates and table pieces that make a Tuesday dinner look planned.</p></div></section>
 <nav class="crumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span><a href="collections.html">Shop</a></span><span>Crockery</span></nav>
 <section class="section" style="padding-top:28px"><div class="wrap">
-  <div class="col-bar"><button class="fbtn" id="filterBtn"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filter</button><span class="count">22 products</span>
-    <label>Sort by <select aria-label="Sort products"><option>Best selling</option><option>Newest</option><option>Price, low to high</option><option>Price, high to low</option></select></label></div>
+  <div class="col-bar">
+    <div class="cb-left"><button class="cb-btn cb-filters" id="filterBtn" type="button" aria-controls="filters" aria-expanded="true"><span>Filters (<span id="fCount">0</span>)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="cb-dd" data-dd="type"><button class="cb-btn" type="button" aria-expanded="false">Product type<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="cb-pop" role="group" aria-label="Product type"></div></div><div class="cb-dd" data-dd="colour"><button class="cb-btn" type="button" aria-expanded="false">Colour<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="cb-pop" role="group" aria-label="Colour"></div></div><div class="cb-dd" data-dd="price"><button class="cb-btn" type="button" aria-expanded="false">Price<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="cb-pop" role="group" aria-label="Price"></div></div>
+      <label class="cb-tog"><span>New in</span><input type="checkbox" role="switch" data-tog="new"><i aria-hidden="true"></i></label><label class="cb-tog"><span>Sale</span><input type="checkbox" role="switch" data-tog="sale"><i aria-hidden="true"></i></label></div>
+    <div class="cb-right"><span class="count" id="colCount">11 items</span>
+      <div class="cb-dd cb-sort"><button class="cb-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr">Sort by: </span><span id="sortLabel">Best selling</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <ul class="cb-pop" role="listbox" aria-label="Sort by"><li role="option" tabindex="0" data-sort="best" aria-selected="true">Best selling</li><li role="option" tabindex="0" data-sort="new" aria-selected="false">Newest</li><li role="option" tabindex="0" data-sort="asc" aria-selected="false">Price, low to high</li><li role="option" tabindex="0" data-sort="desc" aria-selected="false">Price, high to low</li></ul></div></div>
+  </div>
   <div class="col-layout">
-    <aside class="filters" aria-label="Filters">
-      <div class="filters-x"><h3>Filters</h3><button class="dr-x" data-filters-close aria-label="Close filters"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
-      <details open><summary>Category</summary>
-        <label class="check"><input type="checkbox" checked> Everyday plates <small>5</small></label>
-        <label class="check"><input type="checkbox"> Bowls <small>3</small></label>
-        <label class="check"><input type="checkbox"> Salt &amp; pepper <small>5</small></label>
-        <label class="check"><input type="checkbox"> Mugs &amp; cups <small>8</small></label>
-        <label class="check"><input type="checkbox"> Tumblers <small>4</small></label></details>
-      <details open><summary>Price</summary>
-        <div class="price-range"><input type="number" placeholder="₹ 0" aria-label="Minimum price"><span>to</span><input type="number" placeholder="₹ 25,000" aria-label="Maximum price"></div></details>
-      <details open><summary>Colour</summary>
-        <div class="opts sw"><button style="--c:#E7B7B9" aria-label="Pink"></button><button style="--c:#A8C4DE" aria-label="Blue"></button><button style="--c:#E9D27A" aria-label="Yellow"></button><button style="--c:#9BB89A" aria-label="Green"></button><button style="--c:#F2EEE4" aria-label="Cream"></button></div></details>
-      <details open><summary>Availability</summary>
-        <label class="check"><input type="checkbox" checked> In stock <small>18</small></label>
-        <label class="check"><input type="checkbox"> Made to order <small>4</small></label></details>
-      <details><summary>Occasion</summary>
-        <label class="check"><input type="checkbox"> Housewarming</label><label class="check"><input type="checkbox"> Diwali &amp; festive</label><label class="check"><input type="checkbox"> Birthday</label></details>
+    <aside class="filters" id="filters" aria-label="Filters">
+      <div class="filters-x"><h3>Filter items</h3><button class="fclose" data-filters-close aria-label="Close filters"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></svg></button></div>
+      <div class="fscroll">
+      <section class="fsec open"><h4><button class="fsec-h" aria-expanded="true" aria-controls="f-type">Product type<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-type"><div class="fopts" data-facet="type"><button class="fchip" data-v="plates" aria-pressed="false">Plates<small></small></button><button class="fchip" data-v="salt-pepper" aria-pressed="false">Salt &amp; pepper<small></small></button><button class="fchip" data-v="drinkware" aria-pressed="false">Drinkware<small></small></button><button class="fchip" data-v="cushions" aria-pressed="false">Cushions<small></small></button><button class="fchip" data-v="resin" aria-pressed="false">Resin keepsakes<small></small></button><button class="fchip" data-v="furniture" aria-pressed="false">Furniture<small></small></button><button class="fchip" data-v="travel" aria-pressed="false">Travel<small></small></button></div></div></section>
+      <section class="fsec open"><h4><button class="fsec-h" aria-expanded="true" aria-controls="f-colour">Colour<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-colour"><div class="fopts" data-facet="colour"><button class="fchip" data-v="pink" aria-pressed="false"><i style="--c:#E7B7B9"></i>Pink<small></small></button><button class="fchip" data-v="red" aria-pressed="false"><i style="--c:#C2453F"></i>Red<small></small></button><button class="fchip" data-v="yellow" aria-pressed="false"><i style="--c:#E9C35A"></i>Yellow<small></small></button><button class="fchip" data-v="blue" aria-pressed="false"><i style="--c:#7FA6CC"></i>Blue<small></small></button><button class="fchip" data-v="cream" aria-pressed="false"><i style="--c:#F2EEE4"></i>Cream<small></small></button><button class="fchip" data-v="gold" aria-pressed="false"><i style="--c:#C4A27D"></i>Gold<small></small></button><button class="fchip" data-v="multi" aria-pressed="false"><i style="--c:conic-gradient(#E7B7B9,#E9C35A,#9BB89A,#7FA6CC,#E7B7B9)"></i>Multi coloured<small></small></button></div></div></section>
+      <section class="fsec"><h4><button class="fsec-h" aria-expanded="false" aria-controls="f-price">Price<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-price"><div class="fopts" data-facet="price"><button class="fchip" data-v="0-999" aria-pressed="false">Under ₹1,000<small></small></button><button class="fchip" data-v="1000-4999" aria-pressed="false">₹1,000 – ₹5,000<small></small></button><button class="fchip" data-v="5000-" aria-pressed="false">Over ₹5,000<small></small></button></div></div></section>
+      <section class="fsec"><h4><button class="fsec-h" aria-expanded="false" aria-controls="f-stock">Availability<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-stock"><div class="fopts" data-facet="stock"><button class="fchip" data-v="in" aria-pressed="false">In stock<small></small></button><button class="fchip" data-v="made" aria-pressed="false">Made to order<small></small></button></div></div></section>
+      <section class="fsec"><h4><button class="fsec-h" aria-expanded="false" aria-controls="f-tag">Show only<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-tag"><div class="fopts" data-facet="tag"><button class="fchip" data-v="new" aria-pressed="false">New in<small></small></button><button class="fchip" data-v="sale" aria-pressed="false">On sale<small></small></button></div></div></section>
+      <section class="fsec"><h4><button class="fsec-h" aria-expanded="false" aria-controls="f-occ">Occasion<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></h4>
+        <div class="fsec-b" id="f-occ"><div class="fopts" data-facet="occ"><button class="fchip" data-v="housewarming" aria-pressed="false">Housewarming<small></small></button><button class="fchip" data-v="festive" aria-pressed="false">Diwali &amp; festive<small></small></button><button class="fchip" data-v="birthday" aria-pressed="false">Birthday<small></small></button></div></div></section>
+      </div>
+      <div class="ffoot"><button class="fclear" type="button">Clear all</button><button class="btn btn-solid fapply" type="button" data-filters-close>Apply</button></div>
     </aside>
     <div>
-      <div class="chips"><button>Everyday plates</button><button>In stock</button></div>
-      <div class="pgrid-static">
-      <article class="card" data-cat="best decor" data-price="24999">
+      <div class="chips" aria-live="polite"></div>
+      <div class="pgrid-static" id="colGrid">
+      <article class="card" data-cat="best decor" data-price="24999" data-f="type:furniture colour:gold stock:in occ:housewarming">
         <div class="im"><span class="lab">Statement Furniture</span><span class="badge">Best Seller</span><a href="product.html" aria-label="Wristwatch Coffee Table Set"></a><img loading="lazy" src="assets/products/watch-table.jpg" alt="Pair of gold wristwatch-shaped nesting coffee tables"><button class="qadd" data-name="Wristwatch Coffee Table Set" data-price="24999" data-meta="Statement Furniture">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Wristwatch Coffee Table Set</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(12)</small></span></div><p class="price">₹24,999</p></div>
       </article>
-      <article class="card" data-cat="best crockery gifts" data-price="695">
+      <article class="card" data-cat="best crockery gifts" data-price="695" data-f="type:plates colour:pink stock:in occ:birthday occ:housewarming">
         <div class="im"><span class="lab">Everyday Plate</span><span class="badge">Best Seller</span><a href="product.html" aria-label="Ma Chérie Plate"></a><img loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries and the words Ma Chérie"><button class="qadd" data-name="Ma Chérie Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Ma Chérie Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(48)</small></span></div><p class="price">₹695</p></div>
       </article>
-      <article class="card" data-cat="best decor" data-price="1295">
+      <article class="card" data-cat="best decor" data-price="1295" data-f="type:cushions colour:yellow stock:in occ:housewarming">
         <div class="im"><span class="lab">Soft Furnishing</span><a href="product.html" aria-label="Sunflower Tufted Cushion"></a><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt="Cream cushion with tufted mustard sunflowers"><button class="qadd" data-name="Sunflower Tufted Cushion" data-price="1295" data-meta="Soft Furnishing">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Sunflower Tufted Cushion</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(31)</small></span></div><p class="price">₹1,295</p></div>
       </article>
-      <article class="card" data-cat="best table gifts" data-price="595">
+      <article class="card" data-cat="best table gifts" data-price="595" data-f="type:salt-pepper colour:yellow stock:in occ:housewarming">
         <div class="im"><span class="lab">Table Essentials</span><a href="product.html" aria-label="Pineapple Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-pineapple.jpg" alt="Pair of ceramic pineapple salt and pepper shakers"><button class="qadd" data-name="Pineapple Salt &amp; Pepper" data-price="595" data-meta="Table Essentials">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Pineapple Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(27)</small></span></div><p class="price">₹595</p></div>
       </article>
-      <article class="card" data-cat="best resin gifts" data-price="2495">
+      <article class="card" data-cat="best resin gifts" data-price="2495" data-f="type:resin colour:multi colour:gold stock:made occ:festive">
         <div class="im"><span class="lab">Resin Art</span><span class="badge">Made to Order</span><a href="product.html" aria-label="Faith Keepsake Stand"></a><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands on a store shelf"><button class="qadd" data-name="Faith Keepsake Stand" data-price="2495" data-meta="Resin Art">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Faith Keepsake Stand</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(19)</small></span></div><p class="price">₹2,495</p></div>
       </article>
       <a class="col-promo" href="product-custom.html"><p class="kick">Made to order</p><h3>Want it in your colours?</h3><span class="btn btn-light">Start a custom piece</span></a>
-      <article class="card" data-cat="best crockery" data-price="795">
+      <article class="card" data-cat="best crockery" data-price="795" data-f="type:plates colour:red stock:in occ:birthday tag:sale">
         <div class="im"><span class="lab">Everyday Plate</span><span class="badge">Sale</span><a href="product.html" aria-label="Watermelon Plate"></a><img loading="lazy" src="assets/products/plate-watermelon.jpg" alt="Red ribbed plate painted like a watermelon"><button class="qadd" data-name="Watermelon Plate" data-price="795" data-meta="Everyday Plate">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Watermelon Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(22)</small></span></div><p class="price">₹795<s>₹895</s></p></div>
       </article>
-      <article class="card" data-cat="best gifts new" data-price="899">
+      <article class="card" data-cat="best gifts new" data-price="899" data-f="type:drinkware colour:multi stock:in occ:birthday tag:new">
         <div class="im"><span class="lab">Drinkware</span><span class="badge">New</span><a href="product.html" aria-label="Character Tumblers"></a><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of four colourful character tumblers with straw lids"><button class="qadd" data-name="Character Tumblers" data-price="899" data-meta="Drinkware">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Character Tumblers</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(15)</small></span></div><p class="price">₹899</p></div>
       </article>
-      <article class="card" data-cat="best gifts new" data-price="7499">
+      <article class="card" data-cat="best gifts new" data-price="7499" data-f="type:travel colour:blue stock:in occ:birthday">
         <div class="im"><span class="lab">Travel</span><span class="badge">Great Gift</span><a href="product.html" aria-label="Seashell Luggage Set"></a><img loading="lazy" src="assets/products/shell-set.jpg" alt="Aqua seashell-shaped hard-shell trolley and vanity case"><button class="qadd" data-name="Seashell Luggage Set" data-price="7499" data-meta="Travel">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Seashell Luggage Set</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(9)</small></span></div><p class="price">₹7,499</p></div>
       </article>
-      <article class="card" data-cat="crockery new" data-price="695">
+      <article class="card" data-cat="crockery new" data-price="695" data-f="type:plates colour:blue stock:in occ:housewarming tag:new">
         <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Lemon Stripe Plate"></a><img loading="lazy" src="assets/products/plate-lemon.jpg" alt="Blue striped plate with a lemon sprig"><button class="qadd" data-name="Lemon Stripe Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Lemon Stripe Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(11)</small></span></div><p class="price">₹695</p></div>
       </article>
-      <article class="card" data-cat="crockery" data-price="695">
+      <article class="card" data-cat="crockery" data-price="695" data-f="type:plates colour:cream colour:blue stock:in occ:housewarming">
         <div class="im"><span class="lab">Everyday Plate</span><a href="product.html" aria-label="Blue Vine Plate"></a><img loading="lazy" src="assets/products/plate-vine.jpg" alt="Cream plate with a ring of small blue flowers"><button class="qadd" data-name="Blue Vine Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Blue Vine Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(8)</small></span></div><p class="price">₹695</p></div>
       </article>
-      <article class="card" data-cat="crockery new" data-price="695">
+      <article class="card" data-cat="crockery new" data-price="695" data-f="type:plates colour:cream colour:pink stock:in occ:festive tag:new">
         <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Blossom Plate"></a><img loading="lazy" src="assets/products/plate-blossom.jpg" alt="Cream plate scattered with pink flowers"><button class="qadd" data-name="Blossom Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
         <div class="info"><div><h3 class="name"><a href="product.html">Blossom Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(14)</small></span></div><p class="price">₹695</p></div>
       </article>
       </div>
+      <p class="fempty" hidden>Nothing matches all of these yet. <button class="fclear" type="button">Clear all filters</button></p>
       <nav class="pager" aria-label="Pages"><a href="#" aria-current="page">1</a><a href="#">2</a><a href="#">3</a><a href="#" aria-label="Next page">›</a></nav>
     </div>
   </div>
-</div></section>
-<section class="promise"><div class="wrap">
-  <div class="sec-row"><div><p class="kick">Good to know</p><h2 class="h-section">Shopping With Us</h2></div><a class="vall" href="faq.html">Read the FAQs</a></div>
-  <ul class="promise-list">
-    <li><span class="kick">Delivery</span><b>Delivered across India</b><p>Packed with care and tracked all the way to your door.</p></li>
-    <li><span class="kick">Payment</span><b>Cash on delivery &amp; UPI</b><p>Pay the way that suits you, online or when it arrives.</p></li>
-    <li><span class="kick">Gifting</span><b>Wrapped by hand</b><p>With a handwritten note tucked in, whenever you ask.</p></li>
-    <li><span class="kick">In store</span><b>Visit us in Zirakpur</b><p>CCC, VIP Road. Open all week, with more on the shelves.</p></li>
-  </ul>
 </div></section>
 </main>
 
