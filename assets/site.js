@@ -126,7 +126,7 @@ document.body.insertAdjacentHTML('beforeend', `
 <aside class="side" id="sideNav" aria-label="Menu" aria-hidden="true">
   <button class="dr-x" data-close aria-label="Close menu"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
   <nav class="side-links">
-    <a href="index.html">Home</a><a href="collection.html">Crockery &amp; Table</a><a href="collection.html">Home Decor</a><a href="product-custom.html">Resin Studio</a>
+    <a href="index.html">Home</a><a href="collection.html?c=crockery">Crockery &amp; Table</a><a href="collection.html?c=decor">Home Decor</a><a href="product-custom.html">Resin Studio</a>
     <a href="gifting.html">Gifting</a><a href="collections.html">Shop All</a>
   </nav>
   <nav class="side-sub"><a href="blog.html">Petal Notes</a><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a></nav>
@@ -144,8 +144,19 @@ rail && $$('button[data-panel]', rail).forEach(b => {
 });
 /* current page in the nav */
 const here = location.pathname.split('/').pop() || 'index.html';
-$$('a', side).find(a => a.getAttribute('href') === here)?.setAttribute('aria-current', 'page');
-$$('#nav>li>.nav-link').find(a => a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here))?.setAttribute('aria-current', 'location');
+const hereQ = here + location.search;
+// exact link (incl. ?c=) wins; a bare collection.html counts as Crockery; then the page itself or its data-match
+const current = links => links.find(a => a.getAttribute('href') === hereQ) || (here === 'collection.html' && !location.search && links.find(a => a.getAttribute('href') === 'collection.html?c=crockery')) || links.find(a => a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here));
+current($$('#nav>li>.nav-link'))?.setAttribute('aria-current', 'location');
+current($$('.side-links a,.side-sub a', side))?.setAttribute('aria-current', 'page');
+// prototype only: one collection template stands in for every collection, so swap its heading by ?c=
+const colCopy = { decor: ['Home Decor', 'Cushions, throws, baskets and statement pieces that make a room feel finished.'], festive: ['Festive Edit', 'Hampers, table pieces and gifts picked for the season.'] }[new URLSearchParams(location.search).get('c')];
+if (colCopy && here === 'collection.html') {
+  const h = $('.page-banner h1'), c = $('.crumbs span:last-child');
+  if (h) { h.textContent = colCopy[0]; h.nextElementSibling && (h.nextElementSibling.textContent = colCopy[1]); }
+  if (c) c.textContent = colCopy[0];
+  document.title = colCopy[0] + ' | Pretty Petals';
+}
 $('.icon-btn[aria-label="Account"]')?.addEventListener('click', () => location.href = 'login.html');
 
 /* ---------- hero carousel ---------- */

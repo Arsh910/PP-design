@@ -1331,3 +1331,62 @@ html,body{overflow-x:clip}
 @media (max-width:1080px){.look{grid-template-columns:1fr}}
 @media (max-width:760px){.look-list a{grid-template-columns:72px minmax(0,1fr) 18px;gap:14px}.look-list img{width:72px}.look-copy h2.h-section{font-size:40px}}
 html,body{overflow-x:clip}
+
+/* =====================================================================
+   v6 · polish pass (homepage + shared cards/header)
+   ===================================================================== */
+/* closed off-canvas panels no longer leak a shadow onto the page edges */
+.drawer:not(.open),.side:not(.open){box-shadow:none}
+
+/* header: one row, never wraps */
+.nav2 .nav{flex-wrap:nowrap}
+@media (min-width:1181px){.nav2 .nav-link{font-size:17px}}
+
+/* hero: heading, then supporting line, then buttons; scrim sits behind the copy only */
+.slide::after{background:linear-gradient(90deg,rgba(43,28,34,.8),rgba(43,28,34,.4) 42%,rgba(43,28,34,0) 72%),linear-gradient(to top,rgba(43,28,34,.5),transparent 28%)}
+.slide-in h1,.slide-in .h1{order:1;font-size:clamp(46px,5.6vw,88px);margin-bottom:18px}
+.slide-in .k{order:2;font-style:normal;font-size:clamp(19px,1.4vw,22px);max-width:40ch;margin-bottom:32px;color:var(--stone)}
+.slide-in .hero-cta{order:3}
+
+/* product card: full-bleed image, badge top-left, name / rating / price stacked */
+.card .im{padding:0;aspect-ratio:4/5}
+.card .im img{height:100%;aspect-ratio:auto;box-shadow:none}
+.card .im .lab{display:none}
+.card .im .badge{left:12px;right:auto;top:12px;background:var(--paper);color:var(--moss);font-size:11px;padding:6px 10px}
+.card .qadd{left:12px;right:12px;bottom:12px}
+.card .info{display:block;padding-top:14px}
+.card .info .name{font-size:clamp(19px,1.35vw,22px)}
+.card .stars{font-size:12px;margin-top:5px}
+.card .price{font-size:18px;font-weight:400;margin-top:4px}
+.card .price s{display:inline;margin-left:8px;font-size:16px}
+
+/* promo banners: copy anchored bottom-left on a gradient, readable on any photo */
+.promo{place-items:end start;text-align:left;aspect-ratio:16/10}
+.promo::after{background:linear-gradient(to top,rgba(43,28,34,.88),rgba(43,28,34,.5) 60%,rgba(43,28,34,.1))}
+@media (max-width:760px){.promo{aspect-ratio:4/5}}
+.promo>div{padding:clamp(24px,3vw,48px)}
+.promo h2{font-size:clamp(30px,2.8vw,46px)}
+.promo p{margin:0 0 24px}
+
+/* shop the shelf: photo fills its column; heading on the standard section scale */
+.look-img{min-height:clamp(420px,40vw,620px)}
+.look-img img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+.look-copy h2.h-section{font-size:clamp(32px,3.4vw,50px);line-height:1.1}
+@media (max-width:1080px){.look-img{min-height:0;aspect-ratio:4/3}}
+
+/* piece of the week: buy box as a panel, left-aligned like the product page */
+.iotd-info{background:var(--stone);text-align:left;padding:clamp(24px,3vw,48px)}
+.iotd-info h3{font-size:clamp(30px,2.4vw,40px)}
+.iotd-more{align-self:flex-start}
+
+/* reels: product chip wide enough for a two-line name */
+.reels-prods{width:min(440px,calc(100% - 2*var(--gut)))}
+
+/* closing run: reels, perks and footer butt together, no paper gaps between bands */
+.perks-band{margin-top:0}
+.perks-band+footer.site{margin-top:0}
+.perk .pi{width:38px;height:38px;fill:none;stroke:var(--moss);stroke-width:1.2;margin-bottom:18px}
+.perk h3{font-size:clamp(26px,2vw,34px)}
+.reviews{margin-top:var(--sp)}
+/* sidebar: current page is bold plum with the gold underline used in the top nav */
+.side-links a[aria-current],.side-sub a[aria-current]{color:var(--moss);font-weight:700;text-decoration:underline;text-decoration-color:var(--tan);text-decoration-thickness:2px;text-underline-offset:6px}

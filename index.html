@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/theme.css?v=202611081312">
+<link rel="stylesheet" href="assets/theme.css?v=202611121000">
 </head>
 <body>
 
@@ -52,14 +52,12 @@
               <a class="mpromo" href="gifting.html"><img src="assets/gifting/floral.jpg" alt="Gold mesh festive hamper with ivory flowers"><span>Festive hampers, made to order</span></a>
             </div>
           </div></li>
-      <li><a class="nav-link" href="collection.html">Crockery &amp; Table</a></li>
-      <li><a class="nav-link" href="collection.html">Home Decor</a></li>
+      <li><a class="nav-link" href="collection.html?c=crockery">Crockery &amp; Table</a></li>
+      <li><a class="nav-link" href="collection.html?c=decor">Home Decor</a></li>
       <li><a class="nav-link" href="product-custom.html">Resin Studio</a></li>
       <li><a class="nav-link" href="gifting.html">Gifting</a></li>
-      <li><a class="nav-link hl" href="collection.html">Festive Edit</a></li>
-      <li><a class="nav-link" href="blog.html" data-match="article.html">Petal Notes</a></li>
+      <li><a class="nav-link hl" href="collection.html?c=festive">Festive Edit</a></li>
       <li><a class="nav-link" href="about.html">Our Story</a></li>
-      <li><a class="nav-link" href="contact.html">Visit Us</a></li>
     </ul>
   </nav>
 </header>
@@ -113,7 +111,6 @@
       </div>
     </div>
   </div>
-  <div class="hero-badge" aria-hidden="true"><span>New</span>Festive<br>Edit</div>
   <div class="hero-bar">
     <div class="perks-mini"><span><i></i><b>Delivery</b> across India</span><span><i></i><b>Cash on delivery</b> &amp; UPI</span><span><i></i><b>Gift wrapping</b> on request</span></div>
     <div class="ctrl">
@@ -267,24 +264,6 @@
   <a class="promo" href="gifting.html"><img loading="lazy" src="assets/gifting/floral.jpg" alt="Gold mesh gift box with ivory flowers and Pretty Petals jars" style="object-position:50% 60%"><div><p class="kick">Festive Gifting</p><h2>Gifts to Light Up the Season</h2><p>Hampers made to order and wrapped by hand, for family, friends and the office.</p><span class="btn btn-light">Shop the hampers</span></div></a>
 </div></section>
 
-<!-- 7b · BEFORE / AFTER. PLACEHOLDER: "before" is a filtered copy; replace with a real before/after pair shot by the store -->
-<section class="section"><div class="wrap ba">
-  <div class="ba-copy">
-    <p class="kick">Before / After</p>
-    <h2 class="h-section">See What a Few Pretty Things Can Do</h2>
-    <p class="sub">The same room, with a throw, two cushions and one statement piece. Drag the handle to compare.</p>
-    <p class="ba-h">Shop the selected item</p>
-    <a class="ba-item" href="product.html"><img src="assets/products/throw-sunflower.jpg" alt=""><span><small>Soft Furnishing</small><b>Sunflower Tufted Throw</b><em>₹3,495</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-  </div>
-  <div class="ba-view" style="--pos:50%">
-    <img src="assets/stock/hero-living.jpg" alt="Living room styled with cushions, a throw and a wooden coffee table">
-    <img class="ba-before" src="assets/stock/hero-living.jpg" alt="" aria-hidden="true">
-    <span class="ba-tag l">Before</span><span class="ba-tag r">After</span>
-    <span class="ba-line" aria-hidden="true"><i></i></span>
-    <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-  </div>
-</div></section>
-
 <!-- 8 · SHOP THE STORE (hotspots) -->
 <section class="section"><div class="wrap look">
   <div class="look-img"><img loading="lazy" src="assets/store/displays.jpg" alt="Lit glass shelves of heart baskets, resin plates and mugs in the Pretty Petals store">
@@ -292,40 +271,6 @@
     <span class="look-tag">Shop the Shelf · 3 products</span></div>
   <div class="look-copy"><p class="kick">In store this week</p><h2 class="h-section">Shop the Shelf</h2><p class="sub">Straight from our display at CCC, Zirakpur. Tap a pin to see the piece.</p>
     <ul class="look-list"><li><a href="product.html" data-pin="0"><img src="assets/products/basket-heart.jpg" alt=""><span><small>Storage &amp; Styling</small><b>Rattan Heart Baskets</b><em>₹1,895</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li><li><a href="product.html" data-pin="1"><img src="assets/products/resin-trays.jpg" alt=""><span><small>Resin Art</small><b>Floral Resin Trays</b><em>₹1,995</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li><li><a href="product.html" data-pin="2"><img src="assets/products/plate-cherie.jpg" alt=""><span><small>Everyday Plate</small><b>Ma Chérie Plate</b><em>₹695</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li></ul></div>
-</div></section>
-
-<!-- 9 · NEW ARRIVALS -->
-<section class="section"><div class="wrap newc">
-  <img loading="lazy" src="assets/stock/hero-plates.jpg" alt="Stacks of ceramic plates and bowls on a wooden table">
-  <div class="newc-panel">
-    <div class="sec-row"><div><p class="kick">New arrivals</p><h2 class="h-section">Fresh on the Shelves</h2><p class="sub">New plates, playful table pieces and this season’s hampers.</p></div><div class="sec-end"><div class="sarrs"><button class="sarr" data-scroll="narow" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="sarr" data-scroll="narow" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div><a class="vall" href="collection.html">Shop new</a></div></div>
-    <div class="crow narow" id="narow">
-      <article class="card" data-cat="crockery new" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Lemon Stripe Plate"></a><img loading="lazy" src="assets/products/plate-lemon.jpg" alt="Blue striped plate with a lemon sprig"><button class="qadd" data-name="Lemon Stripe Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Lemon Stripe Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(11)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card" data-cat="crockery new" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Blossom Plate"></a><img loading="lazy" src="assets/products/plate-blossom.jpg" alt="Cream plate scattered with pink flowers"><button class="qadd" data-name="Blossom Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Blossom Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(14)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card" data-cat="table new" data-price="645">
-        <div class="im"><span class="lab">Table Essentials</span><span class="badge">New</span><a href="product.html" aria-label="Dice Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-dice.jpg" alt="Red and white ceramic dice salt and pepper shakers"><button class="qadd" data-name="Dice Salt &amp; Pepper" data-price="645" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Dice Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(17)</small></span></div><p class="price">₹645</p></div>
-      </article>
-      <article class="card" data-cat="best gifts new" data-price="899">
-        <div class="im"><span class="lab">Drinkware</span><span class="badge">New</span><a href="product.html" aria-label="Character Tumblers"></a><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of four colourful character tumblers with straw lids"><button class="qadd" data-name="Character Tumblers" data-price="899" data-meta="Drinkware">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Character Tumblers</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(15)</small></span></div><p class="price">₹899</p></div>
-      </article>
-      <article class="card" data-cat="best gifts new" data-price="7499">
-        <div class="im"><span class="lab">Travel</span><span class="badge">Great Gift</span><a href="product.html" aria-label="Seashell Luggage Set"></a><img loading="lazy" src="assets/products/shell-set.jpg" alt="Aqua seashell-shaped hard-shell trolley and vanity case"><button class="qadd" data-name="Seashell Luggage Set" data-price="7499" data-meta="Travel">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Seashell Luggage Set</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(9)</small></span></div><p class="price">₹7,499</p></div>
-      </article>
-      <article class="card" data-cat="gifts new" data-price="0">
-        <div class="im"><span class="lab">Festive Hamper</span><span class="badge">Festive</span><a href="product.html" aria-label="The Floral Hamper"></a><img loading="lazy" src="assets/gifting/floral.jpg" alt="The Floral Hamper"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to enquire</a></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">The Floral Hamper</a></h3></div><p class="price">On enquiry</p></div>
-      </article>
-    </div>
-  </div>
 </div></section>
 
 <!-- 10 · ITEM OF THE DAY -->
@@ -432,19 +377,19 @@
 <section class="band perks-band">
   <div class="wrap perks">
     <div class="perk">
-      <span class="pn">01</span>
+      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
       <h3>Come Say Hello</h3>
       <p>Resin art, crockery, decor and gifts under one roof at CCC, Zirakpur.</p>
       <a class="tlink" href="https://maps.app.goo.gl/jRsqGbub9CQCa4qNA" target="_blank" rel="noopener"><span>Get directions</span></a>
     </div>
     <div class="perk">
-      <span class="pn">02</span>
+      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11Z"/></svg>
       <h3>Made to Order</h3>
       <p>Custom resin keepsakes that turn a memory, a prayer or a name into something to hold on to.</p>
       <a class="tlink" href="product-custom.html"><span>Start a custom piece</span></a>
     </div>
     <div class="perk">
-      <span class="pn">03</span>
+      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>
       <h3>Order on DM</h3>
       <p>See something you love? DM or WhatsApp us and we will take it from there.</p>
       <a class="tlink" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener"><span>Message us</span></a>
@@ -524,7 +469,7 @@
 </dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/site.js?v=202611081312"></script>
+<script src="assets/site.js?v=202611121000"></script>
 
 </body>
 </html>
