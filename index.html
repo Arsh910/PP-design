@@ -23,7 +23,7 @@
 <body>
 
 <!-- 1 · ANNOUNCEMENT -->
-<div class="announce2"><a href="faq.html">Need help? FAQ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><p>Free delivery on orders over ₹2,499 · DM or WhatsApp to order</p><a href="contact.html">Contact us <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+<div class="announce2"><a href="faq.html">Need help? FAQ <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><div class="ann-rot" aria-live="polite"><p class="on">Season sale · 15% off store-wide</p><p>DM or WhatsApp us to order</p><p>Free delivery within 50 km of Zirakpur</p></div><a href="contact.html">Contact us <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
 
 <!-- 2 · HEADER: logo · search · icons, then centred navigation -->
 <header>
@@ -128,7 +128,7 @@
 <section class="edit-band" id="collections">
   <div class="wrap edit-head">
     <p class="kick">Seasonal spotlight</p>
-    <h2 class="h-section h-mark">Discover Collections<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M17 30H77"/><path pathLength="1" d="M20 30L25.5 48.5Q26.2 50 28 50H66Q67.8 50 68.5 48.5L74 30"/><path pathLength="1" d="M23.2 37H70.8"/><path pathLength="1" d="M25.3 43.6H68.7"/><path pathLength="1" d="M36 30L37.2 50"/><path pathLength="1" d="M47 30V50"/><path pathLength="1" d="M58 30L56.8 50"/><path pathLength="1" d="M40 30C39 24 40.6 18.5 44 14"/><path pathLength="1" d="M41.2 24.5c-3.2-.4-5.4-2.4-6-5.3 3 .1 5.2 1.9 6 5.3Z"/><path pathLength="1" d="M52 30A9.5 9.5 0 0 1 71 30"/><path pathLength="1" d="M56 30A5.5 5.5 0 0 1 67 30"/></g><g class="sm-bloom"><g transform="translate(44 14)"><path d="M0 0c.6-3.6 3.4-5.6 6.4-5.2-.4 3.3-3 5.3-6.4 5.2Z"/><path d="M0 0c-1.9-3.1-1.2-6.3 1.3-7-.1 3-.4 5-1.3 7Z"/><path d="M0 0c3.4-.9 6.4.6 7.1 3.2-3.1.8-5.6-.3-7.1-3.2Z"/></g></g></svg></h2>
+    <h2 class="h-section">Discover Collections</h2>
     <div class="tabs etabs" role="group" aria-label="Filter collections" data-grid="#colrow"><button class="tab" aria-pressed="true" data-cat="all">All</button><button class="tab" aria-pressed="false" data-cat="dining">Kitchen &amp; Dining</button><button class="tab" aria-pressed="false" data-cat="decor">Home Decor</button><button class="tab" aria-pressed="false" data-cat="gifting">Gifting</button></div>
   </div>
   <div class="edit-rail">
@@ -154,132 +154,56 @@
   <div class="wrap"><div class="rprog" aria-hidden="true"><i id="colprog"></i></div><a class="vall vall-m" href="collections.html">View all collections</a></div>
 </section>
 
-<!-- 6 · MOST POPULAR -->
-<section class="section" id="bestsellers"><div class="wrap">
-  <div class="sec-row"><div><h2 class="h-section h-mark">Most Popular<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M30 44C20 36 12 30 12 22 12 15 17 11 22 11 26 11 29 13.5 30 17 31 13.5 34 11 38 11 43 11 48 15 48 22 48 30 40 36 30 44Z"/><path pathLength="1" d="M30 44C40 49 52 46 60 38 66 32 74 32 78 37 81 41 78 45 74 43"/><path pathLength="1" d="M60 8V18"/><path pathLength="1" d="M55 13H65"/><path pathLength="1" d="M73 19V25"/><path pathLength="1" d="M70 22H76"/></g><g class="sm-bloom"><path transform="translate(30 24.5) scale(1.25)" d="M0 6C-3.5 3.3-6 1.3-6-1.6-6-3.8-4.4-5-2.8-5-1.5-5-.4-4.2 0-3c.4-1.2 1.5-2 2.8-2C4.4-5 6-3.8 6-1.6 6 1.3 3.5 3.3 0 6Z"/></g></svg></h2></div><div class="sec-end"><a class="vall" href="collection.html" id="shopAllBtn">View all</a></div></div>
-  <div class="tabs pills" role="group" aria-label="Filter products" data-grid="#pgrid"><button class="tab" aria-pressed="true" data-cat="best">Bestsellers</button><button class="tab" aria-pressed="false" data-cat="new">New Arrivals</button><button class="tab" aria-pressed="false" data-cat="crockery">Crockery</button><button class="tab" aria-pressed="false" data-cat="table">Table Essentials</button><button class="tab" aria-pressed="false" data-cat="decor">Home Decor</button><button class="tab" aria-pressed="false" data-cat="resin">Resin Art</button><button class="tab" aria-pressed="false" data-cat="gifts">Gifts</button></div>
-  <div class="pgrid-static" id="pgrid">
-      <article class="card" data-cat="best decor" data-price="24999">
-        <div class="im"><span class="lab">Statement Furniture</span><span class="badge">Best Seller</span><a href="product.html" aria-label="Wristwatch Coffee Table Set"></a><img loading="lazy" src="assets/products/watch-table.jpg" alt="Pair of gold wristwatch-shaped nesting coffee tables"><button class="qadd" data-name="Wristwatch Coffee Table Set" data-price="24999" data-meta="Statement Furniture">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Wristwatch Coffee Table Set</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(12)</small></span></div><p class="price">₹24,999</p></div>
-      </article>
-      <article class="card" data-cat="best crockery gifts" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">Best Seller</span><a href="product.html" aria-label="Ma Chérie Plate"></a><img loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries and the words Ma Chérie"><button class="qadd" data-name="Ma Chérie Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Ma Chérie Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(48)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card" data-cat="best decor" data-price="1295">
-        <div class="im"><span class="lab">Soft Furnishing</span><a href="product.html" aria-label="Sunflower Tufted Cushion"></a><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt="Cream cushion with tufted mustard sunflowers"><button class="qadd" data-name="Sunflower Tufted Cushion" data-price="1295" data-meta="Soft Furnishing">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Sunflower Tufted Cushion</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(31)</small></span></div><p class="price">₹1,295</p></div>
-      </article>
-      <article class="card" data-cat="best table gifts" data-price="595">
-        <div class="im"><span class="lab">Table Essentials</span><a href="product.html" aria-label="Pineapple Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-pineapple.jpg" alt="Pair of ceramic pineapple salt and pepper shakers"><button class="qadd" data-name="Pineapple Salt &amp; Pepper" data-price="595" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Pineapple Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(27)</small></span></div><p class="price">₹595</p></div>
-      </article>
-      <article class="card" data-cat="best resin gifts" data-price="2495">
-        <div class="im"><span class="lab">Resin Art</span><span class="badge">Made to Order</span><a href="product.html" aria-label="Faith Keepsake Stand"></a><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands on a store shelf"><button class="qadd" data-name="Faith Keepsake Stand" data-price="2495" data-meta="Resin Art">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Faith Keepsake Stand</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(19)</small></span></div><p class="price">₹2,495</p></div>
-      </article>
-      <article class="card" data-cat="best crockery" data-price="795">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">Sale</span><a href="product.html" aria-label="Watermelon Plate"></a><img loading="lazy" src="assets/products/plate-watermelon.jpg" alt="Red ribbed plate painted like a watermelon"><button class="qadd" data-name="Watermelon Plate" data-price="795" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Watermelon Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(22)</small></span></div><p class="price">₹795<s>₹895</s></p></div>
-      </article>
-      <article class="card" data-cat="best gifts new" data-price="899">
-        <div class="im"><span class="lab">Drinkware</span><span class="badge">New</span><a href="product.html" aria-label="Character Tumblers"></a><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of four colourful character tumblers with straw lids"><button class="qadd" data-name="Character Tumblers" data-price="899" data-meta="Drinkware">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Character Tumblers</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(15)</small></span></div><p class="price">₹899</p></div>
-      </article>
-      <article class="card" data-cat="best gifts new" data-price="7499">
-        <div class="im"><span class="lab">Travel</span><span class="badge">Great Gift</span><a href="product.html" aria-label="Seashell Luggage Set"></a><img loading="lazy" src="assets/products/shell-set.jpg" alt="Aqua seashell-shaped hard-shell trolley and vanity case"><button class="qadd" data-name="Seashell Luggage Set" data-price="7499" data-meta="Travel">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Seashell Luggage Set</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(9)</small></span></div><p class="price">₹7,499</p></div>
-      </article>
-      <article class="card hide" data-cat="crockery new" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Lemon Stripe Plate"></a><img loading="lazy" src="assets/products/plate-lemon.jpg" alt="Blue striped plate with a lemon sprig"><button class="qadd" data-name="Lemon Stripe Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Lemon Stripe Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(11)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card hide" data-cat="crockery" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><a href="product.html" aria-label="Blue Vine Plate"></a><img loading="lazy" src="assets/products/plate-vine.jpg" alt="Cream plate with a ring of small blue flowers"><button class="qadd" data-name="Blue Vine Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Blue Vine Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(8)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card hide" data-cat="crockery new" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">New</span><a href="product.html" aria-label="Blossom Plate"></a><img loading="lazy" src="assets/products/plate-blossom.jpg" alt="Cream plate scattered with pink flowers"><button class="qadd" data-name="Blossom Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Blossom Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(14)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card hide" data-cat="table new" data-price="645">
-        <div class="im"><span class="lab">Table Essentials</span><span class="badge">New</span><a href="product.html" aria-label="Dice Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-dice.jpg" alt="Red and white ceramic dice salt and pepper shakers"><button class="qadd" data-name="Dice Salt &amp; Pepper" data-price="645" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Dice Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(17)</small></span></div><p class="price">₹645</p></div>
-      </article>
-      <article class="card hide" data-cat="table" data-price="595">
-        <div class="im"><span class="lab">Table Essentials</span><a href="product.html" aria-label="Watermelon Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-watermelon.jpg" alt="Ceramic watermelon wedge salt and pepper shakers"><button class="qadd" data-name="Watermelon Salt &amp; Pepper" data-price="595" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Watermelon Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(6)</small></span></div><p class="price">₹595</p></div>
-      </article>
-      <article class="card hide" data-cat="table" data-price="595">
-        <div class="im"><span class="lab">Table Essentials</span><a href="product.html" aria-label="Egg Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-egg.jpg" alt="White and brown ceramic egg salt and pepper shakers"><button class="qadd" data-name="Egg Salt &amp; Pepper" data-price="595" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Egg Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(5)</small></span></div><p class="price">₹595</p></div>
-      </article>
-      <article class="card hide" data-cat="table" data-price="695">
-        <div class="im"><span class="lab">Table Essentials</span><a href="product.html" aria-label="Green Pear Salt &amp; Pepper"></a><img loading="lazy" src="assets/products/sp-pear.jpg" alt="Green ceramic pear shakers on a yellow tray"><button class="qadd" data-name="Green Pear Salt &amp; Pepper" data-price="695" data-meta="Table Essentials">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Green Pear Salt &amp; Pepper</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(7)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card hide" data-cat="decor" data-price="3495">
-        <div class="im"><span class="lab">Soft Furnishing</span><a href="product.html" aria-label="Sunflower Tufted Throw"></a><img loading="lazy" src="assets/products/throw-sunflower.jpg" alt="Cream fringed throw with green and mustard tufted sunflowers"><button class="qadd" data-name="Sunflower Tufted Throw" data-price="3495" data-meta="Soft Furnishing">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Sunflower Tufted Throw</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(10)</small></span></div><p class="price">₹3,495</p></div>
-      </article>
-      <article class="card hide" data-cat="decor gifts" data-price="1295">
-        <div class="im"><span class="lab">Soft Furnishing</span><a href="product.html" aria-label="Good To Be Home Cushion"></a><img loading="lazy" src="assets/products/cushion-home.jpg" alt="Cushion reading It’s so good to be home beside a sunflower cushion"><button class="qadd" data-name="Good To Be Home Cushion" data-price="1295" data-meta="Soft Furnishing">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Good To Be Home Cushion</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(13)</small></span></div><p class="price">₹1,295</p></div>
-      </article>
-      <article class="card hide" data-cat="decor gifts" data-price="1895">
-        <div class="im"><span class="lab">Storage &amp; Styling</span><a href="product.html" aria-label="Rattan Heart Baskets"></a><img loading="lazy" src="assets/products/basket-heart.jpg" alt="Woven heart-shaped rattan baskets on a shelf"><button class="qadd" data-name="Rattan Heart Baskets" data-price="1895" data-meta="Storage &amp; Styling">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Rattan Heart Baskets</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(9)</small></span></div><p class="price">₹1,895</p></div>
-      </article>
-      <article class="card hide" data-cat="resin gifts" data-price="3995">
-        <div class="im"><span class="lab">Resin Art</span><a href="product.html" aria-label="Racer Wall Clock"></a><img loading="lazy" src="assets/products/clock-race.jpg" alt="Black round wall clock with toy cars as hour markers"><button class="qadd" data-name="Racer Wall Clock" data-price="3995" data-meta="Resin Art">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Racer Wall Clock</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(6)</small></span></div><p class="price">₹3,995</p></div>
-      </article>
-      <article class="card hide" data-cat="resin gifts" data-price="1995">
-        <div class="im"><span class="lab">Resin Art</span><a href="product.html" aria-label="Floral Resin Trays"></a><img loading="lazy" src="assets/products/resin-trays.jpg" alt="Gold-edged decorative resin trays and small dishes on a shelf"><button class="qadd" data-name="Floral Resin Trays" data-price="1995" data-meta="Resin Art">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Floral Resin Trays</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(11)</small></span></div><p class="price">₹1,995</p></div>
-      </article>
-      <article class="card hide" data-cat="gifts new" data-price="0">
-        <div class="im"><span class="lab">Festive Hamper</span><span class="badge">Festive</span><a href="product.html" aria-label="The Floral Hamper"></a><img loading="lazy" src="assets/gifting/floral.jpg" alt="The Floral Hamper"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to enquire</a></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">The Floral Hamper</a></h3></div><p class="price">On enquiry</p></div>
-      </article>
-      <article class="card hide" data-cat="gifts new" data-price="0">
-        <div class="im"><span class="lab">Festive Hamper</span><span class="badge">Festive</span><a href="product.html" aria-label="The Pink Frame Hamper"></a><img loading="lazy" src="assets/gifting/pink-frame.jpg" alt="The Pink Frame Hamper"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to enquire</a></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">The Pink Frame Hamper</a></h3></div><p class="price">On enquiry</p></div>
-      </article>
-      <article class="card hide" data-cat="gifts new" data-price="0">
-        <div class="im"><span class="lab">Festive Hamper</span><span class="badge">Festive</span><a href="product.html" aria-label="The Wooden Gift Box"></a><img loading="lazy" src="assets/gifting/wooden.jpg" alt="The Wooden Gift Box"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to enquire</a></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">The Wooden Gift Box</a></h3></div><p class="price">On enquiry</p></div>
-      </article>
-      <article class="card hide" data-cat="gifts new" data-price="0">
-        <div class="im"><span class="lab">Festive Hamper</span><span class="badge">Festive</span><a href="product.html" aria-label="The Woven Gift Basket"></a><img loading="lazy" src="assets/gifting/woven.jpg" alt="The Woven Gift Basket"><a class="qadd qenq" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">DM to enquire</a></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">The Woven Gift Basket</a></h3></div><p class="price">On enquiry</p></div>
-      </article>
+<!-- 6 · GIFTING, YOUR WAY: the two halves of the business, made to order or ready to give -->
+<section class="section gways"><div class="wrap">
+  <div class="gw-head"><p class="kick">Gifting, your way</p><h2 class="h-section">Made for Them, or Ready to Go</h2><p class="sub">Some gifts are poured to order with a name, a date or a flower that matters. Others are already on our shelves, waiting to be wrapped.</p></div>
+  <div class="gw-grid">
+    <a class="gw-card" href="product-custom.html">
+      <div class="gw-im"><img loading="lazy" src="assets/store/hero-resin.jpg" alt="Handmade resin keepsakes with pressed flowers and gold leaf"></div>
+      <div class="gw-tx"><p class="kick">Customise</p><h3>Make It Personal</h3><p>Resin keepsakes in your colours, with names, dates and preserved flowers. Ready in 7–10 days.</p><span class="tlink"><span>Start a custom piece</span></span></div>
+    </a>
+    <a class="gw-card" href="gifting.html">
+      <div class="gw-im"><img loading="lazy" src="assets/gifting/floral.jpg" alt="Gold mesh gift box with ivory flowers and Pretty Petals jars" style="object-position:50% 60%"></div>
+      <div class="gw-tx"><p class="kick">Ready to gift</p><h3>Pick It, We Wrap It</h3><p>Hampers, crockery and decor from the store, wrapped by hand with a handwritten note.</p><span class="tlink"><span>Shop ready-made gifts</span></span></div>
+    </a>
   </div>
 </div></section>
 
-<!-- 7 · SPLIT PANELS: image one side, copy panel the other; polarity alternates -->
-<section class="splitp dark">
-  <div class="splitp-im"><img loading="lazy" src="assets/stock/hero-resin.jpg" alt="Swirls of pink and aqua poured resin"></div>
-  <div class="splitp-in"><p class="kick">The Resin Studio</p><h2>Poured by hand, made to keep</h2><p>Keepsakes, trays and clocks in your colours, with your names and dates.</p><div class="hero-cta"><a class="btn btn-light" href="product-custom.html">Start a custom piece</a><a class="btn btn-outline" href="collection.html">Shop resin art</a></div></div>
-</section>
-<section class="splitp rev">
-  <div class="splitp-im"><img loading="lazy" src="assets/gifting/floral.jpg" alt="Gold mesh gift box with ivory flowers and Pretty Petals jars" style="object-position:50% 60%"></div>
-  <div class="splitp-in"><p class="kick">Festive Gifting</p><h2>Gifts to light up the season</h2><p>Hampers made to order and wrapped by hand, for family, friends and the office.</p><div class="hero-cta"><a class="btn btn-solid" href="gifting.html">Shop the hampers</a><a class="btn btn-outline" href="gifting.html#corporate">Corporate gifting</a></div></div>
-</section>
+<!-- 7 · MOST POPULAR: three favourites, each with a short note on why people love it. SAMPLE NOTES: confirm with the store. -->
+<section class="section pop" id="bestsellers"><div class="wrap">
+  <div class="pop-head"><p class="kick">Most popular</p><h2 class="h-section">The Pieces Everyone Asks About</h2></div>
+  <article class="pop-row">
+    <div class="pop-media"><img class="pop-a" loading="lazy" src="assets/products/watch-table.jpg" alt="Pair of gold wristwatch-shaped nesting coffee tables"><img class="pop-b" loading="lazy" src="assets/products/watch-dial.jpg" alt="Close-up of the gear-detailed dial"></div>
+    <div class="pop-tx"><span class="pop-n">01</span><p class="pop-why">Trending on Instagram</p><h3><a href="product.html">Wristwatch Coffee Table Set</a></h3><p class="pop-note">Our most-watched reel. People come in just to see the gear dials up close, and most can’t believe they’re tables.</p><p class="pop-price">₹24,999</p>
+      <div class="pop-cta"><button class="btn btn-solid js-add" data-name="Wristwatch Coffee Table Set" data-price="24999" data-img="assets/products/watch-table.jpg" data-meta="Nesting pair">Add to cart</button><a class="tlink" href="product.html"><span>View piece</span></a></div></div>
+  </article>
+  <article class="pop-row rev">
+    <div class="pop-media"><img class="pop-a" loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries and the words Ma Chérie"><img class="pop-b" loading="lazy" src="assets/products/plate-blossom.jpg" alt="Cream plate scattered with pink flowers"></div>
+    <div class="pop-tx"><span class="pop-n">02</span><p class="pop-why">Bestseller in store</p><h3><a href="product.html">Ma Chérie Plate</a></h3><p class="pop-note">The first thing people pick up when they walk in. Hardly anyone leaves with just one.</p><p class="pop-price">₹695</p>
+      <div class="pop-cta"><button class="btn btn-solid js-add" data-name="Ma Chérie Plate" data-price="695" data-img="assets/products/plate-cherie.jpg" data-meta="Everyday Plate">Add to cart</button><a class="tlink" href="product.html"><span>View piece</span></a></div></div>
+  </article>
+  <article class="pop-row">
+    <div class="pop-media"><img class="pop-a" loading="lazy" src="assets/products/sp-pineapple.jpg" alt="Pair of ceramic pineapple salt and pepper shakers"><img class="pop-b" loading="lazy" src="assets/products/sp-set.jpg" alt="A row of ceramic salt and pepper sets"></div>
+    <div class="pop-tx"><span class="pop-n">03</span><p class="pop-why">Most gifted</p><h3><a href="product.html">Pineapple Salt &amp; Pepper</a></h3><p class="pop-note">Small, cheerful and easy to wrap. Our go-to housewarming gift.</p><p class="pop-price">₹595</p>
+      <div class="pop-cta"><button class="btn btn-solid js-add" data-name="Pineapple Salt &amp; Pepper" data-price="595" data-img="assets/products/sp-pineapple.jpg" data-meta="Set of two">Add to cart</button><a class="tlink" href="product.html"><span>View piece</span></a></div></div>
+  </article>
+  <div class="pop-more"><p class="kick">Also loved</p>
+    <div class="pop-mini"><a href="product.html"><img loading="lazy" src="assets/products/tumbler-set.jpg" alt=""><b>Character Tumblers</b><span>₹899</span></a><a href="product.html"><img loading="lazy" src="assets/products/sp-dice.jpg" alt=""><b>Dice Salt &amp; Pepper</b><span>₹645</span></a><a href="product.html"><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt=""><b>Sunflower Tufted Cushion</b><span>₹1,295</span></a><a href="product.html"><img loading="lazy" src="assets/products/basket-heart.jpg" alt=""><b>Rattan Heart Baskets</b><span>₹1,895</span></a></div>
+    <a class="vall" href="collection.html">View all bestsellers</a></div>
+</div></section>
 
 <!-- 8 · SHOP THE STORE (hotspots) -->
 <section class="section"><div class="wrap look">
   <div class="look-img"><img loading="lazy" src="assets/store/displays.jpg" alt="Lit glass shelves of heart baskets, resin plates and mugs in the Pretty Petals store">
     <button class="pin" style="left:22%;top:12%" data-pin="0" aria-label="Rattan Heart Baskets"><i></i></button><button class="pin" style="left:33%;top:64%" data-pin="1" aria-label="Floral Resin Trays"><i></i></button><button class="pin" style="left:73%;top:62%" data-pin="2" aria-label="Ma Chérie Plate"><i></i></button>
     <span class="look-tag">Shop the Shelf · 3 products</span></div>
-  <div class="look-copy"><p class="kick">In store this week</p><h2 class="h-section h-mark">Shop the Shelf<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path class="l1" pathLength="1" d="M6 40H92"/><path class="l2" pathLength="1" d="M8 43.5H90" stroke-width=".9"/><path class="l3" pathLength="1" d="M42 43.5C35 46 24 49 19.5 56.5c-1.6 2.7-.4 5.6 2.4 5.6 2.2 0 3.1-2 2-3.4"/><path class="l4" pathLength="1" d="M10 43.5V63"/><path class="l5" pathLength="1" d="M51.6 40c-2.7-2.5-2.9-8.3.9-11 1.1-.8 1.7-1.7 1.7-3V23.5h3.2V26c0 1.3.6 2.2 1.7 3 3.8 2.7 3.6 8.5.9 11"/><path class="l6" pathLength="1" d="M55.8 23.5C55.2 17 57.4 11 62.5 7"/><path class="l7" pathLength="1" d="M56.4 16c-3.2-.6-5.3-2.7-5.8-5.6 3.1.2 5.2 2 5.8 5.6Z" stroke-width="1"/><circle class="l8" pathLength="1" cx="77.5" cy="32.2" r="7.6" transform="rotate(-8 77.5 32.2)"/><circle class="l9" pathLength="1" cx="77.5" cy="32.2" r="4.4" stroke-width=".8"/></g><g class="sm-bloom"><path d="M62.5 7c.6-3.6 3.4-5.6 6.4-5.2-.4 3.3-3 5.3-6.4 5.2Z"/><path d="M62.5 7c-1.9-3.1-1.2-6.3 1.3-7-.1 3-.4 5-1.3 7Z"/><path d="M62.5 7c3.4-.9 6.4.6 7.1 3.2-3.1.8-5.6-.3-7.1-3.2Z"/></g><path class="sm-fall" d="M0 0C3.4-1.9 4.3-6.7 0-9.6-4.3-6.7-3.4-1.9 0 0Z"/></svg></h2><p class="sub">Straight from our display at CCC, Zirakpur. Tap a pin to see the piece.</p>
+  <div class="look-copy"><p class="kick">In store this week</p><h2 class="h-section">Shop the Shelf</h2><p class="sub">Straight from our display at CCC, Zirakpur. Tap a pin to see the piece.</p>
     <ul class="look-list"><li><a href="product.html" data-pin="0"><img src="assets/products/basket-heart.jpg" alt=""><span><small>Storage &amp; Styling</small><b>Rattan Heart Baskets</b><em>₹1,895</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li><li><a href="product.html" data-pin="1"><img src="assets/products/resin-trays.jpg" alt=""><span><small>Resin Art</small><b>Floral Resin Trays</b><em>₹1,995</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li><li><a href="product.html" data-pin="2"><img src="assets/products/plate-cherie.jpg" alt=""><span><small>Everyday Plate</small><b>Ma Chérie Plate</b><em>₹695</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></li></ul></div>
 </div></section>
 
 <!-- 10 · ITEM OF THE DAY -->
 <section class="section" id="spotlight"><div class="wrap">
-  <div class="sec-row"><div><h2 class="h-section h-mark">Piece of the Week<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M48 8L31 60"/><path pathLength="1" d="M48 8L65 60"/><path pathLength="1" d="M48 8V56"/><path pathLength="1" d="M35.5 47H60.5"/><path pathLength="1" d="M33 15H63V40H33Z"/><path pathLength="1" d="M37 19H59V36H37Z"/><path pathLength="1" d="M48 36V30.5"/><path pathLength="1" d="M78 10V20"/><path pathLength="1" d="M73 15H83"/></g><g class="sm-bloom"><g transform="translate(48 31) scale(1.55)"><path d="M0 0c.6-3.6 3.4-5.6 6.4-5.2-.4 3.3-3 5.3-6.4 5.2Z"/><path d="M0 0c-1.9-3.1-1.2-6.3 1.3-7-.1 3-.4 5-1.3 7Z"/><path d="M0 0c3.4-.9 6.4.6 7.1 3.2-3.1.8-5.6-.3-7.1-3.2Z"/></g></g></svg></h2><p class="sub">One statement piece, picked by the store.</p></div></div>
+  <div class="sec-row"><div><h2 class="h-section">Piece of the Week</h2><p class="sub">One statement piece, picked by the store.</p></div></div>
   <div class="iotd">
     <div class="iotd-a"><img loading="lazy" src="assets/products/watch-dial.jpg" alt="Close-up of the gear-detailed dial"></div>
     <div class="iotd-b"><video id="spotVid" muted loop playsinline preload="metadata" poster="assets/video/statement.jpg" src="assets/video/statement.mp4" aria-label="Video of the wristwatch coffee tables in the store"></video></div>
@@ -290,12 +214,23 @@
   </div>
 </div></section>
 
+<!-- 11 · THE GIFT COLLECTION: shop gifts by occasion -->
+<section class="section gcol"><div class="wrap">
+  <div class="sec-row"><div><p class="kick">The gift collection</p><h2 class="h-section">Gifts They’ll Keep</h2></div><a class="vall" href="gifting.html">Explore all gifts</a></div>
+  <div class="gc-grid">
+    <a class="gc-tile" href="collection.html?c=festive"><div class="gc-im"><img loading="lazy" src="assets/gifting/floral.jpg" alt="Gold mesh festive hamper with ivory flowers" style="object-position:50% 60%"></div><h3>Festive Hampers</h3><p>Made to order for the season</p></a>
+    <a class="gc-tile" href="gifting.html"><div class="gc-im"><img loading="lazy" src="assets/products/cushion-home.jpg" alt="Cushion embroidered with a home message"></div><h3>Housewarming</h3><p>For the friends with a new key</p></a>
+    <a class="gc-tile" href="gifting.html"><div class="gc-im"><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of colourful character tumblers"></div><h3>Birthdays</h3><p>Bright, fun and easy to love</p></a>
+    <a class="gc-tile" href="gifting.html#corporate"><div class="gc-im"><img loading="lazy" src="assets/gifting/wooden.jpg" alt="Carved wooden gift box with jars and candles"></div><h3>Corporate Gifting</h3><p>Branded hampers for your team</p></a>
+  </div>
+</div></section>
+
 <!-- 13 · TESTIMONIALS: SAMPLE COPY. Replace with real customer reviews before launch. -->
 <!-- SAMPLE REVIEWS: replace with real customer reviews before launch -->
 <section class="reviews" style="padding:var(--sp) 0">
   <div class="wrap">
     <div class="sec-row">
-      <h2 class="h-section h-mark">What Our Customers Are Saying<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M20 12H64Q70 12 70 18V35Q70 41 64 41H36L26 50.5 28 41H20Q14 41 14 35V18Q14 12 20 12Z"/><path pathLength="1" d="M78 20H89Q94 20 94 25V31Q94 36 89 36H87.5L89.5 42 82.5 36H78Q73 36 73 31V25Q73 20 78 20Z"/></g><g class="sm-bloom"><path transform="translate(42 25.5) scale(1.55)" d="M0 6C-3.5 3.3-6 1.3-6-1.6-6-3.8-4.4-5-2.8-5-1.5-5-.4-4.2 0-3c.4-1.2 1.5-2 2.8-2C4.4-5 6-3.8 6-1.6 6 1.3 3.5 3.3 0 6Z"/><circle cx="78.8" cy="28" r="1.3"/><circle cx="83.5" cy="28" r="1.3"/><circle cx="88.2" cy="28" r="1.3"/></g></svg></h2>
+      <h2 class="h-section">What Our Customers Are Saying</h2>
       <div class="sarrs"><button class="sarr" data-scroll="rrow" data-dir="-1" aria-label="Previous reviews"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="sarr" data-scroll="rrow" data-dir="1" aria-label="Next reviews"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
     <div class="rgrid rrow" id="rrow" data-autoplay>
@@ -311,23 +246,23 @@
   </div>
 </section>
 
-<!-- 12 · OUR STORY (words from their own reel) -->
-<section class="film" id="story">
-  <img loading="lazy" src="assets/store/store-floor.jpg" alt="">
-  <div class="film-in">
-    <img class="mark-img" src="assets/pp-logo-sage.png" alt="Pretty Petals">
-    <p class="kick">Our Story</p>
-    <h2>A Million What-Ifs Later.</h2>
-    <p class="q">Behind every small business is someone with a big dream and a lot of sleepless nights. What if it doesn't work out? But what if it does?</p>
-    <button class="btn btn-light play-link" data-video="assets/video/story.mp4">Watch our story</button>
-  </div>
-</section>
+<!-- 12 · OUR STORY: the founder reel beside her story (words from @prettypetals.home, Ep 01: The Origin). Swap the video for the original file when the client sends it. -->
+<section class="story-band" id="story"><div class="wrap story">
+  <div class="story-vid"><video src="assets/video/story.mp4" muted loop playsinline preload="metadata" data-inview aria-label="Pretty Petals founder story reel"></video>
+    <button class="story-play play-link" data-video="assets/video/story.mp4" aria-label="Watch our story with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>Watch with sound</button></div>
+  <div class="story-tx"><p class="kick">Our Story</p>
+    <h2 class="h-section">“Everyone Said I’d Quit in Two Months.”</h2>
+    <p>Pretty Petals began in 2021, when Bisman was 19 and pouring raw resin kits in her bedroom. The first pieces were messy and far from perfect, but the curiosity never faded.</p>
+    <p>Five years of late nights later, she preserves wedding garlands, invitation frames and the milestones people can’t bear to lose. What everyone called a passing phase now has a permanent home: our own studio, workshop and showroom at CCC, Zirakpur.</p>
+    <p class="story-sign">Bisman, founder</p>
+    <div class="hero-cta"><a class="btn btn-light" href="about.html">Read our story</a><a class="btn btn-outline" href="contact.html">Visit the studio</a></div></div>
+</div></section>
 
 <!-- 14 · PETAL NOTES (journal) -->
 <section class="section" id="notes">
   <div class="wrap">
     <div class="sec-row">
-      <h2 class="h-section h-mark">Petal Notes<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M34 42C44 26 56 14 75 4 71 16 62 30 43 40Z"/><path pathLength="1" d="M28 48L68 11"/><path pathLength="1" d="M28 48C22 52 14 52 12.5 48 11 44 16 42 18 46 20.5 52 34 54 46 50 57 46.5 68 50 79 46"/></g><g class="sm-bloom"><path transform="translate(83.5 44.5) rotate(70) scale(1.6)" d="M0 0C3.4-1.9 4.3-6.7 0-9.6-4.3-6.7-3.4-1.9 0 0Z"/></g></svg></h2>
+      <h2 class="h-section">Petal Notes</h2>
       <div class="sec-end"><div class="sarrs"><button class="sarr" data-scroll="jrow" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="sarr" data-scroll="jrow" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div><a class="vall" href="blog.html">View all</a></div>
     </div>
     <div class="crow jrow" id="jrow">
@@ -341,7 +276,7 @@
 
 <!-- 15 · INSTAGRAM REELS: centred coverflow, active reel plays, linked product below -->
 <section class="reels-band" id="videos">
-  <div class="wrap reels-head"><p class="kick">Seen on Instagram</p><h2 class="h-section h-mark">Straight From Our Reels<svg class="h-orn" viewBox="0 0 100 66" aria-hidden="true" focusable="false"><g class="sm-ln" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle pathLength="1" cx="30" cy="27" r="17"/><circle pathLength="1" cx="30" cy="27" r="3.4"/><circle pathLength="1" cx="30" cy="17.5" r="3.6"/><circle pathLength="1" cx="39" cy="24" r="3.6"/><circle pathLength="1" cx="35.6" cy="34.7" r="3.6"/><circle pathLength="1" cx="24.4" cy="34.7" r="3.6"/><circle pathLength="1" cx="21" cy="24" r="3.6"/><path pathLength="1" d="M30 44C44 44 49 40 58 40H70C80 40 85 45 85 50"/><path pathLength="1" d="M30 47.5C44 47.5 50 44 58 44H70C77 44 81 47 81.5 50"/><circle pathLength="1" cx="76" cy="20" r="9.5"/></g><g class="sm-bloom"><path d="M73 15.2 81.4 20 73 24.8Z"/></g></svg></h2></div>
+  <div class="wrap reels-head"><p class="kick">Seen on Instagram</p><h2 class="h-section">Straight From Our Reels</h2></div>
   <div class="reels" id="reels" style="--i:2">
     <div class="reels-track">
       <figure class="reel" data-i="0"><video muted loop playsinline preload="metadata" poster="assets/video/plates.jpg" src="assets/video/plates.mp4"></video>
@@ -381,25 +316,31 @@
 <section class="band perks-band">
   <div class="wrap perks">
     <div class="perk">
-      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <svg class="pi pi-solid" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a7.5 7.5 0 0 0-7.5 7.5C4.5 15 12 22 12 22s7.5-7 7.5-12.5A7.5 7.5 0 0 0 12 2Zm0 10.3a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6Z"/></svg>
       <h3>Come Say Hello</h3>
       <p>Resin art, crockery, decor and gifts under one roof at CCC, Zirakpur.</p>
       <a class="tlink" href="https://maps.app.goo.gl/jRsqGbub9CQCa4qNA" target="_blank" rel="noopener"><span>Get directions</span></a>
     </div>
     <div class="perk">
-      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11Z"/></svg>
+      <svg class="pi pi-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c3.3 4.3 6.5 7.6 6.5 11.7a6.5 6.5 0 0 1-13 0c0-4.1 3.2-7.4 6.5-11.7Z"/></svg>
       <h3>Made to Order</h3>
       <p>Custom resin keepsakes that turn a memory, a prayer or a name into something to hold on to.</p>
       <a class="tlink" href="product-custom.html"><span>Start a custom piece</span></a>
     </div>
     <div class="perk">
-      <svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>
+      <svg class="pi pi-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4h15A1.5 1.5 0 0 1 21 5.5v10a1.5 1.5 0 0 1-1.5 1.5H9.5L4.6 21a.4.4 0 0 1-.6-.3V5.5A1.5 1.5 0 0 1 4.5 4Z"/></svg>
       <h3>Order on DM</h3>
       <p>See something you love? DM or WhatsApp us and we will take it from there.</p>
       <a class="tlink" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener"><span>Message us</span></a>
     </div>
   </div>
 </section>
+
+<!-- 18 · FAQ (answers mirror faq.html) -->
+<section class="section hfaq"><div class="wrap hfaq-in">
+  <div class="hfaq-head"><p class="kick">Good to know</p><h2 class="h-section">Questions, Answered</h2><p class="sub">Can’t find what you need? DM us on Instagram or message us on WhatsApp.</p><a class="tlink" href="faq.html"><span>See all FAQs</span></a></div>
+  <div class="faq"><details><summary>How do I place an order?</summary><p>Add pieces to your cart and check out, or send us a DM on Instagram or a message on WhatsApp with the piece you like.</p></details><details><summary>Do you deliver outside Zirakpur?</summary><p>Yes, across India. Most orders arrive in 5–8 days.</p></details><details><summary>How much is delivery?</summary><p>Free on orders over ₹2,499. Below that, a flat fee is shown at checkout.</p></details><details><summary>How long does a custom piece take?</summary><p>7–10 days after you approve the design preview.</p></details><details><summary>Can I send my own flowers?</summary><p>Yes. Dried flowers work best. We will guide you on how to send them.</p></details><details><summary>Do you gift wrap?</summary><p>Yes, free, with a handwritten note if you add one at checkout.</p></details></div>
+</div></section>
 
 <!-- 18 · FOOTER -->
 <footer class="site">

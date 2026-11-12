@@ -180,20 +180,27 @@ rail && $$('button[data-panel]', rail).forEach(b => {
   ['mouseenter', 'focus', 'click'].forEach(ev => b.addEventListener(ev, on));
 });
 /* current page in the nav */
-const here = location.pathname.split('/').pop() || 'index.html';
+const here = (location.pathname.split('/').pop() || 'index.html').replace(/^([^.]+)$/, '$1.html');
 const hereQ = here + location.search;
 // exact link (incl. ?c=) wins; a bare collection.html counts as Crockery; then the page itself or its data-match
 const current = links => links.find(a => a.getAttribute('href') === hereQ) || (here === 'collection.html' && !location.search && links.find(a => a.getAttribute('href') === 'collection.html?c=crockery')) || links.find(a => a.getAttribute('href') === here || a.dataset.match?.split(' ').includes(here));
 current($$('#nav>li>.nav-link'))?.setAttribute('aria-current', 'location');
 current($$('.side-links a,.side-sub a', side))?.setAttribute('aria-current', 'page');
 // prototype only: one collection template stands in for every collection, so swap its heading by ?c=
-const colCopy = { decor: ['Home Decor', 'Cushions, throws, baskets and statement pieces that make a room feel finished.'], festive: ['Festive Edit', 'Hampers, table pieces and gifts picked for the season.'] }[new URLSearchParams(location.search).get('c')];
+const colKey = new URLSearchParams(location.search).get('c');
+const colCopy = { decor: ['Home Decor', 'Cushions, throws, baskets and statement pieces that make a room feel finished.', 'assets/store/soft-furnishings.jpg', 'Cushions and throws on display in the store'], festive: ['Festive Edit', 'Hampers, table pieces and gifts picked for the season.', 'assets/gifting/floral.jpg', 'Gold mesh festive hamper with ivory flowers'] }[colKey];
+if (here === 'collection.html' && colKey !== 'festive') $$('.card[data-only="festive"]').forEach(c => c.remove());
 if (colCopy && here === 'collection.html') {
   const h = $('.page-banner h1'), c = $('.crumbs span:last-child');
   if (h) { h.textContent = colCopy[0]; h.nextElementSibling && (h.nextElementSibling.textContent = colCopy[1]); }
   if (c) c.textContent = colCopy[0];
+  const bi = $('.page-banner>img'); if (bi) { bi.src = colCopy[2]; bi.alt = colCopy[3] }
   document.title = colCopy[0] + ' | Pretty Petals';
 }
+$$('.ann-rot').forEach(r => {
+  const ps = $$('p', r); let i = 0;
+  if (ps.length > 1) setInterval(() => { if (document.hidden) return; ps[i].classList.remove('on'); i = (i + 1) % ps.length; ps[i].classList.add('on') }, 3800);
+});
 $('.icon-btn[aria-label="Account"]')?.addEventListener('click', () => location.href = 'login.html');
 
 /* ---------- hero carousel ---------- */
@@ -324,7 +331,7 @@ toTop.addEventListener('click', () => lenis ? lenis.scrollTo(0, { duration: 1.4 
 document.documentElement.classList.add('anim');
 /* every block animates on its own (heading, text, button, each card), siblings 75ms apart, like the Wonder theme */
 const groupSel = '.clist,.pgrid,.jgrid,.gift-grid,.rgrid,.shorts,.rs-cards,.perks,.spot-media,.trust,.vals,.pgrid-static,.crow,.promo2,.look-list,.iotd,.mosaic,.steps,.addr-grid';
-const atomSel = '.sec-row>div>*,.sec-head>*,.sec-end,.tabs,.look-copy>p,.look-copy>h2,.ba-copy>*,.iotd-info>*,.rs-grid>div:first-child>:not(ol),.film-in>*,.promo>div>*,.newc>img,.page-head>*,.page-banner .wrap>*,.split>div>*,.split>img,.feat-post,.ba-view,.look-img,.bsum,.reach,.faq,.form-card,.cinfo>*,.pdp-gal,.pdp-info>*,.summary,.cart-table,.reveal,.h-mark';
+const atomSel = '.sec-row>div>*,.sec-head>*,.sec-end,.tabs,.look-copy>p,.look-copy>h2,.ba-copy>*,.iotd-info>*,.rs-grid>div:first-child>:not(ol),.film-in>*,.promo>div>*,.newc>img,.page-head>*,.page-banner .wrap>*,.split>div>*,.split>img,.feat-post,.ba-view,.look-img,.bsum,.reach,.faq,.form-card,.cinfo>*,.pdp-gal,.pdp-info>*,.summary,.cart-table,.reveal';
 $$(groupSel).forEach(g => [...g.children].forEach((el, i) => { el.dataset.reveal = ''; el.style.setProperty('--d', (i % 8) * .075 + 's') }));
 $$(atomSel).forEach(el => {
   if (el.closest('[data-reveal]') || el.closest('.mega,.side,.drawer,.sx,.nl,.hero')) return;
@@ -367,6 +374,7 @@ if (lb) {
     s.addEventListener('mouseleave', () => { v.pause(); s.classList.remove('playing') });
   });
 }
+$$('video[data-inview]').forEach(v => { if (canMove) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? v.play().catch(() => { }) : v.pause()), { threshold: .35 }).observe(v) });
 const spotVid = $('#spotVid');
 if (spotVid && canMove) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? spotVid.play().catch(() => { }) : spotVid.pause()), { threshold: .35 }).observe(spotVid);
 
@@ -394,6 +402,7 @@ $$('[data-filters-close]').forEach(b => b.addEventListener('click', () => docume
   const chipFor = (f, v) => $(`[data-facet="${f}"] .fchip[data-v="${v}"]`, panel);
   // price options carry "min-max" and read data-price; the rest match "facet:value" tags in data-f
   const hit = (card, f, v) => {
+    if (f === 'price' && !card.dataset.price) return false;
     if (f !== 'price') return card.dataset.f.split(' ').includes(f + ':' + v);
     const [lo, hi] = v.split('-'), p = +card.dataset.price;
     return p >= +lo && (hi === '' || p <= +hi);
@@ -463,7 +472,8 @@ $$('[data-filters-close]').forEach(b => b.addEventListener('click', () => docume
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll() });
 
   /* sort: reorder the cards, keep the custom-piece promo in its slot */
-  const sorters = { best: (a, b) => a.dataset.i - b.dataset.i, new: (a, b) => hit(b, 'tag', 'new') - hit(a, 'tag', 'new') || a.dataset.i - b.dataset.i, asc: (a, b) => a.dataset.price - b.dataset.price, desc: (a, b) => b.dataset.price - a.dataset.price };
+  const pr = (c, none) => c.dataset.price ? +c.dataset.price : none;
+  const sorters = { best: (a, b) => a.dataset.i - b.dataset.i, new: (a, b) => hit(b, 'tag', 'new') - hit(a, 'tag', 'new') || a.dataset.i - b.dataset.i, asc: (a, b) => pr(a, 1e9) - pr(b, 1e9), desc: (a, b) => pr(b, -1) - pr(a, -1) };
   const slot = promo ? [...grid.children].indexOf(promo) : -1;
   const sortBy = li => {
     $$('[role="option"]', tbar).forEach(o => o.setAttribute('aria-selected', o === li));
@@ -477,6 +487,7 @@ $$('[data-filters-close]').forEach(b => b.addEventListener('click', () => docume
     li.addEventListener('click', () => sortBy(li));
     li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sortBy(li) } });
   });
+  if (colKey === 'festive') chipFor('occ', 'festive')?.setAttribute('aria-pressed', 'true');
   render(false);
 })();
 
