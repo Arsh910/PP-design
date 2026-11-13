@@ -166,7 +166,7 @@ document.body.insertAdjacentHTML('beforeend', `
     <a href="index.html">Home</a><a href="collection.html?c=crockery">Crockery &amp; Table</a><a href="collection.html?c=decor">Home Decor</a><a href="product-custom.html">Resin Studio</a>
     <a href="gifting.html">Gifting</a><a href="collections.html">Shop All</a>
   </nav>
-  <nav class="side-sub"><a href="blog.html">Petal Notes</a><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a></nav>
+  <nav class="side-sub"><!-- <a href="blog.html">Petal Notes</a> --><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a></nav>
   <a class="side-promo" href="gifting.html"><img src="assets/gifting/woven.jpg" alt=""><span class="new">New</span><b>Explore the Festive Edit</b></a>
   <div class="side-acct"><h4>My Account</h4><a class="btn btn-solid" href="login.html">Log in</a></div>
 </aside>`);
