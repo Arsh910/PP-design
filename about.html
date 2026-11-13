@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/theme.css?v=202611121400">
+<link rel="stylesheet" href="assets/theme.css?v=202611131000">
 </head>
 <body>
 
@@ -58,23 +58,43 @@
 
 <main>
 
-<section class="film" style="margin-top:0" id="story"><img src="assets/store/store-floor.jpg" alt="">
-  <div class="film-in"><img class="mark-img" src="assets/pp-logo-sage.png" alt="Pretty Petals"><p class="kick">Our Story</p><h1 class="h1" style="font-size:clamp(44px,5vw,84px)">A Million What-Ifs Later.</h1>
-  <p class="q">Behind every small business is someone with a big dream and a lot of sleepless nights. What if it doesn't work out? But what if it does?</p>
-  <button class="btn btn-light play-link" data-video="assets/video/story.mp4">Watch our story</button></div></section>
-<section class="section"><div class="wrap split">
-  <div><p class="kick">Where it began</p><h2 class="h-section">One table of resin</h2><p>Pretty Petals started with resin: a few keepsakes poured at home, given to friends, then to friends of friends. People kept asking for one more.</p><p>Each piece preserves something: a flower from a wedding, a name, a date that matters. That idea, that a home should hold the things you love, is still how we choose everything on our shelves.</p></div>
-  <img src="assets/products/resin-faith.jpg" alt="Resin keepsakes with gold detail">
+<!-- 1 · THE REEL: same film as the home page, with its message underneath -->
+<section class="ab-open"><div class="wrap">
+  <p class="kick">Our Story</p>
+  <h1>A Million What-Ifs Later.</h1>
+  <div class="vstage">
+    <span class="vghost" aria-hidden="true">what if it does?</span>
+    <div class="vframe"><video src="assets/video/story.mp4" muted loop playsinline preload="metadata" data-inview aria-label="Pretty Petals founder story reel"></video>
+      <button class="vplay play-link" data-video="assets/video/story.mp4" aria-label="Watch our story with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></button></div>
+  </div>
+  <p class="ab-msg">“Behind every small business is someone with a big dream and a lot of sleepless nights. What if it doesn’t work out? But what if it does?”</p>
+  <p class="kick ab-src">From our reel · <a href="https://www.instagram.com/prettypetals.home" target="_blank" rel="noopener">@prettypetals.home</a></p>
 </div></section>
+
+<!-- 2 · MEET BISMAN. PLACEHOLDER PHOTO: replace sign.jpg with Bisman's portrait when the client sends it -->
 <section class="section"><div class="wrap split rev">
-  <div><p class="kick">Today</p><h2 class="h-section">A store you can walk into</h2><p>Today that question has an answer you can visit: a store at Chandigarh City Centre full of resin art, crockery, home decor and gifts, with a purple sign above the door and something surprising on every shelf.</p><a class="btn btn-solid" href="contact.html">Visit the store</a></div>
+  <div><p class="kick">The face behind Pretty Petals</p><h2 class="h-section">Meet Bisman</h2>
+    <p>Bisman is the founder, the maker and the person you will most likely find behind the counter. She started Pretty Petals in 2021, at 19, pouring raw resin kits in her bedroom.</p>
+    <blockquote>“Everyone said I’d quit in two months.”</blockquote>
+    <p>She didn’t. Five years on she runs her own studio, workshop and showroom, and she is proud to call herself a store owner and a businesswoman. Every piece on the shelves is one she has chosen, poured or packed herself.</p>
+    <div class="hero-cta"><a class="btn btn-solid" href="contact.html">Visit the studio</a><a class="btn btn-outline" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">Say hello on DM</a></div></div>
   <img src="assets/store/sign.jpg" alt="The glowing Pretty Petals sign inside the store">
 </div></section>
-<section class="section"><div class="wrap"><div class="sec-row"><h2 class="h-section">What We Care About</h2></div>
-  <div class="vals"><div><span class="pn">01</span><h3>Pieces with personality</h3><p>We pick things that make you stop and smile, from dice shakers to wristwatch tables.</p></div>
-  <div><span class="pn">02</span><h3>Made by hand</h3><p>Every resin piece is poured, finished and checked in our own studio.</p></div>
-  <div><span class="pn">03</span><h3>Gifting, done properly</h3><p>Wrapped with care and a handwritten note, because the opening matters too.</p></div></div></div></section>
-<div class="quote-band" style="margin-top:var(--sp)"><q>Pretty things for your pretty home.</q><span>Our promise since day one</span></div>
+
+<!-- 3 · HOW IT STARTED (facts from the founder story on the home page and the five-year post) -->
+<section class="promise"><div class="wrap">
+  <div class="sec-row"><div><p class="kick">How it all started</p><h2 class="h-section">Five Years, One Pour at a Time</h2></div></div>
+  <ul class="promise-list">
+    <li><span class="kick">2021</span><b>The first pour</b><p>A work table in a bedroom and a few raw resin kits. The first pieces were messy and far from perfect.</p></li>
+    <li><span class="kick">The doubt</span><b>“A passing phase”</b><p>Everyone expected it to last two months. The curiosity outlasted every one of those guesses.</p></li>
+    <li><span class="kick">The craft</span><b>Keeping what matters</b><p>Wedding garlands, invitation frames and the milestones people can’t bear to lose, preserved by hand.</p></li>
+    <li><span class="kick">Today</span><b>Our own doors</b><p>A studio, workshop and showroom at CCC, Zirakpur, with crockery, decor and gifts beside the resin.</p></li>
+  </ul>
+</div></section>
+
+<div class="quote-band"><q>Pretty things for your pretty home.</q><span>Our promise since day one</span></div>
+
+<!-- 4 · INSIDE THE STORE (kept as it was) -->
 <section class="section"><div class="wrap"><div class="sec-row"><h2 class="h-section">Inside the Store</h2><a class="tlink" href="contact.html"><span>Get directions</span></a></div>
   <div class="mosaic"><img src="assets/store/aisle.jpg" alt="Main aisle"><img src="assets/store/clock-wall.jpg" alt="Clock wall"><img src="assets/store/mugs.jpg" alt="Mug shelves"><img src="assets/store/displays.jpg" alt="Lit glass displays"><img src="assets/store/soft-furnishings.jpg" alt="Cushions and throws"></div></div></section>
 </main>
