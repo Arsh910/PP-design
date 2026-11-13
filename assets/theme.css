@@ -1416,7 +1416,6 @@ html,body{overflow-x:clip}
 /* type: display serif at regular weight with tight tracking; labels are small tracked caps */
 h1,h2,h3{font-weight:400;letter-spacing:-.02em}
 .h-section{font-size:clamp(38px,3.8vw,56px);line-height:1.08}
-.h-section::after{content:" —";color:var(--tan)}
 .swash{display:none}
 .kick{font-size:13px;letter-spacing:.14em;color:var(--muted)}
 .ed b,.jcard b,.look-list b,.reel-prod b,.card .info .name{font-weight:400;letter-spacing:0}
