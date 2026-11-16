@@ -163,10 +163,9 @@ document.body.insertAdjacentHTML('beforeend', `
 <aside class="side" id="sideNav" aria-label="Menu" aria-hidden="true">
   <button class="dr-x" data-close aria-label="Close menu"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
   <nav class="side-links">
-    <a href="index.html">Home</a><a href="collection.html?c=crockery">Crockery &amp; Table</a><a href="collection.html?c=decor">Home Decor</a><a href="product-custom.html">Resin Studio</a>
-    <a href="gifting.html">Gifting</a><a href="collections.html">Shop All</a>
+    <a href="index.html">Home</a><a href="collections.html">Shop</a><a href="gifting.html">Gifting</a><a href="product-custom.html">Custom Orders</a>
   </nav>
-  <nav class="side-sub"><!-- <a href="blog.html">Petal Notes</a> --><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a></nav>
+  <nav class="side-sub"><!-- <a href="blog.html">Petal Notes</a> --><a href="about.html">Our Story</a><a href="contact.html">Visit Us</a><a href="faq.html">FAQs</a><!-- <a href="collection.html?c=festive">Festive Edit</a> --></nav>
   <a class="side-promo" href="gifting.html"><img src="assets/gifting/woven.jpg" alt=""><span class="new">New</span><b>Explore the Festive Edit</b></a>
   <div class="side-acct"><h4>My Account</h4><a class="btn btn-solid" href="login.html">Log in</a></div>
 </aside>`);
@@ -500,3 +499,101 @@ if (q) $$('[data-query]').forEach(el => el.tagName === 'INPUT' ? el.value = q : 
 
 /* ---------- Lenis swallows wheel events (even while stopped), so panels that scroll on their own opt out ---------- */
 $$('.drawer,.sx,.side,aside.filters,.nl').forEach(el => el.setAttribute('data-lenis-prevent', ''));
+
+/* ---------- featured carousel: the piece in focus sits large at the left edge; arrows, swipe, tap and a gentle autoplay move it ---------- */
+(() => {
+  const track = $('#fcTrack'); if (!track) return;
+  const items = $$('.fc-item', track), view = track.parentElement;
+  // a hidden probe resolves the small-card width (--s) to pixels, even mid-animation
+  const probe = document.createElement('i'); probe.style.cssText = 'position:absolute;visibility:hidden;width:var(--s);height:0';
+  track.closest('.fc-band').appendChild(probe);
+  let i = 0, timer = 0, paused = false;
+  const goTo = n => {
+    i = (n + items.length) % items.length;
+    items.forEach((it, k) => it.classList.toggle('on', k === i));
+    // every piece before the focused one is small, so the offset is a whole number of small widths
+    const g = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.style.setProperty('--x', -(i * (probe.getBoundingClientRect().width + g)) + 'px');
+  };
+  const restart = () => { clearInterval(timer); if (canMove) timer = setInterval(() => { if (!paused && !document.hidden) goTo(i + 1) }, 4500) };
+  const step = d => { goTo(i + d); restart() };
+  $$('[data-fc]').forEach(btn => btn.addEventListener('click', () => step(+btn.dataset.fc)));
+  items.forEach((it, k) => it.addEventListener('click', e => { if (k !== i) { e.preventDefault(); goTo(k); restart() } }));
+  let x0 = null, moved = false;
+  view.addEventListener('pointerdown', e => { x0 = e.clientX; moved = false });
+  view.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { moved = true; step(dx < 0 ? 1 : -1) } });
+  view.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false } }, true);
+  view.addEventListener('dragstart', e => e.preventDefault());
+  view.addEventListener('mouseenter', () => paused = true); view.addEventListener('mouseleave', () => paused = false);
+  addEventListener('resize', () => goTo(i));
+  goTo(0); restart();
+})();
+
+/* ---------- product page: info tabs and wishlist ---------- */
+(() => {
+  const tabs = $$('.ptabs [role="tab"]'); if (!tabs.length) return;
+  const show = t => {
+    tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; $('#' + x.getAttribute('aria-controls')).hidden = !on });
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t));
+    t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); show(n) });
+  });
+  $$('[data-open-tab]').forEach(l => l.addEventListener('click', () => show($(`.ptabs [data-tab="${l.dataset.openTab}"]`))));
+  $$('.pdp-wish').forEach(w => w.addEventListener('click', () => { const on = w.getAttribute('aria-pressed') !== 'true'; w.setAttribute('aria-pressed', on); toast(on ? 'Saved to your wishlist.' : 'Removed from your wishlist.') }));
+})();
+
+/* ---------- custom orders: a "what we make" tile preselects that piece in the builder ---------- */
+$$('.co-tile[data-piece]').forEach(t => t.addEventListener('click', () => {
+  const b = $$('#optPiece ~ *, .opts[data-out="#optPiece"] button').find(x => x.textContent.trim() === t.dataset.piece);
+  b?.click();
+}));
+
+/* ---------- Discover Collections on phones: fanned carousel (swipe, tap a side card, dots) ---------- */
+(() => {
+  const grid = $('.dc-grid'); if (!grid) return;
+  const items = $$('.dc-item', grid), dots = $('.dc-dots'), mq = matchMedia('(max-width:900px)');
+  let i = 0;
+  dots.innerHTML = items.map((_, k) => `<button type="button" aria-label="Collection ${k + 1}"></button>`).join('');
+  const bs = $$('button', dots);
+  const n = items.length;
+  const paint = () => {
+    items.forEach((it, k) => {
+      it.classList.remove('is-c', 'is-l', 'is-r', 'is-h');
+      if (!mq.matches) return;
+      const d = (k - i + n) % n;
+      it.classList.add(d === 0 ? 'is-c' : d === 1 ? 'is-r' : d === n - 1 ? 'is-l' : 'is-h');
+    });
+    bs.forEach((b, k) => b.setAttribute('aria-current', k === i));
+    // the stage fits the card in front, so the gap to the dots is the same whatever the title length
+    // plus room for the tilted side cards, which reach lower than the one in front
+    grid.style.height = mq.matches ? items[i].offsetTop + items[i].offsetHeight + Math.round(items[i].offsetWidth * .07) + 44 + 'px' : '';
+  };
+  const go = k => { i = (k + n) % n; paint() };
+  bs.forEach((b, k) => b.addEventListener('click', () => go(k)));
+  items.forEach((it, k) => it.addEventListener('click', e => { if (mq.matches && k !== i) { e.preventDefault(); go(k) } }));
+  let x0 = null, swiped = false;
+  grid.addEventListener('pointerdown', e => { x0 = e.clientX; swiped = false });
+  grid.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (mq.matches && Math.abs(dx) > 40) { swiped = true; go(i + (dx < 0 ? 1 : -1)) } });
+  grid.addEventListener('click', e => { if (swiped) { e.preventDefault(); e.stopPropagation(); swiped = false } }, true);
+  mq.addEventListener('change', paint);
+  addEventListener('resize', paint);
+  paint();
+})();
+
+/* ---------- Made for Them, or Ready to Go: filter tabs; the first two cards shown are the large ones ---------- */
+(() => {
+  const grid = $('#fgGrid'); if (!grid) return;
+  const cards = $$('.fg-card', grid), tabs = $$('.fg-tabs .tab');
+  const show = c => {
+    let n = 0;
+    cards.forEach(k => {
+      const on = (c === 'all' || k.dataset.cat.split(' ').includes(c)) && n < 5;
+      k.hidden = !on; k.classList.toggle('big', on && n < 2);
+      if (on) { n++; k.classList.remove('enter'); void k.offsetWidth; k.style.setProperty('--cd', (n - 1) * .06 + 's'); k.classList.add('enter') }
+    });
+    tabs.forEach(t => t.setAttribute('aria-pressed', t.dataset.fg === c));
+  };
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.fg)));
+  show('all');
+})();

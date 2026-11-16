@@ -33,7 +33,7 @@
   </div>
   <nav class="nav2" aria-label="Main">
     <ul class="nav" id="nav">
-      <li><a class="nav-link" href="collections.html" data-match="collection.html product.html" aria-haspopup="true">Shop All <span class="ch" aria-hidden="true"></span></a>
+      <li><a class="nav-link" href="collections.html" data-match="collection.html product.html" aria-haspopup="true">Shop <span class="ch" aria-hidden="true"></span></a>
           <div class="mega" role="group" aria-label="Shop">
             <div class="mega-in2">
               <div class="mcols">
@@ -46,12 +46,11 @@
               <a class="mpromo" href="gifting.html"><img src="assets/gifting/floral.jpg" alt="Gold mesh festive hamper with ivory flowers"><span>Festive hampers, made to order</span></a>
             </div>
           </div></li>
-      <li><a class="nav-link" href="collection.html?c=crockery">Crockery &amp; Table</a></li>
-      <li><a class="nav-link" href="collection.html?c=decor">Home Decor</a></li>
-      <li><a class="nav-link" href="product-custom.html">Resin Studio</a></li>
       <li><a class="nav-link" href="gifting.html">Gifting</a></li>
-      <li><a class="nav-link hl" href="collection.html?c=festive">Festive Edit</a></li>
+      <li><a class="nav-link" href="product-custom.html">Custom Orders</a></li>
+      <!-- seasonal: switch back on for Diwali --><!-- <li><a class="nav-link hl" href="collection.html?c=festive">Festive Edit</a></li> -->
       <li><a class="nav-link" href="about.html">Our Story</a></li>
+      <li><a class="nav-link" href="contact.html">Visit Us</a></li>
     </ul>
   </nav>
 </header>
@@ -59,36 +58,33 @@
 <main>
 
 <nav class="crumbs wrap" aria-label="Breadcrumb"><a href="index.html">Home</a><span><a href="collections.html">Shop</a></span><span><a href="collection.html">Statement Furniture</a></span><span>Wristwatch Coffee Table Set</span></nav>
-<section class="wrap pdp">
-  <div class="pdp-gal"><div class="pdp-thumbs"><button aria-current="true" data-src="assets/products/watch-table.jpg"><img src="assets/products/watch-table.jpg" alt=""></button><button aria-current="false" data-src="assets/products/watch-flat.jpg"><img src="assets/products/watch-flat.jpg" alt=""></button><button aria-current="false" data-src="assets/products/watch-dial.jpg"><img src="assets/products/watch-dial.jpg" alt=""></button><button aria-current="false" data-src="assets/video/statement.jpg"><img src="assets/video/statement.jpg" alt=""></button></div><div class="pdp-main"><span class="badge">Best Seller</span><img id="pdpMain" src="assets/products/watch-table.jpg" alt="Product photo"></div></div>
+<section class="wrap pdp pdp2">
+  <div class="pdp-gal"><div class="pdp-thumbs"><button aria-current="true" data-src="assets/products/watch-table.jpg"><img src="assets/products/watch-table.jpg" alt=""></button><button aria-current="false" data-src="assets/products/watch-flat.jpg"><img src="assets/products/watch-flat.jpg" alt=""></button><button aria-current="false" data-src="assets/products/watch-dial.jpg"><img src="assets/products/watch-dial.jpg" alt=""></button><button aria-current="false" data-src="assets/video/statement.jpg"><img src="assets/video/statement.jpg" alt=""></button></div><div class="pdp-main"><span class="pdp-stars" aria-label="Rated 4.9 out of 5">★★★★★</span><img id="pdpMain" src="assets/products/watch-table.jpg" alt="Product photo"></div></div>
   <div class="pdp-info">
-    <p class="lab">Statement Furniture</p>
-    <h1>Wristwatch Coffee Table Set</h1>
-    <a class="rating" href="#reviews">★★★★★ <span>4.9 · 12 reviews</span></a>
+    <div class="pdp-top"><div><h1>Wristwatch Coffee Table Set</h1><p class="pdp-sub">Statement Furniture</p></div><span class="pdp-stock">In stock</span></div>
+    <div class="pdp-meta"><span>Item no. PP-1042</span><a href="#pdpTabs" data-open-tab="reviews">12 reviews</a></div>
     <p class="pdp-price"><span id="pdpPrice">₹24,999</span></p>
-    <p class="pdp-fine">Inclusive of all taxes. Cash on delivery available.</p>
-    <p class="pdp-lead">Two oversized wristwatches, one very good conversation starter. The dials sit under glass with gear detailing, the gold straps curve down to form the legs, and the smaller table tucks neatly under the larger one.</p>
-    <div class="opt"><p class="flabel">Set <b data-opt-label id="optSet">Nesting pair</b></p>
-      <div class="opts" data-out="#optSet"><button aria-pressed="true" data-price="24999">Nesting pair</button><button aria-pressed="false" data-price="14999" data-v="Large table only">Large only</button><button aria-pressed="false" data-price="11999" data-v="Small table only">Small only</button></div></div>
-    <div class="opt"><p class="flabel">Finish <b id="optFin">Antique gold</b></p>
+    <div class="opt"><div class="opts radios" data-out="#optSet" role="radiogroup" aria-label="Set"><button aria-pressed="true" data-v="Nesting pair" data-price="24999"><i></i>Nesting pair</button><button aria-pressed="false" data-v="Large table only" data-price="14999"><i></i>Large only</button><button aria-pressed="false" data-v="Small table only" data-price="11999"><i></i>Small only</button></div><span hidden data-opt-label id="optSet">Nesting pair</span></div>
+    <div class="opt opt-fin"><span class="flabel">Finish <b id="optFin">Antique gold</b></span>
       <div class="opts sw" data-out="#optFin"><button aria-pressed="true" style="--c:#B08D57" data-v="Antique gold" aria-label="Antique gold"></button><button aria-pressed="false" style="--c:#C9C3BA" data-v="Brushed silver" aria-label="Brushed silver"></button><button aria-pressed="false" style="--c:#3E2630" data-v="Gunmetal" aria-label="Gunmetal"></button></div></div>
-    <div class="buy"><div class="qty"><button data-d="-1" aria-label="Fewer">−</button><span id="pdpQty">1</span><button data-d="1" aria-label="More">+</button></div><button class="btn btn-solid js-add js-pdp" data-name="Wristwatch Coffee Table Set">Add to cart</button></div>
-    <a class="btn btn-outline full" href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">Ask us on DM</a>
-    <ul class="perks-list">
-        <li><svg viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Delivery across India in 5–8 days</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13M12 7C10 3 6 4 7.5 6.5 8.3 7 12 7 12 7Zm0 0c2-4 6-3 4.5-.5C15.7 7 12 7 12 7Z"/></svg>Free gift wrapping with a handwritten note</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>Inspected and packed by hand in Zirakpur</li>
-      </ul>
-    <div class="acc">
-      <details open><summary>Details</summary><div class="body"><ul><li>Nesting pair: large and small table</li><li>Glass tops over gear-detailed dials</li><li>Metal frame in antique gold finish</li><li>Large: 90 cm wide · Small: 60 cm wide (sample sizes)</li></ul></div></details>
-      <details><summary>Care</summary><div class="body"><p>Wipe the glass with a soft, dry cloth. Avoid harsh cleaners on the gold finish. Use coasters for hot cups.</p></div></details>
-      <details><summary>Delivery &amp; returns</summary><div class="body"><p>Large furniture ships within 5–8 days across India and is delivered by our partner team. Free delivery in the Chandigarh tricity. Exchanges on damage in transit within 48 hours of delivery.</p></div></details>
-    </div>
+    <p class="pdp-lead">Two oversized wristwatches, one very good conversation starter. The dials sit under glass with gear detailing, the gold straps curve down to form the legs, and the smaller table tucks neatly under the larger one.</p>
+    <div class="pdp-buy"><div class="qty pdp-qty"><button data-d="-1" aria-label="Fewer">−</button><span id="pdpQty">1</span><button data-d="1" aria-label="More">+</button></div>
+      <button class="pdp-wish" type="button" aria-label="Save to wishlist" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+      <button class="btn btn-solid js-add js-pdp pdp-add" data-name="Wristwatch Coffee Table Set"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1.2 13H7.2L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Add to cart</button></div>
+    <p class="pdp-fine">Inclusive of all taxes · Cash on delivery available · <a href="https://ig.me/m/prettypetals.home" target="_blank" rel="noopener">Ask us on DM</a></p>
   </div>
 </section>
-<section class="section" id="reviews"><div class="wrap">
-  <div class="sec-row"><h2 class="h-section">Customer Reviews</h2><a class="btn btn-outline" href="#">Write a review</a></div>
-  <div class="rev-wrap">
+<section class="wrap pdp-tabs" id="pdpTabs">
+  <div class="ptabs" role="tablist" aria-label="Product information">
+    <button role="tab" aria-selected="true" aria-controls="pt-details" id="t-details" data-tab="details">Details</button>
+    <button role="tab" aria-selected="false" aria-controls="pt-care" id="t-care" data-tab="care" tabindex="-1">Care</button>
+    <button role="tab" aria-selected="false" aria-controls="pt-delivery" id="t-delivery" data-tab="delivery" tabindex="-1">Delivery &amp; returns</button>
+    <button role="tab" aria-selected="false" aria-controls="pt-reviews" id="t-reviews" data-tab="reviews" tabindex="-1">Reviews (12)</button>
+  </div>
+  <div class="ptab-panel" role="tabpanel" id="pt-details" aria-labelledby="t-details"><ul><li>Nesting pair: large and small table</li><li>Glass tops over gear-detailed dials</li><li>Metal frame in antique gold finish</li><li>Large: 90 cm wide · Small: 60 cm wide (sample sizes)</li></ul></div>
+  <div class="ptab-panel" role="tabpanel" id="pt-care" aria-labelledby="t-care" hidden><p>Wipe the glass with a soft, dry cloth. Avoid harsh cleaners on the gold finish. Use coasters for hot cups.</p></div>
+  <div class="ptab-panel" role="tabpanel" id="pt-delivery" aria-labelledby="t-delivery" hidden><p>Large furniture ships within 5–8 days across India and is delivered by our partner team. Free delivery in the Chandigarh tricity. Exchanges on damage in transit within 48 hours of delivery.</p><p>Every piece is inspected and packed by hand in Zirakpur, with free gift wrapping and a handwritten note on request.</p></div>
+  <div class="ptab-panel ptab-rev" role="tabpanel" id="pt-reviews" aria-labelledby="t-reviews" hidden><div class="rev-wrap">
     <div class="rev-score"><div class="big">4.9</div><div class="stars" style="color:var(--moss);letter-spacing:3px;margin:8px 0 4px">★★★★★</div><p style="color:var(--muted)">Based on 12 reviews</p>
       <div class="rev-bars"><div>5<i style="--w:88%"></i>11</div><div>4<i style="--w:8%"></i>1</div><div>3<i style="--w:0%"></i>0</div><div>2<i style="--w:0%"></i>0</div><div>1<i style="--w:0%"></i>0</div></div>
       <p class="kick" style="margin:0">Sample reviews: replace before launch</p></div>
@@ -97,27 +93,22 @@
       <article><div class="stars">★★★★★</div><h4>Packed beautifully</h4><p>Arrived in perfect condition with so much padding. The smaller table slides under the big one exactly as shown.</p><p class="who">Sample review · Verified buyer</p></article>
       <article><div class="stars">★★★★☆</div><h4>Worth the wait</h4><p>Took a few days longer than I expected but the team kept me updated on WhatsApp the whole time.</p><p class="who">Sample review · Verified buyer</p></article>
     </div>
-  </div>
-</div></section>
-<section class="section"><div class="wrap"><div class="sec-row"><h2 class="h-section">Pairs Well With</h2><a class="tlink" href="collection.html"><span>View all</span></a></div>
-    <div class="pgrid-static">
-      <article class="card" data-cat="best crockery gifts" data-price="695">
-        <div class="im"><span class="lab">Everyday Plate</span><span class="badge">Best Seller</span><a href="product.html" aria-label="Ma Chérie Plate"></a><img loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries and the words Ma Chérie"><button class="qadd" data-name="Ma Chérie Plate" data-price="695" data-meta="Everyday Plate">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Ma Chérie Plate</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(48)</small></span></div><p class="price">₹695</p></div>
-      </article>
-      <article class="card" data-cat="best resin gifts" data-price="2495">
-        <div class="im"><span class="lab">Resin Art</span><span class="badge">Made to Order</span><a href="product.html" aria-label="Faith Keepsake Stand"></a><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands on a store shelf"><button class="qadd" data-name="Faith Keepsake Stand" data-price="2495" data-meta="Resin Art">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Faith Keepsake Stand</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(19)</small></span></div><p class="price">₹2,495</p></div>
-      </article>
-      <article class="card" data-cat="best decor" data-price="1295">
-        <div class="im"><span class="lab">Soft Furnishing</span><a href="product.html" aria-label="Sunflower Tufted Cushion"></a><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt="Cream cushion with tufted mustard sunflowers"><button class="qadd" data-name="Sunflower Tufted Cushion" data-price="1295" data-meta="Soft Furnishing">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Sunflower Tufted Cushion</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(31)</small></span></div><p class="price">₹1,295</p></div>
-      </article>
-      <article class="card" data-cat="decor gifts" data-price="1895">
-        <div class="im"><span class="lab">Storage &amp; Styling</span><a href="product.html" aria-label="Rattan Heart Baskets"></a><img loading="lazy" src="assets/products/basket-heart.jpg" alt="Woven heart-shaped rattan baskets on a shelf"><button class="qadd" data-name="Rattan Heart Baskets" data-price="1895" data-meta="Storage &amp; Styling">Quick add</button></div>
-        <div class="info"><div><h3 class="name"><a href="product.html">Rattan Heart Baskets</a></h3><span class="stars" aria-label="Rated 5 out of 5">★★★★★<small>(9)</small></span></div><p class="price">₹1,895</p></div>
-      </article>
-    </div></div></section>
+  </div></div>
+</section>
+<section class="fc-band" aria-label="Pairs well with">
+  <div class="wrap fc-head"><h2 class="h-section">Pieces that pair well,<br>picked from the same shelves.</h2>
+    <div class="fc-ctl"><div class="sarrs"><button class="sarr" data-fc="-1" aria-label="Previous piece"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="sarr" data-fc="1" aria-label="Next piece"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div><a class="fc-btn" href="collection.html">Explore the shop</a></div></div>
+  <div class="fc-view"><div class="fc-track" id="fcTrack">
+      <a class="fc-item on" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/plate-cherie.jpg" alt="Pink striped plate with cherries"></div><div class="fc-meta"><span>Ma Chérie Plate</span><b>₹695</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/resin-faith.jpg" alt="Round resin devotional stands"></div><div class="fc-meta"><span>Faith Keepsake Stand</span><b>₹2,495</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/cushion-sunflower.jpg" alt="Cream cushion with tufted mustard sunflowers"></div><div class="fc-meta"><span>Sunflower Tufted Cushion</span><b>₹1,295</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/resin-trays.jpg" alt="Resin trays with pressed flowers"></div><div class="fc-meta"><span>Floral Resin Trays</span><b>₹1,995</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/basket-heart.jpg" alt="Woven heart-shaped rattan baskets"></div><div class="fc-meta"><span>Rattan Heart Baskets</span><b>₹1,895</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/tumbler-set.jpg" alt="Row of colourful character tumblers"></div><div class="fc-meta"><span>Character Tumblers</span><b>₹899</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/clock-race.jpg" alt="Racing-themed wall clock"></div><div class="fc-meta"><span>Racer Wall Clock</span><b>₹3,995</b></div></a>
+      <a class="fc-item" href="product.html"><div class="fc-im"><img loading="lazy" src="assets/products/sp-dice.jpg" alt="Red and white dice salt and pepper shakers"></div><div class="fc-meta"><span>Dice Salt &amp; Pepper</span><b>₹645</b></div></a>
+  </div></div>
+</section>
 </main>
 
 <footer class="site">
