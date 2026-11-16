@@ -239,7 +239,10 @@ $$('.tabs').forEach(g => {
 $$('[data-open-tab]').forEach(a => a.addEventListener('click', () => $(`.tab[data-cat="${a.dataset.openTab}"]`)?.click()));
 
 /* ---------- carousel arrows ---------- */
-$$('[data-scroll]').forEach(b => b.addEventListener('click', () => { const row = document.getElementById(b.dataset.scroll); row.scrollBy({ left: row.clientWidth * b.dataset.dir, behavior: 'smooth' }) }));
+// step = distance between two neighbouring cards (layout offsets, so a scaled 'mid' card can't skew it);
+// moving in whole steps lands exactly on a snap point, so the row glides once instead of overshooting and snapping back
+const cardStep = row => { const [a, b] = row.children; return b ? b.offsetLeft - a.offsetLeft : row.clientWidth };
+$$('[data-scroll]').forEach(b => b.addEventListener('click', () => { const row = document.getElementById(b.dataset.scroll), st = cardStep(row); row.scrollBy({ left: Math.max(1, Math.floor(row.clientWidth / st)) * st * b.dataset.dir, behavior: 'smooth' }) }));
 
 /* ---------- auto-advancing carousels (reviews): loops, pauses on hover, progress bar ---------- */
 $$('[data-autoplay],[data-progress]').forEach(row => {
@@ -250,7 +253,7 @@ $$('[data-autoplay],[data-progress]').forEach(row => {
   row.addEventListener('mouseenter', () => paused = true); row.addEventListener('mouseleave', () => paused = false);
   if (canMove && row.hasAttribute('data-autoplay')) setInterval(() => {
     if (paused || document.hidden) return;
-    const card = row.firstElementChild.getBoundingClientRect().width + 14;
+    const card = cardStep(row);
     row.scrollLeft + row.clientWidth >= row.scrollWidth - 4 ? row.scrollTo({ left: 0 }) : row.scrollBy({ left: card });
   }, 3000);
 });
@@ -275,6 +278,46 @@ $$('[data-pin]').forEach(el => {
   el.addEventListener('mouseenter', () => on(true)); el.addEventListener('mouseleave', () => on(false));
   if (el.classList.contains('pin')) el.addEventListener('click', () => $(`.look-list [data-pin="${el.dataset.pin}"]`).click());
 });
+
+/* ---------- shop the shelf: looping vertical carousel (auto-advances; wheel, swipe, arrow keys, pins or click a card behind) ---------- */
+const shelf = $('.look-list');
+if (shelf) {
+  const items = $$('li', shelf), links = items.map(li => $('a', li)), pins = $$('.look-img .pin'), N = items.length;
+  let cur = 0, last = 0, spin = 0, hold = false;
+  // shortest way round the loop: -2 … +3 for six cards
+  const off = n => { let d = ((n - cur) % N + N) % N; return d > N / 2 ? d - N : d };
+  const show = i => {
+    cur = ((i % N) + N) % N;
+    items.forEach((li, n) => {
+      const d = off(n), was = +li.style.getPropertyValue('--k');
+      if (Math.abs(d - was) > 1) { li.classList.add('jump'); requestAnimationFrame(() => requestAnimationFrame(() => li.classList.remove('jump'))) }  // wrapping round: snap, don't sweep across
+      li.style.setProperty('--k', d); li.style.zIndex = 10 - Math.abs(d);
+      li.classList.toggle('is-front', d === 0); li.classList.toggle('far', Math.abs(d) > 2);
+    });
+    pins.forEach(p => p.classList.toggle('is-front', +p.dataset.pin === cur));
+  };
+  show(cur);
+  links.forEach((a, n) => a.addEventListener('click', e => { if (n !== cur) { e.preventDefault(); show(n) } }));
+  // wheel steps round the loop; after one full turn the page scrolls on, so the stack never traps the page
+  shelf.addEventListener('wheel', e => {
+    if (!e.deltaY || Math.abs(spin) >= N) return;
+    e.preventDefault(); e.stopPropagation();
+    if (performance.now() - last > 420) { last = performance.now(); spin += Math.sign(e.deltaY); show(cur + Math.sign(e.deltaY)) }
+  }, { passive: false });
+  shelf.addEventListener('mouseleave', () => { spin = 0 });
+  shelf.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault(); show(cur + (e.key === 'ArrowDown' ? 1 : -1)); links[cur].focus();
+  });
+  let y0 = 0;
+  shelf.addEventListener('touchstart', e => { y0 = e.touches[0].clientY }, { passive: true });
+  shelf.addEventListener('touchend', e => { const dy = y0 - e.changedTouches[0].clientY; if (Math.abs(dy) > 40) show(cur + (dy > 0 ? 1 : -1)) }, { passive: true });
+  // auto-advance while on screen, paused while the visitor is pointing at the stack or the photo
+  const look = shelf.closest('.look'); let seen = false;
+  look.addEventListener('mouseenter', () => hold = true); look.addEventListener('mouseleave', () => hold = false);
+  new IntersectionObserver(es => es.forEach(e => seen = e.isIntersecting), { threshold: .3 }).observe(look);
+  if (canMove) setInterval(() => { if (seen && !hold && !document.hidden) show(cur + 1) }, 3200);
+}
 
 /* ---------- newsletter popup: once per visit, after a short delay ---------- */
 const nl = $('#nl');
