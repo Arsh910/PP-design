@@ -2698,3 +2698,8 @@ li>.kick:has(+ b){display:none}
   .look-list em{font-size:17px}
   .look-list svg{width:22px;height:22px}
 }
+/* collection banners: copy sits in the left (plum) half, aligned with the page edge, never over the photo */
+@media (min-width:761px){
+  .page-banner .wrap{margin:0;max-width:none;width:50%;padding-left:var(--gut);padding-right:clamp(24px,4vw,64px);box-sizing:border-box}
+  .page-banner p{max-width:46ch}
+}
